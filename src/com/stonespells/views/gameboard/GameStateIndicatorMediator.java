@@ -8,6 +8,7 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.mediator.Mediator;
 
 import com.stonespells.core.ImageLibrary;
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuUI;
@@ -68,7 +69,7 @@ public class GameStateIndicatorMediator extends Mediator implements IMediator {
 				concentrationIndicator.setPosition(concentrationX - 32, concentrationY + 9);
 				sendNotification(RenderMediator.RENDER_PARTIAL, concentrationIndicator, null);
 				
-				PlayerProxy player = ((GameBoardMediator)facade.retrieveMediator(GameBoardMediator.NAME)).getCurrentPlayer();
+				PlayerProxy player = ((PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME)).getPlayer();
 				RenderMediator.drawString( String.valueOf(player.getConcentration()), concentrationX - 16, concentrationY + 7);
 				
 			} else if (gameState == GameBoardMediator.GAMESTATE_WAITING_OPONENT)

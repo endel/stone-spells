@@ -100,7 +100,6 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 		// render partial items when rendering entire mediator
 		// this notification is sent by RenderMediator
 		if ( note.getName().equals(RenderMediator.FLUSH) ) {
-			System.out.println("Flush OptionsMenuMediator");
 			
 			OptionsMenuUI viewComponent = (OptionsMenuUI) this.viewComponent;
 			
@@ -171,7 +170,6 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 
 	public void selectSide(int side) {
 		this.sideSelected = side;
-		// sendNotification(RenderMediator.FLUSH, null, null);
 	}
 
 }

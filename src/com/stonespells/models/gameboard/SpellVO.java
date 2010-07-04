@@ -4,6 +4,11 @@ import javax.microedition.lcdui.Image;
 
 import org.puremvc.java.interfaces.ICommand;
 
+/**
+ * Spell Value Object
+ * @author Endel
+ *
+ */
 public class SpellVO {
 	
 	public int id;

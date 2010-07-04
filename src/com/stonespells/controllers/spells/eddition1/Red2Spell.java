@@ -21,7 +21,6 @@ public class Red2Spell extends SpellCommand implements ISpellCommand {
 		spell.setDescription("Opponent takes damage equal to amount of held white stones.");
 		spell.setColor(SpellProxy.COLOR_RED);
 		spell.setCost(4);
-
 	}
 
 	public void onEnergize() {

@@ -15,7 +15,7 @@ public class PlayerProxy extends Proxy implements IProxy {
 	/**
 	 * Constante com o valor inicial de vida dos jogadores
 	 */
-	public static final int MAX_LIFE = 30;
+	public static final int MAX_LIFE = 20;
 	
 	public PlayerProxy() {
 		super(NAME, null);

@@ -69,38 +69,47 @@ public class SpellListIOProxy extends Proxy implements IProxy {
 		
 		int i=0;
 		spell.create( new Red1Spell() );
+		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;
 		
 		spell.create( new Green1Spell() );
+		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;
 		
 		spell.create( new Blue1Spell() );
+		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;
 		
 		spell.create( new Red2Spell() );
+		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;
 		
 		spell.create( new White1Spell() );
+		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;
 		
 		spell.create( new Red3Spell() );
+		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;
 		
 		spell.create( new White2Spell() );
+		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;
 		
 		spell.create( new Yellow1Spell() );
+		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;
 		
 		spell.create( new Green2Spell() );
+		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;
 		

@@ -7,9 +7,9 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.models.connection.ConnectionProxy;
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
-import com.stonespells.models.gameboard.communication.PlayContextProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 
@@ -17,7 +17,7 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 		ICommand {
 	
 	public void execute(INotification note) {
-		
+		System.out.println("Waiting to receive opponent board...");
 		ConnectionProxy connProxy = (ConnectionProxy) facade.retrieveProxy(ConnectionProxy.PROXY_NAME);
 		PlayContextProxy playContext = (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
 		try {
@@ -25,8 +25,6 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 			
 			while (dis.available() == 0) {
 			}
-			
-			System.out.println("Comecei a ler! ");
 			
 			int actionType = dis.readInt();
 			
@@ -38,16 +36,15 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 				// Opponent
 				player = playContext.getOpponent();
 				player.setActive(false);
-				spellList = player.getSpellList();
 				player.setLife( dis.readInt() );
+				spellList = player.getSpellList();
 				spellList.readFromStream(dis);
 				
 				// Player
 				player = playContext.getPlayer();
 				player.setActive(true);
-				spellList = player.getSpellList();
-				
 				player.setLife( dis.readInt() );
+				spellList = player.getSpellList();
 				spellList.readFromStream(dis);
 				
 			} else if (actionType == ConnectionProxy.END_GAME) {
@@ -56,6 +53,8 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("Received successfully!");
 		
 		sendNotification(RenderMediator.FLUSH, facade.retrieveMediator(GameBoardMediator.NAME), null);
 		sendNotification(GameBoardMediator.TURN_BEGIN, null, null);

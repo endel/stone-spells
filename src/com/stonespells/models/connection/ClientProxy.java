@@ -47,7 +47,7 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 	public void inquiryCompleted(int arg0) {
 		UUID ids[] = { ServerProxy.SERVICE_UUID };
 
-		System.out.println("tamnanho " + vector.size());
+		System.out.println("Encontrei " + vector.size() + " clientes.");
 		for (int i = 0; i < vector.size(); i++) {
 			RemoteDevice rd = (RemoteDevice) vector.elementAt(i);
 			try {
@@ -65,7 +65,7 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 		// sendNotification(PreConnectionMediator.VIEW_CONNECTIONS_LIST, this.getServiceList(), type)
 		
 		if(service == null){
-			System.out.println("service tá null");
+			System.out.println("Nenhum serviço encontrado.");
 			return;
 		}
 		

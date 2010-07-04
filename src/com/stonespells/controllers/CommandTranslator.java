@@ -8,9 +8,9 @@ import com.stonespells.facade.GameFacade;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
-
 /**
  * Translate Canvas commands into PureMVC commands
+ * 
  * @author Endel Dreyer
  */
 public class CommandTranslator implements CommandListener {
@@ -26,14 +26,7 @@ public class CommandTranslator implements CommandListener {
 		OptionsMenuMediator optionsMenu = (OptionsMenuMediator) facade.retrieveMediator(OptionsMenuMediator.NAME);
 		optionsMenu.selectSide( c.getPriority() );
 		
-		/*
-		Sleep para dar tempo de enxergar o estado "over" do menu-item
-		try {
-			Thread.sleep(100);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
+		facade.sendNotification(RenderMediator.FLUSH, null, null);
 		
 		System.out.println( "Tranlating command: " + c.getLabel() );
 		facade.sendNotification( c.getLabel(), d, null);

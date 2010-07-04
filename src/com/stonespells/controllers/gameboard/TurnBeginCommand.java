@@ -4,16 +4,15 @@ import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.communication.PlayContextProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 public class TurnBeginCommand extends SimpleCommand implements ICommand {
-	
 	
 	public void execute(INotification note) {
 		System.out.println("Turn begin!");
@@ -29,9 +28,8 @@ public class TurnBeginCommand extends SimpleCommand implements ICommand {
 		GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
 		PlayerProxy player = playContext.getPlayer();
 		
-		System.out.println("O player tá ativo? " +  player.getActive());
-		
-		if (player.getActive()) {
+		boolean isPlayerActive = player.getActive();
+		if (isPlayerActive) {
 			gameBoard.setGameState(GameBoardMediator.GAMESTATE_ENERGIZE);
 			
 			player.addConcentration(2);
@@ -41,11 +39,11 @@ public class TurnBeginCommand extends SimpleCommand implements ICommand {
 			gameBoard.setGameState(GameBoardMediator.GAMESTATE_WAITING_OPONENT);
 		}
 		
-		// Flush screen
+		// flush game board graphics
 		sendNotification(RenderMediator.FLUSH, gameBoard, null);
 		
 		// TODO: refractor essa gambi nojenta
-		if (!player.getActive()) {
+		if (!isPlayerActive) {
 			sendNotification(GameBoardMediator.WAIT_FOR_OPPONENT, null, null);
 		}
 	}

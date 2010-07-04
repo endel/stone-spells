@@ -2,10 +2,10 @@ package com.stonespells.controllers.spells.eddition1;
 
 import com.stonespells.controllers.spells.ISpellCommand;
 import com.stonespells.controllers.spells.SpellCommand;
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.communication.PlayContextProxy;
 
 public class Green1Spell extends SpellCommand implements ISpellCommand {
 
@@ -28,7 +28,7 @@ public class Green1Spell extends SpellCommand implements ISpellCommand {
 		spell.setName("Oblivion Emerald");
 		spell.setDescription("Eliminates 1 point of concentration of all opponent's stones.");
 		spell.setColor(SpellProxy.COLOR_GREEN);
-		spell.setCost(4);
+		spell.setCost(2);
 	}
 
 	public void onEnergize() {

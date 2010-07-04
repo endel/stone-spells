@@ -22,7 +22,6 @@ public class Red3Spell extends SpellCommand implements ISpellCommand {
 		spell.setDescription("Reduces the opponent's hp to half.");
 		spell.setColor(SpellProxy.COLOR_RED);
 		spell.setCost(10);
-
 	}
 
 	public void onEnergize() {

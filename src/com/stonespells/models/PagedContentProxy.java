@@ -16,6 +16,7 @@ public class PagedContentProxy extends Proxy implements IProxy {
 	}
 	
 	public void setContent(String content, int charsPerPage) {
+		this.setCurrentPage(0);
 		if (charsPerPage == 0) {
 			charsPerPage = 118;
 		}

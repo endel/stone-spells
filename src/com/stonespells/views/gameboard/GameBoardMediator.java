@@ -7,11 +7,10 @@ import com.stonespells.core.App;
 import com.stonespells.core.IWithMenuMediator;
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.core.WithMenuMediator;
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
-import com.stonespells.models.gameboard.PlayerVO;
 import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.communication.PlayContextProxy;
 import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionMenuItemMediator;
@@ -42,17 +41,12 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 	
 	private static final int QTY_SLOTS = 9;
 	
-	private PlayerVO players[];
-	private int numPlayers = 0;
-	
 	private int gameState = GAMESTATE_ENERGIZE;
 	
 	public GameBoardMediator() {
 		super(NAME, null);
 		GameBoardUI view = new GameBoardUI(this, QTY_SLOTS);
-		
 		this.setViewComponent(view);
-		this.players = new PlayerVO[2];
 	}
 	
 	public void setGameState(int state) {
@@ -61,24 +55,6 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 	
 	public int getGameState() {
 		return this.gameState;
-	}
-	
-	public void addPlayer(PlayerProxy player) {
-		this.players[numPlayers] = (PlayerVO) player.getData();
-		
-		PlayContextProxy playContext = (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
-		if (numPlayers == 0) {
-			playContext.setPlayer(player);
-		} else {
-			playContext.setOpponent(player);
-		}
-		numPlayers++;
-	}
-	
-	public PlayerProxy getCurrentPlayer() {
-		PlayerProxy player = (PlayerProxy) facade.retrieveProxy(PlayerProxy.NAME);
-		player.setData(this.players[0]);
-		return player;
 	}
 	
 	public String[] listNotificationInterests() {
@@ -114,8 +90,9 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 			}
 			
 			// draw player's lifebar
-			for (int i=0;i<this.players.length;i++) {
-				RenderMediator.drawString( String.valueOf(this.players[i].life) , gameBoard.getLifePositionX(i), gameBoard.getLifePositionY());
+			for (int i=0;i<2;i++) {
+				PlayerProxy player = (i==0) ? playContext.getPlayer() : playContext.getOpponent();
+				RenderMediator.drawString( String.valueOf(player.getLife()) , gameBoard.getLifePositionX(i), gameBoard.getLifePositionY());
 			}
 			
 		} else if (note.getName().equals(SLOT_SELECTED)) {
@@ -163,9 +140,15 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 			item.setNotificationName( OPTION_VIEW );
 			item.setLabel("View");
 		} else {
-			item.setImage( ImageLibrary.OPTION_END_TURN );
+			SpellListProxy hand = ((PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME)).getPlayer().getSpellList();
+			if (hand.hasSpellSelected()) {
+				item.setImage( ImageLibrary.OPTION_CAST );
+				item.setLabel("Cast");
+			} else {
+				item.setImage( ImageLibrary.OPTION_END_TURN );
+				item.setLabel("End my turn");
+			}
 			item.setNotificationName( END_TURN );
-			item.setLabel("End my turn");
 		}
 		return item;
 	}

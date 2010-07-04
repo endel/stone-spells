@@ -12,6 +12,7 @@ import org.puremvc.java.interfaces.IProxy;
 import org.puremvc.java.patterns.observer.Notification;
 import org.puremvc.java.patterns.proxy.Proxy;
 
+import com.stonespells.controllers.spells.SpellCommand;
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.core.Serializable;
 
@@ -21,7 +22,7 @@ import com.stonespells.core.Serializable;
  * @author Endel
  * 
  */
-public class SpellProxy extends Proxy implements IProxy, ISpell, Serializable {
+public class SpellProxy extends Proxy implements IProxy, Serializable {
 
 	public static final String NAME = "SpellProxy";
 
@@ -76,7 +77,8 @@ public class SpellProxy extends Proxy implements IProxy, ISpell, Serializable {
 	 * Cria um novo objeto {@link SpellVO} à ser manipulado.
 	 * 
 	 * @deprecated Todas as spells devem ter um commandListener que possui o
-	 *             tratamentos de eventos.
+	 *             tratamentos de eventos. Utilize o método create(ICommand
+	 *             commandListener)
 	 */
 	public void create() {
 		this.setData(new SpellVO());
@@ -93,78 +95,183 @@ public class SpellProxy extends Proxy implements IProxy, ISpell, Serializable {
 		dispatchEvent(ON_CREATE);
 	}
 
+	/**
+	 * Obtém o id da spell.
+	 * 
+	 * @return int
+	 */
 	public int getId() {
 		return ((SpellVO) this.data).id;
 	}
 
+	/**
+	 * Obtém o nome da spell.
+	 * 
+	 * @return String
+	 */
 	public String getName() {
 		return ((SpellVO) this.data).name;
 	}
 
+	/**
+	 * Obtém a descrição da spell.
+	 * 
+	 * @return String
+	 */
 	public String getDescription() {
 		return ((SpellVO) this.data).description;
 	}
 
+	/**
+	 * Obtém a posição da spell no tabuleiro. De 0 à 8.
+	 * 
+	 * @return int
+	 */
 	public int getPosition() {
 		return ((SpellVO) this.data).position;
 	}
 
+	/**
+	 * Obtém o custo da spell.
+	 * 
+	 * @return int
+	 */
 	public int getCost() {
 		return ((SpellVO) this.data).cost;
 	}
 
+	/**
+	 * Obtém a cor da spell. Utilize os atributos estáticos SpellProxy.COLOR_*
+	 * para comparação.
+	 * 
+	 * @return int
+	 */
 	public int getColor() {
 		return ((SpellVO) this.data).color;
 	}
 
+	/**
+	 * Obtém a imagem da spell.
+	 * 
+	 * @return Image
+	 * @see Image
+	 */
 	public Image getImage() {
 		return ((SpellVO) this.data).image;
 	}
 
+	/**
+	 * Obtém os pontos de concentração da spell.
+	 * 
+	 * @return int
+	 */
 	public int getConcentration() {
 		return ((SpellVO) this.data).concentration;
 	}
 
+	/**
+	 * Verifica se a concentração da spell é o suficiente para poder utilizar o
+	 * cast.
+	 * 
+	 * @return boolean
+	 */
 	public boolean canCast() {
 		return this.getConcentration() >= this.getCost();
 	}
 
+	/**
+	 * Verifica se a spell tem sua utilização trancada. Spells trancadas não
+	 * podem ser energizadas nem utilizadas.
+	 * 
+	 * @return boolean
+	 */
 	public boolean isLocked() {
 		return ((SpellVO) this.data).locked;
 	}
 
+	/**
+	 * Verifica se a spell está selecionada para cast.
+	 * 
+	 * @return boolean
+	 */
 	public boolean isSelected() {
 		return ((SpellVO) this.data).selected;
 	}
 
+	/**
+	 * Obtém o ICommand que gerencia os eventos da spell.
+	 * 
+	 * @return ICommand
+	 * @see SpellCommand
+	 */
 	public ICommand getCommandListener() {
 		return ((SpellVO) this.data).commandListener;
 	}
 
+	/**
+	 * Define um identificador único para a spell.
+	 * 
+	 * @param id
+	 */
 	public void setId(int id) {
 		((SpellVO) this.data).id = id;
 	}
 
+	/**
+	 * Define um nome para a spell.
+	 * 
+	 * @param name
+	 */
 	public void setName(String name) {
 		((SpellVO) this.data).name = name;
 	}
 
+	/**
+	 * Define uma descrição para o efeito da spell.
+	 * 
+	 * @param description
+	 */
 	public void setDescription(String description) {
 		((SpellVO) this.data).description = description;
 	}
 
+	/**
+	 * Define uma posição para a spell. Utilize somente posições de 0 à 8.
+	 * 
+	 * @param pos
+	 */
 	public void setPosition(int pos) {
 		((SpellVO) this.data).position = pos;
 	}
 
+	/**
+	 * Define um custo para o cast da spell. Caso tenha custo 0, você deverá
+	 * tratar manualmente como será reduzido os pontos de concentração dela no
+	 * método onCast
+	 * 
+	 * @param cost
+	 */
 	public void setCost(int cost) {
 		((SpellVO) this.data).cost = cost;
 	}
 
+	/**
+	 * Define uma cor para a spell.
+	 * 
+	 * @param color
+	 */
 	public void setColor(int color) {
 		((SpellVO) this.data).color = color;
 	}
 
+	/**
+	 * Define uma imagem à partir de uma url para a spell
+	 * 
+	 * @deprecated Cada spell deve conter um método getImageBytes(), que é
+	 *             convertido para um objeto Image internamente através da
+	 *             classe {@link SpellCommand}.
+	 * @param path
+	 */
 	public void setImage(String path) {
 		try {
 			((SpellVO) this.data).image = Image.createImage(path);
@@ -173,45 +280,91 @@ public class SpellProxy extends Proxy implements IProxy, ISpell, Serializable {
 		}
 	}
 
+	/**
+	 * Define uma imagem para a spell. Este método é chamado automaticamente
+	 * através da classe {@link SpellCommand} Cada spell deve conter um método
+	 * getImageBytes() que retorna os bytes da imagem.
+	 * 
+	 * @param image
+	 */
 	public void setImage(Image image) {
 		((SpellVO) this.data).image = image;
 	}
 
+	/**
+	 * Define se a spell pode ser utilizada ou energizada.
+	 * 
+	 * @param locked
+	 */
 	public void setLocked(boolean locked) {
 		((SpellVO) this.data).locked = locked;
 	}
 
+	/**
+	 * Define o número de pontos de concentração da spell.
+	 * 
+	 * @param c
+	 */
 	public void setConcentration(int c) {
 		((SpellVO) this.data).concentration = c;
 	}
 
+	/**
+	 * Adiciona pontos de concentração na spell e dispara o método onEnergize da
+	 * mesma logo em seguida.
+	 * 
+	 * @param i
+	 */
 	public void addConcentration(int i) {
 		int value = this.getConcentration() + i;
 		this.setConcentration((value < 0) ? 0 : value);
 		dispatchEvent(ON_ENERGIZE);
 	}
 
+	/**
+	 * Define se a spell foi selecionada para cast.
+	 * 
+	 * @param bool
+	 */
 	public void setSelected(boolean bool) {
 		((SpellVO) this.data).selected = bool;
 	}
 
+	/**
+	 * Define se a spell será utilizada neste turno.
+	 * 
+	 * @param bool
+	 */
 	public void setCasting(boolean bool) {
 		((SpellVO) this.data).casting = bool;
 	}
 
+	/**
+	 * Verifica se a spell está sendo utilizada neste turno.
+	 * 
+	 * @return
+	 */
 	public boolean isCasting() {
 		return ((SpellVO) this.data).casting;
 	}
 
+	/**
+	 * Permuta entre o estado selecionado e deselecionado para cast.
+	 */
 	public void swapSelected() {
 		((SpellVO) this.data).selected = !this.isSelected();
 	}
 
+	/**
+	 * Troca a posição desta spell com a spell de posição "pos" na lista. 
+	 * TODO: Não está sendo definido se o swap é na lista do Oponente ou do Jogador.
+	 * 
+	 * @param pos
+	 */
 	public void swapPosition(int pos) {
 		SpellVO self = (SpellVO) this.data;
 
-		SpellListProxy spellList = (SpellListProxy) facade
-				.retrieveProxy(SpellListProxy.NAME);
+		SpellListProxy spellList = (SpellListProxy) facade.retrieveProxy(SpellListProxy.NAME);
 		SpellVO other = (SpellVO) spellList.getSpellAt(pos).getData();
 
 		int selfPosition = self.position;
@@ -222,11 +375,28 @@ public class SpellProxy extends Proxy implements IProxy, ISpell, Serializable {
 		dispatchEvent(ON_SWAP_POSITION);
 	}
 
+	/**
+	 * Dispara um evento desta spell. Os eventos disponíveis são ON_CAST,
+	 * ON_SWAP_POSITION, ON_ENERGIZE, ON_TURN_END e ON_TURN_BEGIN
+	 * 
+	 * @param eventType
+	 */
 	public void dispatchEvent(String eventType) {
 		ICommand listener = this.getCommandListener();
-		listener.execute(new Notification(eventType, this.getData(), null));
+		
+		/*
+		 * TODO: o listener deve estar presente no startup para poder disparar 
+		 * eventos das stones do adversário
+		 */
+		
+		if (listener != null) {
+			listener.execute(new Notification(eventType, this.getData(), null));
+		}
 	}
 
+	/**
+	 * Dispara o evento onCast desta spell.
+	 */
 	public void cast() {
 		this.setSelected(false);
 		this.setCasting(true);
@@ -234,6 +404,11 @@ public class SpellProxy extends Proxy implements IProxy, ISpell, Serializable {
 		this.addConcentration(-this.getCost());
 	}
 
+	/**
+	 * Transforma esta spell à partir de um array de bytes.
+	 * 
+	 * @param bytes
+	 */
 	public void fromByteArray(byte[] bytes) {
 		ByteArrayInputStream is = new ByteArrayInputStream(bytes);
 		DataInputStream dis = new DataInputStream(is);
@@ -244,6 +419,9 @@ public class SpellProxy extends Proxy implements IProxy, ISpell, Serializable {
 		}
 	}
 
+	/**
+	 * Transforma esta spell à partir de de um DataInputStream
+	 */
 	public void readFromStream(DataInputStream dis) throws Exception {
 		this.setId(dis.readInt());
 		this.setName(dis.readUTF());
@@ -257,6 +435,11 @@ public class SpellProxy extends Proxy implements IProxy, ISpell, Serializable {
 		this.setSelected(dis.readBoolean());
 	}
 
+	/**
+	 * Obtém a representação desta spell em um array de bytes.
+	 * 
+	 * @return byte[]
+	 */
 	public byte[] toByteArray() {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		DataOutputStream dos = new DataOutputStream(os);
@@ -268,6 +451,9 @@ public class SpellProxy extends Proxy implements IProxy, ISpell, Serializable {
 		return os.toByteArray();
 	}
 
+	/**
+	 * Escreve a representação desta spell em um DataOutputStream
+	 */
 	public void writeToStream(DataOutputStream dos) throws Exception {
 		dos.writeInt(this.getId());
 		dos.writeUTF(this.getName());

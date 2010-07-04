@@ -2,6 +2,12 @@ package com.stonespells.models.optionsmenu;
 
 import javax.microedition.lcdui.game.Sprite;
 
+/**
+ * Options Menu Item Value Object
+ * 
+ * @author Endel
+ *
+ */
 public class OptionsMenuItemVO {
 	
 	public String notificationName;

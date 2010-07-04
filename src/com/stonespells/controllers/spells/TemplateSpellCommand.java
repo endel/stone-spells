@@ -1,8 +1,8 @@
 package com.stonespells.controllers.spells;
 
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.communication.PlayContextProxy;
 
 public class TemplateSpellCommand extends SpellCommand implements ISpellCommand {
 	

@@ -2,10 +2,10 @@ package com.stonespells.controllers.spells.eddition1;
 
 import com.stonespells.controllers.spells.ISpellCommand;
 import com.stonespells.controllers.spells.SpellCommand;
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.communication.PlayContextProxy;
 
 public class Yellow1Spell extends SpellCommand implements ISpellCommand {
 

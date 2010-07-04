@@ -4,8 +4,8 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.core.ImageLibrary;
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.communication.PlayContextProxy;
 
 /**
  * Descreve o comportamento base para todas as Spells. 

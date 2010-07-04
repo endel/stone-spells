@@ -2,8 +2,8 @@ package com.stonespells.controllers.spells.eddition1;
 
 import com.stonespells.controllers.spells.ISpellCommand;
 import com.stonespells.controllers.spells.SpellCommand;
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.communication.PlayContextProxy;
 
 public class Red1Spell extends SpellCommand implements ISpellCommand {
 

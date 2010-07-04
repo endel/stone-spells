@@ -10,9 +10,9 @@ import org.puremvc.java.patterns.command.SimpleCommand;
 import com.stonespells.models.connection.ClientProxy;
 import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.filemanager.SpellListIOProxy;
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
-import com.stonespells.views.gameboard.GameBoardMediator;
 
 public class SendAndRecordInitialGameDataCommand extends SimpleCommand implements
 		ICommand {
@@ -21,8 +21,8 @@ public class SendAndRecordInitialGameDataCommand extends SimpleCommand implement
 		ConnectionProxy connProxy = (ConnectionProxy) facade.retrieveProxy(ConnectionProxy.PROXY_NAME);
 		boolean playerActive = (connProxy.getProxyName().equals(ClientProxy.NAME));
 		
-		GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
-		PlayerProxy player = gameBoard.getCurrentPlayer();
+		PlayContextProxy playContext = (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
+		PlayerProxy player = playContext.getPlayer();
 		player.setActive(playerActive);
 		
 		SpellListProxy spellList = player.getSpellList();
@@ -49,7 +49,7 @@ public class SendAndRecordInitialGameDataCommand extends SimpleCommand implement
 			player.setLife( opponentLife );
 			player.setSpellList(spellList);
 			player.setActive(!playerActive);
-			gameBoard.addPlayer(player);
+			playContext.setOpponent(player);
 			
 			// Return to original data
 			spellList.setData(originalData);

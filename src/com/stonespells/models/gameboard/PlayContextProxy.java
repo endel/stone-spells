@@ -1,10 +1,8 @@
-package com.stonespells.models.gameboard.communication;
+package com.stonespells.models.gameboard;
 
 import org.puremvc.java.interfaces.IProxy;
 import org.puremvc.java.patterns.proxy.Proxy;
 
-import com.stonespells.models.gameboard.PlayerProxy;
-import com.stonespells.models.gameboard.PlayerVO;
 
 /**
  * Classe para interação com os dados do contexto de jogo.

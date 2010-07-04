@@ -6,6 +6,12 @@ import javax.microedition.lcdui.game.Sprite;
 import org.puremvc.java.interfaces.IProxy;
 import org.puremvc.java.patterns.proxy.Proxy;
 
+/**
+ * Proxy para manipulação dos dados de um item de menu.
+ * 
+ * @author Endel
+ *
+ */
 public class OptionsMenuItemProxy extends Proxy implements IProxy {
 	public static final String NAME = "OptionsMenuProxy";
 	

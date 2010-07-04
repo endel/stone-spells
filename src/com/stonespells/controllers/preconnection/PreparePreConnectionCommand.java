@@ -5,9 +5,9 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.models.filemanager.SpellListIOProxy;
+import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.views.RenderMediator;
-import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
@@ -20,7 +20,7 @@ public class PreparePreConnectionCommand extends SimpleCommand implements IComma
 		sendNotification(OptionsMenuMediator.ENABLE, null, null);
 		
 		// Prepare player current player
-		GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
+		PlayContextProxy playContext = (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
 		
 		SpellListIOProxy spellListIO = (SpellListIOProxy) facade.retrieveProxy(SpellListIOProxy.NAME);
 		spellListIO.read();
@@ -32,9 +32,8 @@ public class PreparePreConnectionCommand extends SimpleCommand implements IComma
 		
 		PlayerProxy player = (PlayerProxy) facade.retrieveProxy(PlayerProxy.NAME); 
 		player.create();
-		player.setLife(30);
 		player.setSpellList( spellListIO.getList() );
-		gameBoard.addPlayer( player );
+		playContext.setPlayer(player);
 		
 		facade.registerCommand(PreConnectionMediator.BACK, PreConnectionBackToMenuCommand.class);
 		facade.registerCommand(PreConnectionMediator.LIST, PreConnectionListCommand.class);
