@@ -12,7 +12,7 @@ import javax.microedition.io.StreamConnectionNotifier;
 import org.puremvc.java.interfaces.IProxy;
 
 import com.stonespells.views.RenderMediator;
-import com.stonespells.views.game.connection.PreConnectionMediator;
+import com.stonespells.views.preconnection.PreConnectionMediator;
 
 public class ServerProxy extends ConnectionProxy implements IProxy, Runnable {
 	

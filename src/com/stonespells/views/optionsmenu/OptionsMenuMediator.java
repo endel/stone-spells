@@ -19,8 +19,8 @@ import com.stonespells.facade.GameFacade;
 import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.RenderableItemUI;
-import com.stonespells.views.game.board.GameBoardMediator;
-import com.stonespells.views.game.board.GameStateIndicatorMediator;
+import com.stonespells.views.gameboard.GameBoardMediator;
+import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 
 public class OptionsMenuMediator extends Mediator implements IMediator {
 	

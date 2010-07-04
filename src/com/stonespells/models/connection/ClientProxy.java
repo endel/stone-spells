@@ -23,7 +23,7 @@ import org.puremvc.java.interfaces.IProxy;
 import com.stonespells.models.filemanager.SpellListIOProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.views.RenderMediator;
-import com.stonespells.views.game.connection.PreConnectionMediator;
+import com.stonespells.views.preconnection.PreConnectionMediator;
 
 public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryListener {
 	

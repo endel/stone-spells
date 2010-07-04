@@ -18,7 +18,7 @@ import com.stonespells.core.Font;
 import com.stonespells.core.GameView;
 import com.stonespells.facade.GameFacade;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.views.game.board.GameStateIndicatorMediator;
+import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 public class RenderMediator extends Mediator implements IMediator {
@@ -30,10 +30,7 @@ public class RenderMediator extends Mediator implements IMediator {
 	public static final String RENDER_PARTIAL = "RenderMediatorRenderPartialNotification";
 	
 	private static Font font;
-	
-	static {
-		font = new Font("/fonts/monofonto.png");
-	}
+	static { font = new Font("/fonts/monofonto.png"); }
 	
 	private GameView current;
 	private String currentMediatorName;
@@ -42,24 +39,57 @@ public class RenderMediator extends Mediator implements IMediator {
 		super(NAME, ((GameFacade) GameFacade.getInstance()).getApp());
 	}
 	
+	/**
+	 * Desenha uma String último Canvas registrado.
+	 *  
+	 * @param text
+	 * @param x
+	 * @param y
+	 */
 	public static void drawString(String text, int x, int y) {
 		Graphics g =((RenderMediator) GameFacade.getInstance().retrieveMediator(RenderMediator.NAME)).getGraphics();
 		font.drawString(g, text, x, y);
 	}
 	
+	/**
+	 * Retorna o objeto Graphics do último Canvas registrado.
+	 * @return Graphics
+	 */
 	public Graphics getGraphics() {
 		return this.current.getGraphics();
 	}
 	
+	/**
+	 * Retorna o último Canvas registrado.
+	 * @return GameView
+	 */
 	public GameView getCanvas() {
 		return this.current;
 	}
 	
+	/**
+	 * Lista de notificações que o RenderMediator tem interesse:
+	 * 
+	 * REGISTER_CANVAS => Registra uma referência do Canvas à ser renderizado.
+	 * 		A notificação de REGISTER_CANVAS deve conter um Mediator que possui o Canvas à ser registrado.
+	 * 		O Mediator deve possuir este Canvas em seu viewComponent.
+	 * 		Em seguida, a notificação de FLUSH pode ser enviada tantas vezes quanto o necessário.
+	 * 		Exemplo: sendNotification(RenderMediator.REGISTER_CANVAS, facade.retrieveMediator(GameBoardMediator.NAME), null);
+	 * 
+	 * FLUSH => Atualiza o buffer gráfico.
+	 * 		A notificação de FLUSH deve conter o corpo e type null. 
+	 *  
+	 * @see Mediator
+	 */
 	public String[] listNotificationInterests( )
 	{
 		return new String[] { REGISTER_CANVAS, FLUSH, RENDER_PARTIAL };
 	}
 	
+	/**
+	 * Retorna o Displayable atual da MIDlet.
+	 * @return Displayable
+	 */
 	public Displayable getCurrent() {
 		return Display.getDisplay((App)this.viewComponent).getCurrent();
 	}
@@ -105,10 +135,18 @@ public class RenderMediator extends Mediator implements IMediator {
 		}
 	}
 	
+	/**
+	 * Retorna o último Mediator registrado. Quem possui o Canvas à ser renderizado.
+	 * @return IMediator
+	 */
 	public IMediator getMediator() {
 		return facade.retrieveMediator(this.currentMediatorName);
 	}
 	
+	/**
+	 * Envia uma notificação de FLUSH focada em um Mediator.
+	 * @param mediator IMediator
+	 */
 	private void flushMediator(IMediator mediator) {
 		mediator.handleNotification(new Notification(FLUSH, null, null));
 	}

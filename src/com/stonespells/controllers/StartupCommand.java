@@ -13,8 +13,8 @@ import org.puremvc.java.patterns.command.SimpleCommand;
 import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 
-import com.stonespells.controllers.game.board.PrepareGameCommand;
-import com.stonespells.controllers.game.preconnection.PreparePreConnectionCommand;
+import com.stonespells.controllers.gameboard.PrepareGameCommand;
+import com.stonespells.controllers.preconnection.PreparePreConnectionCommand;
 import com.stonespells.controllers.spells.TemplateSpellCommand;
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.facade.GameFacade;
@@ -29,7 +29,7 @@ import com.stonespells.views.InstructionsMediator;
 import com.stonespells.views.MainMenuMediator;
 import com.stonespells.views.PagedContentMediator;
 import com.stonespells.views.RenderMediator;
-import com.stonespells.views.game.board.GameBoardMediator;
+import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionMenuItemMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 

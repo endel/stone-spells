@@ -7,14 +7,21 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.core.ImageLibrary;
+import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.models.gameboard.communication.PlayContextProxy;
 
+/**
+ * Descreve o comportamento base para todas as Spells. 
+ * Toda Spell deve estender esta classe e implementar {@link ISpellCommand}
+ * @author Endel
+ *
+ */
 public abstract class SpellCommand extends SimpleCommand implements ISpellCommand {
 		
 	/**
-	 * SpellProxy self
+	 * SpellProxy spell
 	 * Reference to this spell definition.
 	 */
 	protected SpellProxy spell = (SpellProxy) facade.retrieveProxy(SpellProxy.NAME);
@@ -46,6 +53,12 @@ public abstract class SpellCommand extends SimpleCommand implements ISpellComman
 		}
 	}
 	
+	/**
+	 * Retorna o contexto do jogo. Onde é possível resgatar os 
+	 * dados para interação com o Oponente e Jogador, e suas respectivas listas de spells.
+	 * 
+	 * @see PlayContextProxy
+	 */
 	public PlayContextProxy getPlayContext() {
 		return (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
 	}
