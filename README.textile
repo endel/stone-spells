@@ -15,7 +15,7 @@ Possui uma API pr&oacute;pria que possibilita a cria&ccedil;&atilde;o de feiti&c
 
 h3. Criando um feiti&ccedil;o
 
-Voc&ecirc; pode ver um esbo&ccedil;o de feiti&ccedil;o em * com.stonespells.controllers.spells.TemplateSpellCommand *.
+Voc&ecirc; pode ver um esbo&ccedil;o de feiti&ccedil;o em _com.stonespells.controllers.spells.TemplateSpellCommand_
 Cada feiti&ccedil;o deve estender a classe SpellCommand e implementar a interface ISpellCommand.
 
 h2. M&eacute;todos da API de feiti&ccedil;os
