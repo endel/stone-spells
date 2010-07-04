@@ -1,11 +1,47 @@
-h1. Screenshot
+h1. Stone Spells
+
+Stone Spells é um jogo de celular que consiste no duelo entre dois feiticeiros.
+Cada feiticeiro possui até 9 magias com efeitos diferenciados, com o objetivo de derrotar seu adversário.
+
+h2. Screenshot
 
 !http://img24.imageshack.us/img24/7747/menuprincipale.png!
 
 
-h2. Get started
+h2. Tecnologia
 
-To get started with StoneSpells you will need.
-* "Java Wireless Toolkit 2.5.2":http://java.sun.com/products/sjwtoolkit/download.html
-* "Eclipse IDE":http://www.eclipse.org/downloads/
-* "J2ME plugin for Eclipse":http://download.eclipse.org/dsdp/mtj/updates/0.9/stable/
+Stone Spells está sendo desenvolvido em J2ME, utilizando o framework pureMVC.
+Possui uma API própria que possibilita a criação de feitiços com efeitos personalizados.
+
+h3. Criando um feitiço
+
+Você pode ver um esboço de feitiço em * com.stonespells.controllers.spells.TemplateSpellCommand *.
+Cada feitiço deve estender a classe SpellCommand e implementar a interface ISpellCommand.
+
+h2. Métodos da API de feitiços
+
+h3. onCreate
+
+O método onCreate deverá ser inicializado os atributos do feitiço.
+Você não pode manipular nenhum dado do jogo. O método getPlayContext não estará disponivel neste momento.
+
+h3. onCast
+
+O método onCast é disparado ao lançar um feitiço. Ela somente poderá ser lançada quando tiver um número de pontos de concentração igual ou maior do que o seu custo.
+Utilize o método getPlayContext para resgatar e manipular os dados dos jogadores e feitiços de todo o tabuleiro. 
+
+h3. onEnergize
+
+O método onEnergize é disparado à cada vez em que um ponto de concentração é adicionado no feitiço.
+
+h3. onSwapPosition
+
+O método onSwapPosition é disparado nas duas pedras que tiveram suas posições permutadas.
+
+h3. onTurnBegin
+
+O método onTurnBegin é disparado no inicio do turno do possuidor daquele feitiço.
+
+h3. onTurnEnd
+
+O método onTurnEnd é disparado no final do turno do possuidor daquele feitiço.
