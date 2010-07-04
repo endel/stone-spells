@@ -1,7 +1,7 @@
 h1. Stone Spells
 
-Stone Spells é um jogo de celular que consiste no duelo entre dois feiticeiros.
-Cada feiticeiro possui até 9 magias com efeitos diferenciados, com o objetivo de derrotar seu adversário.
+Stone Spells &amp;eacute; um jogo de celular que consiste no duelo entre dois feiticeiros.
+Cada feiticeiro possui at&Atilde;&copy; 9 magias com efeitos diferenciados, com o objetivo de derrotar seu advers&Atilde;&iexcl;rio.
 
 h2. Screenshot
 
@@ -10,38 +10,38 @@ h2. Screenshot
 
 h2. Tecnologia
 
-Stone Spells está sendo desenvolvido em J2ME, utilizando o framework pureMVC.
-Possui uma API própria que possibilita a criação de feitiços com efeitos personalizados.
+Stone Spells est&Atilde;&iexcl; sendo desenvolvido em J2ME, utilizando o framework pureMVC.
+Possui uma API pr&Atilde;&sup3;pria que possibilita a cria&Atilde;&sect;&Atilde;&pound;o de feiti&Atilde;&sect;os com efeitos personalizados.
 
-h3. Criando um feitiço
+h3. Criando um feiti&Atilde;&sect;o
 
-Você pode ver um esboço de feitiço em * com.stonespells.controllers.spells.TemplateSpellCommand *.
-Cada feitiço deve estender a classe SpellCommand e implementar a interface ISpellCommand.
+Voc&Atilde;&ordf; pode ver um esbo&Atilde;&sect;o de feiti&Atilde;&sect;o em * com.stonespells.controllers.spells.TemplateSpellCommand *.
+Cada feiti&Atilde;&sect;o deve estender a classe SpellCommand e implementar a interface ISpellCommand.
 
-h2. Métodos da API de feitiços
+h2. M&Atilde;&copy;todos da API de feiti&Atilde;&sect;os
 
 h3. onCreate
 
-O método onCreate deverá ser inicializado os atributos do feitiço.
-Você não pode manipular nenhum dado do jogo. O método getPlayContext não estará disponivel neste momento.
+O m&Atilde;&copy;todo onCreate dever&Atilde;&iexcl; ser inicializado os atributos do feiti&Atilde;&sect;o.
+Voc&Atilde;&ordf; n&Atilde;&pound;o pode manipular nenhum dado do jogo. O m&Atilde;&copy;todo getPlayContext n&Atilde;&pound;o estar&Atilde;&iexcl; disponivel neste momento.
 
 h3. onCast
 
-O método onCast é disparado ao lançar um feitiço. Ela somente poderá ser lançada quando tiver um número de pontos de concentração igual ou maior do que o seu custo.
-Utilize o método getPlayContext para resgatar e manipular os dados dos jogadores e feitiços de todo o tabuleiro. 
+O m&Atilde;&copy;todo onCast &Atilde;&copy; disparado ao lan&Atilde;&sect;ar um feiti&Atilde;&sect;o. Ela somente poder&Atilde;&iexcl; ser lan&Atilde;&sect;ada quando tiver um n&Atilde;&ordm;mero de pontos de concentra&Atilde;&sect;&Atilde;&pound;o igual ou maior do que o seu custo.
+Utilize o m&Atilde;&copy;todo getPlayContext para resgatar e manipular os dados dos jogadores e feiti&Atilde;&sect;os de todo o tabuleiro. 
 
 h3. onEnergize
 
-O método onEnergize é disparado à cada vez em que um ponto de concentração é adicionado no feitiço.
+O m&Atilde;&copy;todo onEnergize &Atilde;&copy; disparado &Atilde;&nbsp; cada vez em que um ponto de concentra&Atilde;&sect;&Atilde;&pound;o &Atilde;&copy; adicionado no feiti&Atilde;&sect;o.
 
 h3. onSwapPosition
 
-O método onSwapPosition é disparado nas duas pedras que tiveram suas posições permutadas.
+O m&Atilde;&copy;todo onSwapPosition &Atilde;&copy; disparado nas duas pedras que tiveram suas posi&Atilde;&sect;&Atilde;&micro;es permutadas.
 
 h3. onTurnBegin
 
-O método onTurnBegin é disparado no inicio do turno do possuidor daquele feitiço.
+O m&Atilde;&copy;todo onTurnBegin &Atilde;&copy; disparado no inicio do turno do possuidor daquele feiti&Atilde;&sect;o.
 
 h3. onTurnEnd
 
-O método onTurnEnd é disparado no final do turno do possuidor daquele feitiço.
+O m&Atilde;&copy;todo onTurnEnd &Atilde;&copy; disparado no final do turno do possuidor daquele feiti&Atilde;&sect;o.
