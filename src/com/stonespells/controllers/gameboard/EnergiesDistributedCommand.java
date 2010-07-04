@@ -6,7 +6,6 @@ import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
-import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 public class EnergiesDistributedCommand extends SimpleCommand implements ICommand {

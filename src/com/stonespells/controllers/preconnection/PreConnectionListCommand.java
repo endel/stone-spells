@@ -6,11 +6,7 @@ import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.models.PagedContentProxy;
 import com.stonespells.models.connection.ClientProxy;
-import com.stonespells.models.connection.ConnectionProxy;
-import com.stonespells.models.gameboard.PlayerProxy;
-import com.stonespells.models.gameboard.PlayerVO;
 import com.stonespells.views.PagedContentMediator;
-import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 

@@ -1,0 +1,12 @@
+= J2ME turn-based strategy game =
+
+=== Screenshot: ===
+
+http://img24.imageshack.us/img24/7747/menuprincipale.png
+
+
+
+== Get started ==
+To get started with StoneSpells you will need.
+  * [http://java.sun.com/products/sjwtoolkit/download.html Java Wireless Toolkit 2.5.2]
+  * [http://www.eclipse.org/downloads/ Eclipse IDE] with the [http://download.eclipse.org/dsdp/mtj/updates/0.9/stable/ J2ME plugin]

@@ -12,7 +12,6 @@ import org.puremvc.java.interfaces.IProxy;
 import org.puremvc.java.patterns.observer.Notification;
 import org.puremvc.java.patterns.proxy.Proxy;
 
-import com.stonespells.controllers.spells.SpellCommand;
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.core.Serializable;
 

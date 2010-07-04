@@ -1,10 +1,5 @@
 package com.stonespells.models.connection;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Hashtable;
 import java.util.Vector;
 
 import javax.bluetooth.BluetoothStateException;
@@ -20,9 +15,6 @@ import javax.microedition.io.StreamConnection;
 
 import org.puremvc.java.interfaces.IProxy;
 
-import com.stonespells.models.filemanager.SpellListIOProxy;
-import com.stonespells.models.gameboard.SpellListProxy;
-import com.stonespells.views.RenderMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
 public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryListener {

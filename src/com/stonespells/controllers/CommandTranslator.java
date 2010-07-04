@@ -4,8 +4,6 @@ import javax.microedition.lcdui.Command;
 import javax.microedition.lcdui.CommandListener;
 import javax.microedition.lcdui.Displayable;
 
-import org.puremvc.java.patterns.observer.Notification;
-
 import com.stonespells.facade.GameFacade;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;

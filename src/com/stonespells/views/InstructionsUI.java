@@ -2,7 +2,6 @@ package com.stonespells.views;
 
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
-import javax.microedition.lcdui.game.Sprite;
 
 import org.puremvc.java.interfaces.IMediator;
 

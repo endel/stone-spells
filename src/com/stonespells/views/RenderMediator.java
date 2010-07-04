@@ -3,8 +3,6 @@ package com.stonespells.views;
 import javax.microedition.lcdui.Display;
 import javax.microedition.lcdui.Displayable;
 import javax.microedition.lcdui.Graphics;
-import javax.microedition.lcdui.Image;
-import javax.microedition.lcdui.game.GameCanvas;
 import javax.microedition.lcdui.game.Sprite;
 
 import org.puremvc.java.interfaces.IMediator;
@@ -12,12 +10,10 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.mediator.Mediator;
 import org.puremvc.java.patterns.observer.Notification;
 
-import com.stonespells.controllers.spells.TemplateSpellCommand;
 import com.stonespells.core.App;
 import com.stonespells.core.Font;
 import com.stonespells.core.GameView;
 import com.stonespells.facade.GameFacade;
-import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 

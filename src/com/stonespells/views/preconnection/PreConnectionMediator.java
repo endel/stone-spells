@@ -1,21 +1,13 @@
 package com.stonespells.views.preconnection;
 
-import java.util.Enumeration;
-import java.util.Hashtable;
-
-import javax.bluetooth.ServiceRecord;
-
 import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
-import org.puremvc.java.patterns.mediator.Mediator;
 
-import com.stonespells.core.GameView;
 import com.stonespells.core.IWithMenuMediator;
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.core.WindowView;
 import com.stonespells.core.WithMenuMediator;
 import com.stonespells.models.PagedContentProxy;
-import com.stonespells.models.connection.ClientProxy;
 import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
 import com.stonespells.views.PagedContentMediator;
 import com.stonespells.views.RenderMediator;
@@ -85,6 +77,10 @@ public class PreConnectionMediator extends WithMenuMediator implements IMediator
 			item.setNotificationName( CREATE );
 		}
 		return item;
+	}
+	
+	public int getState() {
+		return this.state;
 	}
 	
 	public void setState(int state) {

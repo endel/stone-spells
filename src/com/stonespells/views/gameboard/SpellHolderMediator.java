@@ -8,7 +8,6 @@ import org.puremvc.java.patterns.mediator.Mediator;
 
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.SpellVO;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.RenderableItemUI;
 

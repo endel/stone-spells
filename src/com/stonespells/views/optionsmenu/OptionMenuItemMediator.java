@@ -1,7 +1,6 @@
 package com.stonespells.views.optionsmenu;
 
 import javax.microedition.lcdui.Image;
-import javax.microedition.lcdui.game.Sprite;
 
 import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
@@ -9,7 +8,6 @@ import org.puremvc.java.patterns.mediator.Mediator;
 
 import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
 import com.stonespells.views.RenderMediator;
-import com.stonespells.views.RenderableItemUI;
 
 public class OptionMenuItemMediator extends Mediator implements IMediator {
 	

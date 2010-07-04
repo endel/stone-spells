@@ -5,7 +5,6 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.models.connection.ClientProxy;
-import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.connection.ServerProxy;
 import com.stonespells.views.MainMenuMediator;
 import com.stonespells.views.RenderMediator;

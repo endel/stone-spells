@@ -1,18 +1,14 @@
 package com.stonespells.views.preconnection;
 
-import java.io.IOException;
-
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
 
 import org.puremvc.java.interfaces.IMediator;
-import org.puremvc.java.patterns.observer.Notification;
 
 import com.stonespells.core.IGameView;
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.core.WindowView;
-import com.stonespells.views.gameboard.GameBoardMediator;
 
 public class PreConnectionUI extends WindowView implements IGameView {
 	

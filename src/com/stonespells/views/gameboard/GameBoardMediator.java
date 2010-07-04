@@ -1,24 +1,15 @@
 package com.stonespells.views.gameboard;
 
-import javax.microedition.lcdui.Command;
-import javax.microedition.lcdui.CommandListener;
-import javax.microedition.lcdui.Displayable;
-import javax.microedition.lcdui.Graphics;
-
 import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
-import org.puremvc.java.patterns.mediator.Mediator;
 
 import com.stonespells.core.App;
-import com.stonespells.core.IGameView;
 import com.stonespells.core.IWithMenuMediator;
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.core.WithMenuMediator;
-import com.stonespells.facade.GameFacade;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.PlayerVO;
 import com.stonespells.models.gameboard.SpellListProxy;
-import com.stonespells.models.gameboard.SpellListVO;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.models.gameboard.communication.PlayContextProxy;
 import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;

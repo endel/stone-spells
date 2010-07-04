@@ -1,26 +1,20 @@
 package com.stonespells.views.optionsmenu;
 
-import java.util.Hashtable;
 import java.util.Vector;
 
 import javax.microedition.lcdui.Command;
-import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
 
 import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.mediator.Mediator;
-import org.puremvc.java.patterns.observer.Notification;
 
 import com.stonespells.core.App;
 import com.stonespells.core.GameView;
 import com.stonespells.core.IWithMenuMediator;
-import com.stonespells.facade.GameFacade;
 import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
 import com.stonespells.views.RenderMediator;
-import com.stonespells.views.RenderableItemUI;
 import com.stonespells.views.gameboard.GameBoardMediator;
-import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 
 public class OptionsMenuMediator extends Mediator implements IMediator {
 	
@@ -163,9 +157,9 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 				
 			} else {
 				
-				for (int i=0;i<2;i++) {
+				/*for (int i=0;i<2;i++) {
 					OptionMenuItemMediator item = this.getOption(i);
-				}
+				}*/
 				
 			}
 		}

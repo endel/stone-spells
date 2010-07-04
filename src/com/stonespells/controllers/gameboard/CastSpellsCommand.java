@@ -9,7 +9,6 @@ import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
-import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 public class CastSpellsCommand extends SimpleCommand implements ICommand {

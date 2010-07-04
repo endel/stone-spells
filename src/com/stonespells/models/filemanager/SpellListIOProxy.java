@@ -1,24 +1,26 @@
 package com.stonespells.models.filemanager;
 
-import org.puremvc.java.interfaces.IProxy;
-import org.puremvc.java.patterns.proxy.Proxy;
-
-import com.stonespells.controllers.spells.TemplateSpellCommand;
-import com.stonespells.controllers.spells.eddition1.*;
-import com.stonespells.models.gameboard.SpellListProxy;
-import com.stonespells.models.gameboard.SpellListVO;
-import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.SpellVO;
-
 import java.util.Random;
 
 import javax.microedition.rms.InvalidRecordIDException;
 import javax.microedition.rms.RecordEnumeration;
 import javax.microedition.rms.RecordStore;
 import javax.microedition.rms.RecordStoreException;
-import javax.microedition.rms.RecordStoreFullException;
-import javax.microedition.rms.RecordStoreNotFoundException;
-import javax.microedition.rms.RecordStoreNotOpenException;
+
+import org.puremvc.java.interfaces.IProxy;
+import org.puremvc.java.patterns.proxy.Proxy;
+
+import com.stonespells.controllers.spells.eddition1.Blue1Spell;
+import com.stonespells.controllers.spells.eddition1.Green1Spell;
+import com.stonespells.controllers.spells.eddition1.Green2Spell;
+import com.stonespells.controllers.spells.eddition1.Red1Spell;
+import com.stonespells.controllers.spells.eddition1.Red2Spell;
+import com.stonespells.controllers.spells.eddition1.Red3Spell;
+import com.stonespells.controllers.spells.eddition1.White1Spell;
+import com.stonespells.controllers.spells.eddition1.White2Spell;
+import com.stonespells.controllers.spells.eddition1.Yellow1Spell;
+import com.stonespells.models.gameboard.SpellListProxy;
+import com.stonespells.models.gameboard.SpellProxy;
 
 public class SpellListIOProxy extends Proxy implements IProxy {
 	

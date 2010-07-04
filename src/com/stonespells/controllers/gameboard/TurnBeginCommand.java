@@ -10,7 +10,6 @@ import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.models.gameboard.communication.PlayContextProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
-import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 public class TurnBeginCommand extends SimpleCommand implements ICommand {

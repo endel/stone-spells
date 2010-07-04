@@ -1,23 +1,10 @@
 package com.stonespells.controllers;
 
-import java.io.DataInputStream;
-import java.io.OutputStream;
-
-import javax.microedition.io.Connector;
-import javax.microedition.io.file.FileConnection;
-import javax.microedition.lcdui.Image;
-import javax.microedition.lcdui.game.Sprite;
-
-import org.puremvc.java.patterns.command.SimpleCommand;
-
 import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
+import org.puremvc.java.patterns.command.SimpleCommand;
 
-import com.stonespells.controllers.gameboard.PrepareGameCommand;
 import com.stonespells.controllers.preconnection.PreparePreConnectionCommand;
-import com.stonespells.controllers.spells.TemplateSpellCommand;
-import com.stonespells.core.ImageLibrary;
-import com.stonespells.facade.GameFacade;
 import com.stonespells.models.PagedContentProxy;
 import com.stonespells.models.filemanager.SpellListIOProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
@@ -25,7 +12,6 @@ import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.models.gameboard.communication.PlayContextProxy;
 import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
-import com.stonespells.views.InstructionsMediator;
 import com.stonespells.views.MainMenuMediator;
 import com.stonespells.views.PagedContentMediator;
 import com.stonespells.views.RenderMediator;

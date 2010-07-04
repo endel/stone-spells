@@ -6,7 +6,6 @@ import com.stonespells.controllers.spells.ISpellCommand;
 import com.stonespells.controllers.spells.SpellCommand;
 import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.communication.PlayContextProxy;
 
 public class Green2Spell extends SpellCommand implements ISpellCommand {
 

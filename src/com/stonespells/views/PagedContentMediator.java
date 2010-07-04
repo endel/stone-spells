@@ -8,7 +8,6 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.mediator.Mediator;
 
 import com.stonespells.core.Font;
-import com.stonespells.core.IRenderable;
 import com.stonespells.models.PagedContentProxy;
 
 public class PagedContentMediator extends Mediator implements IMediator {

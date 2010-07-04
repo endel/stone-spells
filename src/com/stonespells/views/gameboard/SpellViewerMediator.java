@@ -1,14 +1,10 @@
 package com.stonespells.views.gameboard;
 
-import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
 
 import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
-import org.puremvc.java.patterns.mediator.Mediator;
 
-import com.stonespells.core.Font;
-import com.stonespells.core.GameView;
 import com.stonespells.core.IRenderable;
 import com.stonespells.core.IWithMenuMediator;
 import com.stonespells.core.ImageLibrary;

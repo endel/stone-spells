@@ -1,9 +1,6 @@
 package com.stonespells.controllers.gameboard.communication;
 
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
-
-import javax.microedition.io.StreamConnection;
 
 import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;

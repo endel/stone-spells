@@ -1,14 +1,9 @@
 package com.stonespells.controllers.spells;
 
-import javax.microedition.lcdui.Image;
-
-import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.core.ImageLibrary;
-import com.stonespells.models.gameboard.PlayerProxy;
-import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.models.gameboard.communication.PlayContextProxy;
 

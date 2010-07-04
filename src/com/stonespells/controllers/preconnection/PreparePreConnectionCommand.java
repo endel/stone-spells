@@ -1,20 +1,11 @@
 package com.stonespells.controllers.preconnection;
 
-import javax.microedition.rms.RecordStore;
-
 import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
-import com.stonespells.controllers.gameboard.PrepareGameCommand;
-import com.stonespells.models.PagedContentProxy;
-import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.filemanager.SpellListIOProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
-import com.stonespells.models.gameboard.PlayerVO;
-import com.stonespells.models.gameboard.SpellListProxy;
-import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.views.PagedContentMediator;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;

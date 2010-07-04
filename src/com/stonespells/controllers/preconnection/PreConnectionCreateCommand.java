@@ -5,13 +5,9 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.models.PagedContentProxy;
-import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.connection.ServerProxy;
-import com.stonespells.models.filemanager.SpellListIOProxy;
-import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.views.PagedContentMediator;
 import com.stonespells.views.RenderMediator;
-import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
 public class PreConnectionCreateCommand extends SimpleCommand implements ICommand {

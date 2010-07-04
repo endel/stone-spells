@@ -5,7 +5,6 @@ import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
 
 import org.puremvc.java.interfaces.IMediator;
-import org.puremvc.java.patterns.observer.Notification;
 
 import com.stonespells.core.IGameView;
 import com.stonespells.core.WindowView;

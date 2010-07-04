@@ -1,7 +1,6 @@
 package com.stonespells.views.gameboard;
 
 import javax.microedition.lcdui.Graphics;
-import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
 
 import org.puremvc.java.interfaces.IMediator;
@@ -10,7 +9,6 @@ import org.puremvc.java.patterns.observer.Notification;
 import com.stonespells.core.Font;
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.core.WindowView;
-import com.stonespells.models.PagedContentVO;
 import com.stonespells.models.gameboard.SpellListVO;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.PagedContentMediator;

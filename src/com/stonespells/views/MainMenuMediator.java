@@ -1,14 +1,10 @@
 package com.stonespells.views;
 
-import javax.microedition.lcdui.game.Sprite;
-
 import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.mediator.Mediator;
 
-import com.stonespells.controllers.spells.TemplateSpellCommand;
 import com.stonespells.core.IRenderable;
-import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.RenderMediator;
 
 public class MainMenuMediator extends Mediator implements IMediator {

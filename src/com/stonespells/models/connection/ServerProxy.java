@@ -1,8 +1,5 @@
 package com.stonespells.models.connection;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.OutputStream;
 import javax.bluetooth.DiscoveryAgent;
 import javax.bluetooth.LocalDevice;
 import javax.bluetooth.UUID;
@@ -11,7 +8,6 @@ import javax.microedition.io.StreamConnectionNotifier;
 
 import org.puremvc.java.interfaces.IProxy;
 
-import com.stonespells.views.RenderMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
 public class ServerProxy extends ConnectionProxy implements IProxy, Runnable {

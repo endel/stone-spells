@@ -10,7 +10,6 @@ import org.puremvc.java.patterns.mediator.Mediator;
 import com.stonespells.core.ImageLibrary;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.views.RenderMediator;
-import com.stonespells.views.RenderableItemUI;
 import com.stonespells.views.optionsmenu.OptionsMenuUI;
 
 public class GameStateIndicatorMediator extends Mediator implements IMediator {

@@ -4,13 +4,9 @@ import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
-import com.stonespells.core.ImageLibrary;
-import com.stonespells.models.PagedContentProxy;
-import com.stonespells.views.PagedContentMediator;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.gameboard.SpellViewerMediator;
-import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 public class ShowSpellDefinitionsCommand extends SimpleCommand implements ICommand {
 	

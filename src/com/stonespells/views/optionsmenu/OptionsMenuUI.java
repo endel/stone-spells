@@ -6,12 +6,11 @@ import javax.microedition.lcdui.game.Sprite;
 import org.puremvc.java.interfaces.IMediator;
 
 import com.stonespells.core.App;
-import com.stonespells.core.GameView;
 import com.stonespells.views.RenderableItemUI;
 
 public class OptionsMenuUI {
 	
-	private IMediator mediator;
+	//private IMediator mediator;
 	public Object options[] = new Object[2];
 	public static RenderableItemUI holder = new RenderableItemUI();
 	public static RenderableItemUI optionSelected = new RenderableItemUI();
@@ -27,7 +26,7 @@ public class OptionsMenuUI {
 	}
 	
 	public OptionsMenuUI(IMediator mediator) {
-		this.mediator = mediator;
+		//this.mediator = mediator;
 	}
 	
 	public void setOption(int side, Object data) {
