@@ -1,7 +1,7 @@
 h1. Stone Spells
 
-Stone Spells &amp;eacute; um jogo de celular que consiste no duelo entre dois feiticeiros.
-Cada feiticeiro possui at&Atilde;&copy; 9 magias com efeitos diferenciados, com o objetivo de derrotar seu advers&Atilde;&iexcl;rio.
+Stone Spells &eacute; um jogo de celular que consiste no duelo entre dois feiticeiros.
+Cada feiticeiro possui at&eacute; 9 magias com efeitos diferenciados, com o objetivo de derrotar seu advers&aacute;rio.
 
 h2. Screenshot
 
@@ -10,38 +10,38 @@ h2. Screenshot
 
 h2. Tecnologia
 
-Stone Spells est&Atilde;&iexcl; sendo desenvolvido em J2ME, utilizando o framework pureMVC.
-Possui uma API pr&Atilde;&sup3;pria que possibilita a cria&Atilde;&sect;&Atilde;&pound;o de feiti&Atilde;&sect;os com efeitos personalizados.
+Stone Spells est&aacute; sendo desenvolvido em J2ME, utilizando o framework pureMVC.
+Possui uma API pr&oacute;pria que possibilita a cria&ccedil;&atilde;o de feiti&ccedil;os com efeitos personalizados.
 
-h3. Criando um feiti&Atilde;&sect;o
+h3. Criando um feiti&ccedil;o
 
-Voc&Atilde;&ordf; pode ver um esbo&Atilde;&sect;o de feiti&Atilde;&sect;o em * com.stonespells.controllers.spells.TemplateSpellCommand *.
-Cada feiti&Atilde;&sect;o deve estender a classe SpellCommand e implementar a interface ISpellCommand.
+Voc&ecirc; pode ver um esbo&ccedil;o de feiti&ccedil;o em * com.stonespells.controllers.spells.TemplateSpellCommand *.
+Cada feiti&ccedil;o deve estender a classe SpellCommand e implementar a interface ISpellCommand.
 
-h2. M&Atilde;&copy;todos da API de feiti&Atilde;&sect;os
+h2. M&eacute;todos da API de feiti&ccedil;os
 
 h3. onCreate
 
-O m&Atilde;&copy;todo onCreate dever&Atilde;&iexcl; ser inicializado os atributos do feiti&Atilde;&sect;o.
-Voc&Atilde;&ordf; n&Atilde;&pound;o pode manipular nenhum dado do jogo. O m&Atilde;&copy;todo getPlayContext n&Atilde;&pound;o estar&Atilde;&iexcl; disponivel neste momento.
+O m&eacute;todo onCreate dever&aacute; ser inicializado os atributos do feiti&ccedil;o.
+Voc&ecirc; n&atilde;o pode manipular nenhum dado do jogo. O m&eacute;todo getPlayContext n&atilde;o estar&aacute; disponivel neste momento.
 
 h3. onCast
 
-O m&Atilde;&copy;todo onCast &Atilde;&copy; disparado ao lan&Atilde;&sect;ar um feiti&Atilde;&sect;o. Ela somente poder&Atilde;&iexcl; ser lan&Atilde;&sect;ada quando tiver um n&Atilde;&ordm;mero de pontos de concentra&Atilde;&sect;&Atilde;&pound;o igual ou maior do que o seu custo.
-Utilize o m&Atilde;&copy;todo getPlayContext para resgatar e manipular os dados dos jogadores e feiti&Atilde;&sect;os de todo o tabuleiro. 
+O m&eacute;todo onCast &eacute; disparado ao lan&ccedil;ar um feiti&ccedil;o. Ela somente poder&aacute; ser lan&ccedil;ada quando tiver um n&uacute;mero de pontos de concentra&ccedil;&atilde;o igual ou maior do que o seu custo.
+Utilize o m&eacute;todo getPlayContext para resgatar e manipular os dados dos jogadores e feiti&ccedil;os de todo o tabuleiro. 
 
 h3. onEnergize
 
-O m&Atilde;&copy;todo onEnergize &Atilde;&copy; disparado &Atilde;&nbsp; cada vez em que um ponto de concentra&Atilde;&sect;&Atilde;&pound;o &Atilde;&copy; adicionado no feiti&Atilde;&sect;o.
+O m&eacute;todo onEnergize &eacute; disparado &agrave; cada vez em que um ponto de concentra&ccedil;&atilde;o &eacute; adicionado no feiti&ccedil;o.
 
 h3. onSwapPosition
 
-O m&Atilde;&copy;todo onSwapPosition &Atilde;&copy; disparado nas duas pedras que tiveram suas posi&Atilde;&sect;&Atilde;&micro;es permutadas.
+O m&eacute;todo onSwapPosition &eacute; disparado nas duas pedras que tiveram suas posi&ccedil;&otilde;es permutadas.
 
 h3. onTurnBegin
 
-O m&Atilde;&copy;todo onTurnBegin &Atilde;&copy; disparado no inicio do turno do possuidor daquele feiti&Atilde;&sect;o.
+O m&eacute;todo onTurnBegin &eacute; disparado no inicio do turno do possuidor daquele feiti&ccedil;o.
 
 h3. onTurnEnd
 
-O m&Atilde;&copy;todo onTurnEnd &Atilde;&copy; disparado no final do turno do possuidor daquele feiti&Atilde;&sect;o.
+O m&eacute;todo onTurnEnd &eacute; disparado no final do turno do possuidor daquele feiti&ccedil;o.
