@@ -1,0 +1,11 @@
+h1. Screenshot
+
+!http://img24.imageshack.us/img24/7747/menuprincipale.png!
+
+
+h2. Get started
+
+To get started with StoneSpells you will need.
+* "Java Wireless Toolkit 2.5.2":http://java.sun.com/products/sjwtoolkit/download.html
+* "Eclipse IDE":http://www.eclipse.org/downloads/
+* "J2ME plugin for Eclipse":http://download.eclipse.org/dsdp/mtj/updates/0.9/stable/
