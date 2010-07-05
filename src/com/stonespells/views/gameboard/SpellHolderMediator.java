@@ -6,7 +6,7 @@ import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.mediator.Mediator;
 
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.RenderableItemUI;
@@ -77,13 +77,13 @@ public class SpellHolderMediator extends Mediator implements IMediator {
 			// Icons on holder
 			if (spell.isLocked()) {
 				RenderableItemUI lockedIcon = new RenderableItemUI();
-				lockedIcon.image = new Sprite(ImageLibrary.SPELL_LOCKED_ICON);
+				lockedIcon.image = new Sprite(ResourceLibrary.SPELL_LOCKED_ICON);
 				lockedIcon.image.setPosition(this.getX() + 28, this.getY() + 5);
 				sendNotification(RenderMediator.RENDER_PARTIAL, lockedIcon.image, null);
 				
 			} else if (spell.canCast()) {
 				RenderableItemUI canCastIcon = new RenderableItemUI();
-				canCastIcon.image = new Sprite(ImageLibrary.SPELL_CAN_CAST_ICON);
+				canCastIcon.image = new Sprite(ResourceLibrary.SPELL_CAN_CAST_ICON);
 				canCastIcon.image.setPosition(this.getX() + 28, this.getY() + 5);
 				sendNotification(RenderMediator.RENDER_PARTIAL, canCastIcon.image, null);
 				

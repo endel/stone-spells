@@ -16,11 +16,11 @@ public class White2Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(15);
-		spell.setName("Divine pearl");
-		spell.setDescription("Absorbs half the damage of the opponent's next two attacks.");
-		spell.setColor(SpellProxy.COLOR_WHITE);
-		spell.setCost(5);
+		getSpell().setId(15);
+		getSpell().setName("Divine pearl");
+		getSpell().setDescription("Absorbs half the damage of the opponent's next two attacks.");
+		getSpell().setColor(SpellProxy.COLOR_WHITE);
+		getSpell().setCost(5);
 
 	}
 

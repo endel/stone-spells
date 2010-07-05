@@ -34,11 +34,11 @@ public class Yellow1Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(17);
-		spell.setName("Gleaming Citrine");
-		spell.setDescription("You gain HP according to the number of yellow stones in game.");
-		spell.setColor(SpellProxy.COLOR_GOLD);
-		spell.setCost(4);
+		getSpell().setId(17);
+		getSpell().setName("Gleaming Citrine");
+		getSpell().setDescription("You gain HP according to the number of yellow stones in game.");
+		getSpell().setColor(SpellProxy.COLOR_GOLD);
+		getSpell().setCost(4);
 
 	}
 

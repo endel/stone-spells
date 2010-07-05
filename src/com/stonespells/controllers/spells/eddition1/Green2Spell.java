@@ -27,11 +27,11 @@ public class Green2Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(4);
-		spell.setName("Perception Jade");
-		spell.setDescription("Fully charges random two of your stones.");
-		spell.setColor(SpellProxy.COLOR_GREEN);
-		spell.setCost(5);
+		getSpell().setId(4);
+		getSpell().setName("Perception Jade");
+		getSpell().setDescription("Fully charges random two of your stones.");
+		getSpell().setColor(SpellProxy.COLOR_GREEN);
+		getSpell().setCost(5);
 	}
 
 	public void onEnergize() {

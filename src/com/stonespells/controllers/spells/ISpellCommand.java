@@ -3,6 +3,7 @@ package com.stonespells.controllers.spells;
 import org.puremvc.java.interfaces.ICommand;
 
 import com.stonespells.models.gameboard.PlayContextProxy;
+import com.stonespells.models.gameboard.SpellProxy;
 
 public interface ISpellCommand extends ICommand {
 
@@ -49,6 +50,7 @@ public interface ISpellCommand extends ICommand {
 	 * informações disponíveis no jogo.
 	 */
 	public void onCast();
-
+	
+	public SpellProxy getSpell();
 	public PlayContextProxy getPlayContext();
 }

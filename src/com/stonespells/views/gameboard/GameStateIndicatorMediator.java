@@ -7,7 +7,7 @@ import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.mediator.Mediator;
 
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.views.RenderMediator;
@@ -56,8 +56,8 @@ public class GameStateIndicatorMediator extends Mediator implements IMediator {
 			
 			if (gameState == GameBoardMediator.GAMESTATE_ENERGIZE)
 			{
-				Sprite concentrationLabel = new Sprite(ImageLibrary.ENERGIZE_TITLE);
-				Sprite concentrationIndicator = new Sprite(ImageLibrary.ENERGY_ICON);
+				Sprite concentrationLabel = new Sprite(ResourceLibrary.ENERGIZE_TITLE);
+				Sprite concentrationIndicator = new Sprite(ResourceLibrary.ENERGY_ICON);
 				
 				// Energize label
 				concentrationLabel.setPosition(labelX, labelY);

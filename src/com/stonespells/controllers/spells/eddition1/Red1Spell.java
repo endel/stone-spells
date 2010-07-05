@@ -13,18 +13,18 @@ public class Red1Spell extends SpellCommand implements ISpellCommand {
 
 	public void onCast() {
 		PlayContextProxy playContext = this.getPlayContext();
-		playContext.getOpponent().addLife(-spell.getConcentration());
+		playContext.getOpponent().addLife(-getSpell().getConcentration());
 		
 		// When spells cost 0, concentration must be reduced manually
-		spell.setConcentration(0);
+		getSpell().setConcentration(0);
 	}
 
 	public void onCreate() {
-		spell.setId(9);
-		spell.setName("Damnation Ruby");
-		spell.setDescription("Opponent  takes damage equal to stone concentration.");
-		spell.setColor(SpellProxy.COLOR_RED);
-		spell.setCost(0);
+		getSpell().setId(9);
+		getSpell().setName("Damnation Ruby");
+		getSpell().setDescription("Opponent  takes damage equal to stone concentration.");
+		getSpell().setColor(SpellProxy.COLOR_RED);
+		getSpell().setCost(0);
 
 	}
 

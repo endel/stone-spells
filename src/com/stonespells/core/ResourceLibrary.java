@@ -6,8 +6,12 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 import javax.microedition.lcdui.Image;
+import javax.microedition.media.Manager;
+import javax.microedition.media.Player;
 
-public class ImageLibrary {
+import com.stonespells.facade.GameFacade;
+
+public class ResourceLibrary {
 	public static Image STONE_TITLE;
 	public static Image ENERGY_ICON;
 	public static Image ENERGIZE_TITLE;
@@ -22,6 +26,9 @@ public class ImageLibrary {
 	public static Image OPTION_END_TURN;
 	public static Image OPTION_BACK;
 	public static Image OPTION_CLOSE;
+	
+	public static Player MUSIC_BACKGROUND;
+	public static Player MUSIC_SOLO;
 	
 	static {
 		try {
@@ -39,6 +46,9 @@ public class ImageLibrary {
 			OPTION_END_TURN = Image.createImage("/menu-options/end-my-turn.png");
 			OPTION_BACK = Image.createImage("/menu-options/back.png");
 			OPTION_CLOSE = Image.createImage("/menu-options/close.png");
+
+			// MUSIC_BACKGROUND = Manager.createPlayer(((GameFacade)GameFacade.getInstance()).getApp().getClass().getResourceAsStream("/sound/mystic-base.mid"), "audio/midi");
+			// MUSIC_SOLO = Manager.createPlayer(((GameFacade)GameFacade.getInstance()).getApp().getClass().getResourceAsStream("/sound/mystic-solo.mid"), "audio/midi");
 			
 		} catch (Exception e) {
 			e.printStackTrace();

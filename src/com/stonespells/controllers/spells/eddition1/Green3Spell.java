@@ -16,11 +16,11 @@ public class Green3Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(5);
-		spell.setName("Heart of the forest");
-		spell.setDescription("Turns the opponent's next attack against himself");
-		spell.setColor(SpellProxy.COLOR_RED);
-		spell.setCost(2);
+		getSpell().setId(5);
+		getSpell().setName("Heart of the forest");
+		getSpell().setDescription("Turns the opponent's next attack against himself");
+		getSpell().setColor(SpellProxy.COLOR_RED);
+		getSpell().setCost(2);
 
 	}
 

@@ -16,11 +16,11 @@ public class Red4Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(12);
-		spell.setName("Spell vermelha bonita");
-		spell.setDescription("O oponente leva 1 de dano.");
-		spell.setColor(SpellProxy.COLOR_RED);
-		spell.setCost(2);
+		getSpell().setId(12);
+		getSpell().setName("Spell vermelha bonita");
+		getSpell().setDescription("O oponente leva 1 de dano.");
+		getSpell().setColor(SpellProxy.COLOR_RED);
+		getSpell().setCost(2);
 	}
 
 	public void onEnergize() {

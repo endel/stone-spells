@@ -54,8 +54,10 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 	public void addOption(OptionsMenuItemProxy item) {
 		
 		// Add command to current Canvas
-		Command command = new Command(item.getNotificationName(), item.getLabel(), Command.SCREEN, item.getSide());
-		((GameView) mediator.getViewComponent()).addCommand( command );
+		if (! hasCommand.contains(mediator.getMediatorName())) {
+			Command command = new Command(item.getNotificationName(), item.getLabel(), Command.SCREEN, item.getSide());
+			((GameView) mediator.getViewComponent()).addCommand( command );
+		}
 		
 		((OptionsMenuUI) this.viewComponent).setOption( item.getSide(), item.getData());
 		OptionMenuItemMediator menuItem = this.getOption( item.getSide() );
@@ -137,29 +139,18 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 			
 			this.clearOptions();
 			
-			// Add or update commands to the mediator
-			if ( !((IWithMenuMediator) mediator).getMenuInitiated() ) {
-				
-				for (int i=0;i<2;i++) {
-					OptionsMenuItemProxy item = ((IWithMenuMediator) mediator).getMenuOption( i );
-					if (item != null) {
-						item.setSide(i);
-						this.addOption(item);
-					}
+			for (int i=0;i<2;i++) {
+				OptionsMenuItemProxy item = ((IWithMenuMediator) mediator).getMenuOption( i );
+				if (item != null) {
+					item.setSide(i);
+					this.addOption(item);
 				}
-				
-				// Register who already have commands added
-				((IWithMenuMediator) mediator).setMenuInitiated(true);
-				if (! hasCommand.contains(mediator.getMediatorName())) {
-					hasCommand.addElement( mediator.getMediatorName() );
-				}
-				
-			} else {
-				
-				/*for (int i=0;i<2;i++) {
-					OptionMenuItemMediator item = this.getOption(i);
-				}*/
-				
+			}
+			
+			// Register who already have commands added
+			((IWithMenuMediator) mediator).setMenuInitiated(true);
+			if (! hasCommand.contains(mediator.getMediatorName())) {
+				hasCommand.addElement( mediator.getMediatorName() );
 			}
 		}
 	}

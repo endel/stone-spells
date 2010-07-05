@@ -3,7 +3,7 @@ package com.stonespells.controllers.spells;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 
@@ -16,17 +16,17 @@ import com.stonespells.models.gameboard.SpellProxy;
 public abstract class SpellCommand extends SimpleCommand implements ISpellCommand {
 		
 	/**
-	 * SpellProxy spell
-	 * Reference to this spell definition.
+	 * Objeto de referência para esta spell.
 	 */
-	protected SpellProxy spell = (SpellProxy) facade.retrieveProxy(SpellProxy.NAME);
+	private Object spellData;
 
 	public void execute(INotification note) {
 		// Get this spell data
-		spell.setData(note.getBody());
+		this.spellData = note.getBody();
+		SpellProxy spell = getSpell();
 		
 		if (note.getName().equals(SpellProxy.ON_CREATE)) {
-			spell.setImage( ImageLibrary.fromByteArray(this.getImageBytes()) );
+			spell.setImage( ResourceLibrary.fromByteArray(this.getImageBytes()) );
 			this.onCreate();
 			
 		} else if (note.getName().equals(SpellProxy.ON_TURN_BEGIN)) {
@@ -46,6 +46,20 @@ public abstract class SpellCommand extends SimpleCommand implements ISpellComman
 			this.onCast();
 			
 		}
+		
+		// Update spell data case it is changed by another event
+		this.getSpell();
+	}
+	
+	/**
+	 * Retorna uma referência para a spell corrente.
+	 * 
+	 * @return SpellProxy
+	 */
+	public SpellProxy getSpell() {
+		SpellProxy spell = (SpellProxy) facade.retrieveProxy(SpellProxy.NAME);
+		spell.setData(spellData);
+		return spell;
 	}
 	
 	/**

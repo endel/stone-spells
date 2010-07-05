@@ -21,11 +21,11 @@ public class Yellow3Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(19);
-		spell.setName("Titanite of consolation");
-		spell.setDescription("Can only be used if you have less than 5 hp. Restores 20 hp.");
-		spell.setColor(SpellProxy.COLOR_GOLD);
-		spell.setCost(7);
+		getSpell().setId(19);
+		getSpell().setName("Titanite of consolation");
+		getSpell().setDescription("Can only be used if you have less than 5 hp. Restores 20 hp.");
+		getSpell().setColor(SpellProxy.COLOR_GOLD);
+		getSpell().setCost(7);
 
 	}
 

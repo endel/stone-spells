@@ -5,7 +5,7 @@ import org.puremvc.java.interfaces.INotification;
 
 import com.stonespells.core.IRenderable;
 import com.stonespells.core.IWithMenuMediator;
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.WindowView;
 import com.stonespells.core.WithMenuMediator;
 import com.stonespells.models.PagedContentProxy;
@@ -28,7 +28,7 @@ public class InstructionsMediator extends WithMenuMediator implements IMediator,
 		((WindowView) this.viewComponent).setTitle("Regras gerais");
 		
 		PagedContentProxy pagedContent = (PagedContentProxy) facade.retrieveProxy(PagedContentProxy.NAME);
-		pagedContent.setContent("Esse joguinho eh muito complicado e voce nao vai querer joga-lo ate o final pelo motivo que exige muito do seu cerebro incapaz de compreender essas regras e esse texto. Agora repita comigo: eu sou um baita bundao e nao gosto de comer batatas. Eu sou um bundao e nao gosto de comer batatas. Tchau.", 190);
+		pagedContent.setContent("Esse joguinho eh muito complicado e voce nao vai querer joga-lo ate o final pelo motivo que exige muito do seu cerebro incapaz de compreender essas regras e esse texto. Agora repita comigo: eu sou um baita bundao e nao gosto de comer batatas. Eu sou um bundao e nao gosto de comer batatas. Tchau.", 165);
 		
 		((PagedContentMediator) facade.retrieveMediator(PagedContentMediator.NAME)).setViewComponent(pagedContent.getData());
 	}
@@ -54,7 +54,7 @@ public class InstructionsMediator extends WithMenuMediator implements IMediator,
 		OptionsMenuItemProxy item = (OptionsMenuItemProxy) facade.retrieveProxy(OptionsMenuItemProxy.NAME);
 		item.create();
 		if (side == OptionsMenuMediator.SIDE_LEFT) {
-			item.setImage( ImageLibrary.OPTION_CLOSE );
+			item.setImage( ResourceLibrary.OPTION_CLOSE );
 			item.setLabel( "Close" );
 			item.setNotificationName( CLOSE );
 		} else {

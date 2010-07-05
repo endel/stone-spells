@@ -17,11 +17,11 @@ public class Red3Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(11);
-		spell.setName("Satan's Blood");
-		spell.setDescription("Reduces the opponent's hp to half.");
-		spell.setColor(SpellProxy.COLOR_RED);
-		spell.setCost(10);
+		getSpell().setId(11);
+		getSpell().setName("Satan's Blood");
+		getSpell().setDescription("Reduces the opponent's hp to half.");
+		getSpell().setColor(SpellProxy.COLOR_RED);
+		getSpell().setCost(10);
 	}
 
 	public void onEnergize() {

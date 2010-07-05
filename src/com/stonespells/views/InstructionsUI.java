@@ -6,7 +6,7 @@ import javax.microedition.lcdui.Image;
 import org.puremvc.java.interfaces.IMediator;
 
 import com.stonespells.core.IGameView;
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.WindowView;
 
 public class InstructionsUI extends WindowView implements IGameView {
@@ -43,7 +43,7 @@ public class InstructionsUI extends WindowView implements IGameView {
 		
 		int x = 4;
 		int y = 6;
-		g.drawImage(ImageLibrary.STONE_TITLE, x + this.title.getWidth(), y + 6, 0);
+		g.drawImage(ResourceLibrary.STONE_TITLE, x + this.title.getWidth(), y + 6, 0);
 		g.drawImage(title, 4, 6, 0);
 	}
 	

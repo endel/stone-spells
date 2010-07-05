@@ -135,7 +135,6 @@ public class SpellListProxy extends Proxy implements IProxy, Serializable {
 		
 		for (int i = 0; i < length; i++) {
 			SpellProxy spell = this.getSpellAt(i);
-			System.out.println( "Vou ler da stream " + i + " " + spell.getId() );
 			spell.readFromStream(dis);
 			this.addSpellAt(spell, i);
 		}

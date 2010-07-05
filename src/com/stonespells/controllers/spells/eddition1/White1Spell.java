@@ -16,11 +16,11 @@ public class White1Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(14);
-		spell.setName("White reconstruction");
-		spell.setDescription("You get 1 hp if your opponent cast a spell in same position as white reconstruction");
-		spell.setColor(SpellProxy.COLOR_WHITE);
-		spell.setCost(2);
+		getSpell().setId(14);
+		getSpell().setName("White reconstruction");
+		getSpell().setDescription("You get 1 hp if your opponent cast a spell in same position as white reconstruction");
+		getSpell().setColor(SpellProxy.COLOR_WHITE);
+		getSpell().setCost(2);
 
 	}
 

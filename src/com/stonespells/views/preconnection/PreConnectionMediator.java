@@ -4,7 +4,7 @@ import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
 
 import com.stonespells.core.IWithMenuMediator;
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.WindowView;
 import com.stonespells.core.WithMenuMediator;
 import com.stonespells.models.PagedContentProxy;
@@ -68,7 +68,7 @@ public class PreConnectionMediator extends WithMenuMediator implements IMediator
 		OptionsMenuItemProxy item = (OptionsMenuItemProxy) facade.retrieveProxy(OptionsMenuItemProxy.NAME);
 		item.create();
 		if (side == OptionsMenuMediator.SIDE_LEFT) {
-			item.setImage( ImageLibrary.OPTION_BACK );
+			item.setImage( ResourceLibrary.OPTION_BACK );
 			item.setLabel( "Back" );
 			item.setNotificationName( BACK );
 		} else {

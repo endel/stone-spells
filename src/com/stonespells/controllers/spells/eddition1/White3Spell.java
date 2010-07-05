@@ -16,11 +16,11 @@ public class White3Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(16);
-		spell.setName("Eternal Diamond");
-		spell.setDescription("Makes you immune to damage for 3 turns.");
-		spell.setColor(SpellProxy.COLOR_WHITE);
-		spell.setCost(5);
+		getSpell().setId(16);
+		getSpell().setName("Eternal Diamond");
+		getSpell().setDescription("Makes you immune to damage for 3 turns.");
+		getSpell().setColor(SpellProxy.COLOR_WHITE);
+		getSpell().setCost(5);
 
 	}
 

@@ -16,11 +16,11 @@ public class Green4Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(6);
-		spell.setName("Misfortune Peridot");
-		spell.setDescription("Enemy takes 5 damage");
-		spell.setColor(SpellProxy.COLOR_RED);
-		spell.setCost(5);
+		getSpell().setId(6);
+		getSpell().setName("Misfortune Peridot");
+		getSpell().setDescription("Enemy takes 5 damage");
+		getSpell().setColor(SpellProxy.COLOR_RED);
+		getSpell().setCost(5);
 
 	}
 

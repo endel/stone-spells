@@ -16,7 +16,7 @@ public class Font {
     public boolean useDefault = false;
     
     // height of characters
-    public static int charH = 13;
+    public static int charH = 14;
     public static int charW = 8;
     
     // the bitmap font image

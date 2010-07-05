@@ -5,7 +5,7 @@ import org.puremvc.java.interfaces.INotification;
 
 import com.stonespells.core.App;
 import com.stonespells.core.IWithMenuMediator;
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.WithMenuMediator;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
@@ -95,6 +95,17 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 				RenderMediator.drawString( String.valueOf(player.getLife()) , gameBoard.getLifePositionX(i), gameBoard.getLifePositionY());
 			}
 			
+			// Change option image if has spell selected or not
+			OptionsMenuMediator optionsMenu = (OptionsMenuMediator) facade.retrieveMediator(OptionsMenuMediator.NAME);
+			OptionMenuItemMediator optionMenu = optionsMenu.getOption(OptionsMenuMediator.SIDE_RIGHT);
+			if (hand.hasSpellSelected()) {
+				optionMenu.changeImage( ResourceLibrary.OPTION_CAST );
+				optionMenu.getData().setLabel("Cast");
+			} else {
+				optionMenu.changeImage( ResourceLibrary.OPTION_END_TURN );
+				optionMenu.getData().setLabel("End my turn");
+			}
+			
 		} else if (note.getName().equals(SLOT_SELECTED)) {
 			
 			SpellHolderMediator spellHolder = (SpellHolderMediator) facade.retrieveMediator(SpellHolderMediator.NAME);
@@ -113,22 +124,12 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 					System.out.println("Insuficient concentration points for '" + spell.getName() + "'");
 				}
 				
-				// Change option image if has spell selected or not
-				OptionsMenuMediator optionsMenu = (OptionsMenuMediator) facade.retrieveMediator(OptionsMenuMediator.NAME);
-				OptionMenuItemMediator optionMenu = optionsMenu.getOption(OptionsMenuMediator.SIDE_RIGHT);
-				if (hand.hasSpellSelected()) {
-					optionMenu.changeImage( ImageLibrary.OPTION_CAST );
-					optionMenu.getData().setLabel("Cast");
-				} else {
-					optionMenu.changeImage( ImageLibrary.OPTION_END_TURN );
-					optionMenu.getData().setLabel("End my turn");
-				}
 			}
 			
 		} else if (note.getName().equals(RenderMediator.REGISTER_CANVAS)) {
 			OptionsMenuMediator optionsMenu = (OptionsMenuMediator) facade.retrieveMediator( OptionsMenuMediator.NAME );
-			optionsMenu.getOption(OptionsMenuMediator.SIDE_LEFT).changeImage(ImageLibrary.OPTION_VIEW);
-			optionsMenu.getOption(OptionsMenuMediator.SIDE_RIGHT).changeImage(ImageLibrary.OPTION_END_TURN);
+			optionsMenu.getOption(OptionsMenuMediator.SIDE_LEFT).changeImage(ResourceLibrary.OPTION_VIEW);
+			optionsMenu.getOption(OptionsMenuMediator.SIDE_RIGHT).changeImage(ResourceLibrary.OPTION_END_TURN);
 		}
 	}
 
@@ -136,18 +137,12 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 		OptionsMenuItemProxy item = (OptionsMenuItemProxy) facade.retrieveProxy(OptionsMenuItemProxy.NAME);
 		item.create();
 		if (side == OptionsMenuMediator.SIDE_LEFT) {
-			item.setImage(ImageLibrary.OPTION_VIEW);
+			item.setImage(ResourceLibrary.OPTION_VIEW);
 			item.setNotificationName( OPTION_VIEW );
 			item.setLabel("View");
 		} else {
-			SpellListProxy hand = ((PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME)).getPlayer().getSpellList();
-			if (hand.hasSpellSelected()) {
-				item.setImage( ImageLibrary.OPTION_CAST );
-				item.setLabel("Cast");
-			} else {
-				item.setImage( ImageLibrary.OPTION_END_TURN );
-				item.setLabel("End my turn");
-			}
+			item.setImage( ResourceLibrary.OPTION_END_TURN );
+			item.setLabel("End my turn");
 			item.setNotificationName( END_TURN );
 		}
 		return item;

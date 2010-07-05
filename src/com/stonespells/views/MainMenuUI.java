@@ -9,7 +9,7 @@ import org.puremvc.java.patterns.observer.Notification;
 
 import com.stonespells.core.GameView;
 import com.stonespells.core.IGameView;
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 
 public class MainMenuUI extends GameView implements IGameView {
 	
@@ -32,7 +32,7 @@ public class MainMenuUI extends GameView implements IGameView {
 			new Sprite(Image.createImage("/main-menu/get-spells.png")),
 			new Sprite(Image.createImage("/main-menu/exit.png"))
 		};
-		selectionIcon = ImageLibrary.ENERGY_ICON;
+		selectionIcon = ResourceLibrary.ENERGY_ICON;
 	}
 	
 	public int getNumberOfOptions() {

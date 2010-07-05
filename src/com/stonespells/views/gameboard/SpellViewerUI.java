@@ -7,7 +7,7 @@ import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.patterns.observer.Notification;
 
 import com.stonespells.core.Font;
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.WindowView;
 import com.stonespells.models.gameboard.SpellListVO;
 import com.stonespells.models.gameboard.SpellProxy;
@@ -55,8 +55,8 @@ public class SpellViewerUI extends WindowView {
 		
 		int qty = this.imgList.length;
 		
-		int imgsWidth = (qty * (imgList[0].getWidth() - 7));
-		int imgListCenterX = this.getTotalWidth() / 2 - imgsWidth / 2;
+		int imgWidth = imgList[0].getWidth() - 8;
+		int imgListCenterX = this.getTotalWidth() / 2 - (imgWidth * qty) / 2;
 		
 		int textWidth = Font.charW * (qty + 4);
 		int textCenterX = this.getTotalWidth() / 2 - textWidth / 2;
@@ -67,7 +67,7 @@ public class SpellViewerUI extends WindowView {
 		for (int i=0;i < qty;i++) {
 			
 			boolean isSelected = (this.currentItem == this.spellList.spells[i].position);
-			this.imgList[i].setPosition(imgListCenterX + (i * (this.imgList[i].getWidth() - 8)), bottomBoxY + (isSelected ? -8 : 0) );
+			this.imgList[i].setPosition(imgListCenterX + (i * (imgWidth)), bottomBoxY + (isSelected ? -8 : 0) );
 			this.renderPartial( this.imgList[i] );
 			
 			numbers += String.valueOf(positions[i] + 1);
@@ -78,7 +78,7 @@ public class SpellViewerUI extends WindowView {
 		
 		int costX = (this.getTotalWidth()/2 + this.getBoxWidth()/2) - 30;
 		int costY = this.getTotalHeight()/2 - this.getBoxHeight()/2 + 8;
-		g.drawImage(ImageLibrary.ENERGY_ICON, costX, costY, 0);
+		g.drawImage(ResourceLibrary.ENERGY_ICON, costX, costY, 0);
 		RenderMediator.drawString(numbers, textCenterX, bottomBoxY + 8);
 		RenderMediator.drawString(String.valueOf(this.spellList.spells[currentItem].cost), costX + 14, costY - 2);
 		

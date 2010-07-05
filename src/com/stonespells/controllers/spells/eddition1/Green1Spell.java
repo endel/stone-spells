@@ -24,11 +24,11 @@ public class Green1Spell extends SpellCommand implements ISpellCommand {
 	}
 	
 	public void onCreate() {
-		spell.setId(3);
-		spell.setName("Oblivion Emerald");
-		spell.setDescription("Eliminates 1 point of concentration of all opponent's stones.");
-		spell.setColor(SpellProxy.COLOR_GREEN);
-		spell.setCost(2);
+		getSpell().setId(3);
+		getSpell().setName("Oblivion Emerald");
+		getSpell().setDescription("Eliminates 1 point of concentration of all opponent's stones.");
+		getSpell().setColor(SpellProxy.COLOR_GREEN);
+		getSpell().setCost(2);
 	}
 
 	public void onEnergize() {

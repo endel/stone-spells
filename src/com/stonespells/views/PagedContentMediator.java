@@ -51,7 +51,7 @@ public class PagedContentMediator extends Mediator implements IMediator {
 			
 			String lines[] = pagedContent.getLines(pagedContent.getContent(), CHARS_PER_LINE);
 			for (int i=0;i<lines.length;i++) {
-				RenderMediator.drawString(lines[i], this.x, this.y + (i * Font.charH + 3));
+				RenderMediator.drawString(lines[i], this.x, this.y + (i * Font.charH + 2));
 			}
 			
 			// Render pagination icon

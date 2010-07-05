@@ -16,15 +16,15 @@ public class Yellow2Spell extends SpellCommand implements ISpellCommand {
 		PlayerProxy opponent = this.getPlayContext().getOpponent();
 		
 		SpellListProxy slpO = opponent.getSpellList();
-		slpO.getSpellAt(spell.getPosition()).setLocked(true);
+		slpO.getSpellAt(getSpell().getPosition()).setLocked(true);
 	}
 
 	public void onCreate() {
-		spell.setId(18);
-		spell.setName("Ancient Gold");
-		spell.setDescription("Locks one of the opponent's stones at same position as this.");
-		spell.setColor(SpellProxy.COLOR_GOLD);
-		spell.setCost(6);
+		getSpell().setId(18);
+		getSpell().setName("Ancient Gold");
+		getSpell().setDescription("Locks one of the opponent's stones at same position as this.");
+		getSpell().setColor(SpellProxy.COLOR_GOLD);
+		getSpell().setCost(6);
 
 	}
 

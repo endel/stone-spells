@@ -16,11 +16,11 @@ public class Red2Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCreate() {
-		spell.setId(10);
-		spell.setName("Fire Amber");
-		spell.setDescription("Opponent takes damage equal to amount of held white stones.");
-		spell.setColor(SpellProxy.COLOR_RED);
-		spell.setCost(4);
+		getSpell().setId(10);
+		getSpell().setName("Fire Amber");
+		getSpell().setDescription("Opponent takes damage equal to amount of held white stones.");
+		getSpell().setColor(SpellProxy.COLOR_RED);
+		getSpell().setCost(4);
 	}
 
 	public void onEnergize() {

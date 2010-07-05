@@ -7,7 +7,7 @@ import javax.microedition.lcdui.game.Sprite;
 import org.puremvc.java.interfaces.IMediator;
 
 import com.stonespells.core.IGameView;
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.WindowView;
 
 public class PreConnectionUI extends WindowView implements IGameView {
@@ -44,7 +44,7 @@ public class PreConnectionUI extends WindowView implements IGameView {
 		super.render();
 		
 		Graphics g = this.getGraphics();
-		g.drawImage(ImageLibrary.STONE_TITLE, this.title.getX() + this.title.getWidth(), this.title.getY() + 6, 0);
+		g.drawImage(ResourceLibrary.STONE_TITLE, this.title.getX() + this.title.getWidth(), this.title.getY() + 6, 0);
 		title.paint(g);
 	}
 	

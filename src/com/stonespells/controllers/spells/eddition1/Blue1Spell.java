@@ -11,15 +11,15 @@ public class Blue1Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCast() {
-		spell.swapPosition(spell.getConcentration()-1);
+		getSpell().swapPosition(getSpell().getConcentration()-1);
 	}
 
 	public void onCreate() {
-		spell.setId(2);
-		spell.setName("Reflexion Topaz");
-		spell.setDescription("Swaps this stone with the stone on position equal to the energy amount this stone has.");
-		spell.setColor(SpellProxy.COLOR_BLUE);
-		spell.setCost(2);
+		getSpell().setId(2);
+		getSpell().setName("Reflexion Topaz");
+		getSpell().setDescription("Swaps this stone with the stone on position equal to the energy amount this stone has.");
+		getSpell().setColor(SpellProxy.COLOR_BLUE);
+		getSpell().setCost(2);
 
 	}
 

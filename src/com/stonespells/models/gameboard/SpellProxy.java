@@ -13,7 +13,7 @@ import org.puremvc.java.patterns.observer.Notification;
 import org.puremvc.java.patterns.proxy.Proxy;
 
 import com.stonespells.controllers.spells.SpellCommand;
-import com.stonespells.core.ImageLibrary;
+import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.Serializable;
 
 /**
@@ -427,7 +427,7 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 		this.setName(dis.readUTF());
 		this.setDescription(dis.readUTF());
 		this.setColor(dis.readInt());
-		this.setImage(ImageLibrary.fromStream(dis));
+		this.setImage(ResourceLibrary.fromStream(dis));
 		this.setPosition(dis.readInt());
 		this.setCost(dis.readInt());
 		this.setConcentration(dis.readInt());
@@ -459,7 +459,7 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 		dos.writeUTF(this.getName());
 		dos.writeUTF(this.getDescription());
 		dos.writeInt(this.getColor());
-		dos.write(ImageLibrary.toByteArray(this.getImage()));
+		dos.write(ResourceLibrary.toByteArray(this.getImage()));
 		dos.writeInt(this.getPosition());
 		dos.writeInt(this.getCost());
 		dos.writeInt(this.getConcentration());
