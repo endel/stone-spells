@@ -13,6 +13,13 @@ public class CloseSpellDefinitionsCommand extends SimpleCommand implements IComm
 	
 	public void execute( INotification note ) {
 		
+		GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
+		// TODO: refractor...
+		if (gameBoard.getGameState() == GameBoardMediator.GAMESTATE_VIEWING_OPONENT_SPELLS) {
+			gameBoard.setGameState( GameBoardMediator.GAMESTATE_ENERGIZE );
+			sendNotification(OptionsMenuMediator.DISABLE, null, null);
+		}
+		
 		// Remove Spell Viewer definitions
 		facade.removeMediator( SpellViewerMediator.NAME );
 		facade.removeCommand( SpellViewerMediator.CLOSE );

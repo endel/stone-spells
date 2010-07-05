@@ -2,6 +2,7 @@ package com.stonespells.controllers.spells.eddition1;
 
 import com.stonespells.controllers.spells.ISpellCommand;
 import com.stonespells.controllers.spells.SpellCommand;
+import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 
 public class Red2Spell extends SpellCommand implements ISpellCommand {
@@ -12,13 +13,19 @@ public class Red2Spell extends SpellCommand implements ISpellCommand {
 
 	public void onCast() {
 		// TODO Auto-generated method stub
-
+		PlayerProxy oponent = getPlayContext().getOpponent();
+		oponent.addLife(-5);
+		
+		int spellPosition = getSpell().getPosition();
+		if (oponent.getSpellList().getSpellAt(spellPosition).getColor() == SpellProxy.COLOR_BLUE) {
+			oponent.addLife(-2);
+		}
 	}
 
 	public void onCreate() {
 		getSpell().setId(10);
 		getSpell().setName("Fire Amber");
-		getSpell().setDescription("Opponent takes damage equal to amount of held white stones.");
+		getSpell().setDescription("Oponent takes 5 damage. If he has a blue spell at same position than Fire Amber, he takes plus 2 damage.");
 		getSpell().setColor(SpellProxy.COLOR_RED);
 		getSpell().setCost(4);
 	}

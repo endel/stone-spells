@@ -29,7 +29,7 @@ public class PreConnectionCreateCommand extends SimpleCommand implements IComman
 		preConnection.setBoxTitle("Aguardando oponente...");
 		
 		PagedContentProxy pagedContent = (PagedContentProxy) facade.retrieveProxy(PagedContentProxy.NAME);
-		pagedContent.setContent("Jogo criado. Seu oponente devera se conectar a este jogo.", 0);
+		pagedContent.setContent("Jogo criado. Seu        oponente devera se      conectar a este jogo.", 0);
 		((PagedContentMediator) facade.retrieveMediator(PagedContentMediator.NAME)).setViewComponent(pagedContent.getData());
 		
 		sendNotification(RenderMediator.FLUSH, null, null);

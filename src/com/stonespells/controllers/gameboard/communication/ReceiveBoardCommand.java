@@ -11,8 +11,8 @@ import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
-import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
+import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 public class ReceiveBoardCommand extends SimpleCommand implements
 		ICommand {
@@ -58,13 +58,14 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 		
 		System.out.println("Received successfully!");
 		
-		// Verifica se precisa mostrar a lista de
-		
 		sendNotification(GameBoardMediator.TURN_BEGIN, null, null);
 		
-		System.out.println("Oponent cast spells? " + playContext.getOpponent().getSpellList().hasCastSpell() );
+		// Show oponent spells if he casted something
 		if ( playContext.getOpponent().getSpellList().hasCastSpell() ) {
-
+			GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
+			gameBoard.setGameState(GameBoardMediator.GAMESTATE_VIEWING_OPONENT_SPELLS);
+			
+			sendNotification(OptionsMenuMediator.ENABLE, null, null);
 			sendNotification(GameBoardMediator.OPTION_VIEW, null, ShowSpellDefinitionsCommand.CAST_LIST);
 		}
 	}

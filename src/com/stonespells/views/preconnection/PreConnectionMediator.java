@@ -38,7 +38,7 @@ public class PreConnectionMediator extends WithMenuMediator implements IMediator
 		((WindowView) this.viewComponent).setTitle("Iniciar um novo jogo");
 		
 		PagedContentProxy pagedContent = (PagedContentProxy) facade.retrieveProxy(PagedContentProxy.NAME);
-		pagedContent.setContent("Pressione qualquer tecla para buscar um jogo para conectar.", 0);
+		pagedContent.setContent("Pressione qualquer teclapara buscar um jogo paraconectar.", 0);
 		
 		((PagedContentMediator) facade.retrieveMediator(PagedContentMediator.NAME)).setViewComponent(pagedContent.getData());
 	}

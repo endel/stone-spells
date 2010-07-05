@@ -28,7 +28,7 @@ public class InstructionsMediator extends WithMenuMediator implements IMediator,
 		((WindowView) this.viewComponent).setTitle("Regras gerais");
 		
 		PagedContentProxy pagedContent = (PagedContentProxy) facade.retrieveProxy(PagedContentProxy.NAME);
-		pagedContent.setContent("Esse joguinho eh muito complicado e voce nao vai querer joga-lo ate o final pelo motivo que exige muito do seu cerebro incapaz de compreender essas regras e esse texto. Agora repita comigo: eu sou um baita bundao e nao gosto de comer batatas. Eu sou um bundao e nao gosto de comer batatas. Tchau.", 165);
+		pagedContent.setContent("At the beginning of each turn, you have two points of concentration available to energize your stones. Each one of your stones has a cost to cast. The objective of the game is to defeat your opponent using a combination of your spell effects.", 165);
 		
 		((PagedContentMediator) facade.retrieveMediator(PagedContentMediator.NAME)).setViewComponent(pagedContent.getData());
 	}

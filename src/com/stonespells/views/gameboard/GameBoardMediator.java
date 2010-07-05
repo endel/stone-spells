@@ -38,6 +38,7 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 	public static final int GAMESTATE_ENERGIZE = 0;
 	public static final int GAMESTATE_SELECT_SPELLS = 1;
 	public static final int GAMESTATE_WAITING_OPONENT = 2;
+	public static final int GAMESTATE_VIEWING_OPONENT_SPELLS = 3;
 	
 	private static final int QTY_SLOTS = 9;
 	
@@ -123,7 +124,6 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 					// TODO: play error sound
 					System.out.println("Insuficient concentration points for '" + spell.getName() + "'");
 				}
-				
 			}
 			
 		} else if (note.getName().equals(RenderMediator.REGISTER_CANVAS)) {
