@@ -14,8 +14,8 @@ public class EnergizeSpellCommand extends SimpleCommand implements ICommand {
 	public void execute(INotification note) {
 		SpellProxy spell = (SpellProxy) note.getBody();
 		
-		// Skip if spell is locked
-		if (spell.isLocked())
+		// Skip if spell is locked or can't be energized
+		if (spell.isLocked() || !spell.canEnergize())
 			return;
 		
 		spell.addConcentration(1);

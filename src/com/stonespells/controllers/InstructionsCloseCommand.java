@@ -7,6 +7,7 @@ import org.puremvc.java.patterns.command.SimpleCommand;
 import com.stonespells.views.InstructionsMediator;
 import com.stonespells.views.MainMenuMediator;
 import com.stonespells.views.RenderMediator;
+import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 public class InstructionsCloseCommand extends SimpleCommand implements ICommand {
 
@@ -14,6 +15,7 @@ public class InstructionsCloseCommand extends SimpleCommand implements ICommand 
 		
 		facade.removeMediator( InstructionsMediator.NAME );
 		facade.removeCommand( InstructionsMediator.CLOSE );
+		((OptionsMenuMediator) facade.retrieveMediator(OptionsMenuMediator.NAME)).removeInitiatedReference( InstructionsMediator.NAME );
 		
 		sendNotification(RenderMediator.REGISTER_CANVAS, facade.retrieveMediator(MainMenuMediator.NAME), null);
 		sendNotification(RenderMediator.FLUSH, null, null);

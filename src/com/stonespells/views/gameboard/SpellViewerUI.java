@@ -88,12 +88,17 @@ public class SpellViewerUI extends WindowView {
 		this.spellList = spellList;
 		this.imgList = imgList;
 		this.positions = positions;
+		this.currentItem = 0;
 	}
 
 	public void setCurrentSpell(SpellProxy spell) {
-		this.currentItem = spell.getPosition();
-		this.setTitle( spell.getName() );
+		for (int i=0;i<positions.length;i++) {
+			if (this.positions[i] == spell.getPosition()) {
+				this.currentItem = i;
+			}
+		}
 		
+		this.setTitle( spell.getName() );
 		flush();
 	}
 	

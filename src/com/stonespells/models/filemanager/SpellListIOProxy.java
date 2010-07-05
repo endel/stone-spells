@@ -19,6 +19,7 @@ import com.stonespells.controllers.spells.eddition1.Red3Spell;
 import com.stonespells.controllers.spells.eddition1.White1Spell;
 import com.stonespells.controllers.spells.eddition1.White2Spell;
 import com.stonespells.controllers.spells.eddition1.Yellow1Spell;
+import com.stonespells.controllers.spells.eddition1.Yellow4Spell;
 import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 
@@ -108,7 +109,8 @@ public class SpellListIOProxy extends Proxy implements IProxy {
 		spellList.addSpellAt(spell, i);
 		i++;
 		
-		spell.create( new Green2Spell() );
+		// spell.create( new Green2Spell() );
+		spell.create( new Yellow4Spell() );
 		spell.setPosition(i);
 		spellList.addSpellAt(spell, i);
 		i++;

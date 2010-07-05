@@ -51,6 +51,23 @@ public interface ISpellCommand extends ICommand {
 	 */
 	public void onCast();
 	
+	/**
+	 * Este método é disparado ao tentar adicionar um ponto de concentração na spell.
+	 * Deverá retornar se é possível ou não adicionar pontos de concentração nela.
+	 * 
+	 * @return boolean
+	 */
+	public boolean canEnergize();
+	
+	/**
+	 * Este método é disparado ao tentar selecionar a spell para cast.
+	 * Deverá retornar se é possível lançá-la ou não.
+	 * 
+	 * @return boolean
+	 */
+	public boolean canCast();
+	
 	public SpellProxy getSpell();
 	public PlayContextProxy getPlayContext();
+	
 }

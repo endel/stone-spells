@@ -11,31 +11,32 @@ public class Yellow4Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCast() {
-		// TODO Auto-generated method stub
-
+		getPlayContext().getPlayer().addLife(-2);
 	}
 
 	public void onCreate() {
 		getSpell().setId(20);
-		getSpell().setName("Spell vermelha bonita");
-		getSpell().setDescription("O oponente leva 1 de dano.");
+		getSpell().setName("Concentration overflow");
+		getSpell().setDescription("Whenever you add a concentration point in this stone, you receive two concentration points to distribute and locks this stone during 1 turn. You can't concentrate in this spell more than 3 points. When casting this spell, you lose 2 life points.");
 		getSpell().setColor(SpellProxy.COLOR_RED);
-		getSpell().setCost(2);
+		getSpell().setCost(3);
 	}
 
 	public void onEnergize() {
-		// TODO Auto-generated method stub
-
+		getSpell().setLocked(true);
+		getPlayContext().getPlayer().addConcentration(2);
+	}
+	
+	public boolean canEnergize() {
+		return getSpell().getConcentration() < getSpell().getCost();
 	}
 
 	public void onSwapPosition() {
 		// TODO Auto-generated method stub
-
 	}
 
 	public void onTurnBegin() {
-		// TODO Auto-generated method stub
-
+		getSpell().setLocked(false);
 	}
 
 	public void onTurnEnd() {

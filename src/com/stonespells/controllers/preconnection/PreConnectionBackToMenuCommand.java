@@ -8,6 +8,7 @@ import com.stonespells.models.connection.ClientProxy;
 import com.stonespells.models.connection.ServerProxy;
 import com.stonespells.views.MainMenuMediator;
 import com.stonespells.views.RenderMediator;
+import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
 public class PreConnectionBackToMenuCommand extends SimpleCommand implements ICommand {
@@ -19,6 +20,7 @@ public class PreConnectionBackToMenuCommand extends SimpleCommand implements ICo
 		facade.removeCommand( PreConnectionMediator.BACK );
 		facade.removeCommand( PreConnectionMediator.CREATE );
 		facade.removeCommand( PreConnectionMediator.LIST );
+		((OptionsMenuMediator) facade.retrieveMediator(OptionsMenuMediator.NAME)).removeInitiatedReference( PreConnectionMediator.NAME );
 		
 		// Remove connection proxies
 		facade.removeProxy( ServerProxy.NAME );

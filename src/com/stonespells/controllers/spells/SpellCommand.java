@@ -72,4 +72,12 @@ public abstract class SpellCommand extends SimpleCommand implements ISpellComman
 		return (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
 	}
 	
+	public boolean canCast() {
+		return true;
+	}
+	
+	public boolean canEnergize() {
+		return true;
+	}
+	
 }

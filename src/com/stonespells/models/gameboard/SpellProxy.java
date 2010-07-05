@@ -12,6 +12,7 @@ import org.puremvc.java.interfaces.IProxy;
 import org.puremvc.java.patterns.observer.Notification;
 import org.puremvc.java.patterns.proxy.Proxy;
 
+import com.stonespells.controllers.spells.ISpellCommand;
 import com.stonespells.controllers.spells.SpellCommand;
 import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.Serializable;
@@ -76,9 +77,6 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 	/**
 	 * Cria um novo objeto {@link SpellVO} à ser manipulado.
 	 * 
-	 * @deprecated Todas as spells devem ter um commandListener que possui o
-	 *             tratamentos de eventos. Utilize o método create(ICommand
-	 *             commandListener)
 	 */
 	public void create() {
 		this.setData(new SpellVO());
@@ -170,13 +168,17 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 	}
 
 	/**
-	 * Verifica se a concentração da spell é o suficiente para poder utilizar o
-	 * cast.
+	 * Verifica se a spell pode ser lançada. Ela só pode ser lançada se não 
+	 * estiver trancada e seus pontos de concentração forem maiores ou iguais 
+	 * ao custo. 
 	 * 
 	 * @return boolean
 	 */
 	public boolean canCast() {
-		return this.getConcentration() >= this.getCost();
+		ISpellCommand listener = (ISpellCommand) this.getCommandListener();
+		boolean allowedByParams = (listener != null) ? listener.canCast() : true;
+		
+		return allowedByParams && !this.isLocked() && (this.getConcentration() >= this.getCost());
 	}
 
 	/**
@@ -318,7 +320,11 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 	public void addConcentration(int i) {
 		int value = this.getConcentration() + i;
 		this.setConcentration((value < 0) ? 0 : value);
-		dispatchEvent(ON_ENERGIZE);
+
+		// don't dispatch ON_ENERGIZE if are reducing concentration points
+		if (i > 0) {
+			dispatchEvent(ON_ENERGIZE);
+		}
 	}
 
 	/**
@@ -353,6 +359,15 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 	 */
 	public void swapSelected() {
 		((SpellVO) this.data).selected = !this.isSelected();
+	}
+	
+	/**
+	 * Verifica se esta spell pode ser concentrada.
+	 * @return boolean
+	 */
+	public boolean canEnergize() {
+		ISpellCommand listener = (ISpellCommand) this.getCommandListener();
+		return (listener != null) ? listener.canEnergize() : true;
 	}
 
 	/**
@@ -433,6 +448,7 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 		this.setConcentration(dis.readInt());
 		this.setLocked(dis.readBoolean());
 		this.setSelected(dis.readBoolean());
+		this.setCasting(dis.readBoolean());
 	}
 
 	/**
@@ -465,5 +481,6 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 		dos.writeInt(this.getConcentration());
 		dos.writeBoolean(this.isLocked());
 		dos.writeBoolean(this.isSelected());
+		dos.writeBoolean(this.isCasting());
 	}
 }

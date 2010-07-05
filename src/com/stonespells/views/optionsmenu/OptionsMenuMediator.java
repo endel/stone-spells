@@ -162,5 +162,9 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 	public void selectSide(int side) {
 		this.sideSelected = side;
 	}
+	
+	public void removeInitiatedReference(Object name) {
+		hasCommand.removeElement(name);
+	}
 
 }

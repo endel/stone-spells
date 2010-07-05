@@ -6,6 +6,7 @@ import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
+import com.stonespells.controllers.gameboard.ShowSpellDefinitionsCommand;
 import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
@@ -20,6 +21,7 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 		System.out.println("Waiting to receive opponent board...");
 		ConnectionProxy connProxy = (ConnectionProxy) facade.retrieveProxy(ConnectionProxy.PROXY_NAME);
 		PlayContextProxy playContext = (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
+		
 		try {
 			DataInputStream dis = connProxy.getDataInputStream();
 			
@@ -56,8 +58,15 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 		
 		System.out.println("Received successfully!");
 		
-		sendNotification(RenderMediator.FLUSH, facade.retrieveMediator(GameBoardMediator.NAME), null);
+		// Verifica se precisa mostrar a lista de
+		
 		sendNotification(GameBoardMediator.TURN_BEGIN, null, null);
+		
+		System.out.println("Oponent cast spells? " + playContext.getOpponent().getSpellList().hasCastSpell() );
+		if ( playContext.getOpponent().getSpellList().hasCastSpell() ) {
+
+			sendNotification(GameBoardMediator.OPTION_VIEW, null, ShowSpellDefinitionsCommand.CAST_LIST);
+		}
 	}
 	
 }

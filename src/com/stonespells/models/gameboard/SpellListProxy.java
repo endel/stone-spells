@@ -32,6 +32,15 @@ public class SpellListProxy extends Proxy implements IProxy, Serializable {
 		spellList.spells = new SpellVO[9];
 		this.setData(spellList);
 	}
+	
+	/**
+	 * Cria um novo objeto {@link SpellListVO} à ser manipulado com um total de qty spells.
+	 */
+	public void create(int qty) {
+		SpellListVO spellList = new SpellListVO();
+		spellList.spells = new SpellVO[qty];
+		this.setData(spellList);
+	}
 
 	/**
 	 * Adiciona uma spell em determinada posição da lista.
@@ -65,14 +74,26 @@ public class SpellListProxy extends Proxy implements IProxy, Serializable {
 	 * @return boolean
 	 */
 	public boolean hasSpellSelected() {
-		boolean hasSelected = false;
 		for (int i = 0; i < 9; i++) {
 			if (((SpellListVO) this.data).spells[i].selected) {
-				hasSelected = true;
-				break;
+				return true;
 			}
 		}
-		return hasSelected;
+		return false;
+	}
+	
+	/**
+	 * Verifica se existe alguma spell selecionada para cast neste turno.
+	 * 
+	 * @return boolean
+	 */
+	public boolean hasCastSpell() {
+		for (int i = 0; i < 9; i++) {
+			if (((SpellListVO) this.data).spells[i].casting) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -160,7 +181,7 @@ public class SpellListProxy extends Proxy implements IProxy, Serializable {
 	 */
 	public void writeToStream(DataOutputStream dos) throws Exception {
 		int length = this.getQty();
-		
+
 		dos.writeInt(length);
 		for (int i = 0; i < length; i++) {
 			this.getSpellAt(i).writeToStream(dos);
