@@ -14,6 +14,7 @@ import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.models.gameboard.SpellVO;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.SpellViewerMediator;
+import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 public class ShowSpellDefinitionsCommand extends SimpleCommand implements ICommand {
 	
@@ -56,6 +57,8 @@ public class ShowSpellDefinitionsCommand extends SimpleCommand implements IComma
 		facade.registerMediator( spellViewer );
 		
 		facade.registerCommand(SpellViewerMediator.CLOSE, CloseSpellDefinitionsCommand.class);
+		
+		sendNotification(OptionsMenuMediator.ENABLE, null, null);
 		
 		sendNotification(RenderMediator.REGISTER_CANVAS, spellViewer, null);
 		sendNotification(RenderMediator.FLUSH, null, null);

@@ -6,6 +6,7 @@ import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
+import com.stonespells.core.Logger;
 import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
@@ -15,7 +16,7 @@ import com.stonespells.views.gameboard.GameBoardMediator;
 public class SendBoardCommand extends SimpleCommand implements ICommand {
 	
 	public void execute(INotification note) {
-		System.out.println("Sending board...");
+		Logger.instance.println("Sending board...");
 		ConnectionProxy connProxy = (ConnectionProxy) facade.retrieveProxy(ConnectionProxy.PROXY_NAME);
 		
 		PlayContextProxy playContext = (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
@@ -39,7 +40,7 @@ public class SendBoardCommand extends SimpleCommand implements ICommand {
 		}
 		
 		sendNotification(RenderMediator.FLUSH, facade.retrieveMediator(GameBoardMediator.NAME), null);
-		System.out.println("Board sent successfully!");
+		Logger.instance.println("Board sent successfully!");
 	}
 	
 }

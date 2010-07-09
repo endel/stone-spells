@@ -5,6 +5,7 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.controllers.gameboard.communication.ReceiveBoardCommand;
+import com.stonespells.core.Logger;
 import com.stonespells.models.filemanager.SpellListIOProxy;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
@@ -16,7 +17,7 @@ import com.stonespells.views.preconnection.PreConnectionMediator;
 public class PrepareGameCommand extends SimpleCommand implements ICommand {
 
 	public void execute(INotification note) {
-		System.out.println("Prepare game!");
+		Logger.instance.println("Prepare game!");
 
 		// Configure concentration informer
 		facade.registerMediator(new GameStateIndicatorMediator());

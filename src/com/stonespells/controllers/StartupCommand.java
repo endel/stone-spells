@@ -44,15 +44,15 @@ public class StartupCommand extends SimpleCommand implements ICommand {
 		facade.registerMediator( new GameBoardMediator() );
 		
 		/*try {
-			System.out.println("\n");
+			Logger.instance.println("\n");
 			for (int i=17;i<=23;i++) {
 				byte[] byteArray = ImageLibrary.toByteArray(Image.createImage("/stones/" + String.valueOf(i) + ".png"));
-				System.out.println(byteArray);
+				Logger.instance.println(byteArray);
 				
 				for (int j=0;j<byteArray.length;j++) {
-					System.out.println(byteArray[j]);
+					Logger.instance.println(byteArray[j]);
 				}
-				System.out.println("\n");
+				Logger.instance.println("\n");
 			}
 			
 		} catch (Exception e) { e.printStackTrace(); }*/

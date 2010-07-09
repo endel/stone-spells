@@ -15,6 +15,7 @@ import javax.microedition.io.StreamConnection;
 
 import org.puremvc.java.interfaces.IProxy;
 
+import com.stonespells.core.Logger;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
 public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryListener {
@@ -42,12 +43,19 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 
 	public void deviceDiscovered(RemoteDevice remoteDevice, DeviceClass dc) {
 		vector.addElement( remoteDevice );
+		try {
+			Logger.instance.println( remoteDevice.getFriendlyName(false) );
+			Logger.instance.println( dc.getMajorDeviceClass() );
+			Logger.instance.println( dc.getMinorDeviceClass() );
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void inquiryCompleted(int arg0) {
 		UUID ids[] = { ServerProxy.SERVICE_UUID };
 
-		System.out.println("Encontrei " + vector.size() + " clientes.");
+		Logger.instance.println("Encontrei " + vector.size() + " clientes.");
 		for (int i = 0; i < vector.size(); i++) {
 			RemoteDevice rd = (RemoteDevice) vector.elementAt(i);
 			try {
@@ -65,7 +73,7 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 		// sendNotification(PreConnectionMediator.VIEW_CONNECTIONS_LIST, this.getServiceList(), type)
 		
 		if(service == null){
-			System.out.println("Nenhum serviço encontrado.");
+			Logger.instance.println("Nenhum serviço encontrado.");
 			return;
 		}
 		
@@ -82,7 +90,7 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 	}
 
 	public void servicesDiscovered(int arg0, ServiceRecord[] serviceList) {
-		System.out.println("servicesDiscovered => " + arg0 + "   " + serviceList.length);
+		Logger.instance.println("servicesDiscovered => " + arg0 + "   " + serviceList.length);
 		this.service = serviceList[0];
 		//this.services = serviceList;
 	}

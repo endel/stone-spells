@@ -4,6 +4,7 @@ import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
+import com.stonespells.core.Logger;
 import com.stonespells.models.PagedContentProxy;
 import com.stonespells.models.connection.ClientProxy;
 import com.stonespells.views.PagedContentMediator;
@@ -32,7 +33,7 @@ public class PreConnectionListCommand extends SimpleCommand implements ICommand 
 			pagedContent.setContent("Aguarde...", 0);
 		} catch (Exception e) {
 			pagedContent.setContent("Erro ao criar o client.", 0);
-			System.out.println("Erro ao criar o client.");
+			Logger.instance.println("Erro ao criar o client.");
 			e.printStackTrace();
 		}
 		((PagedContentMediator) facade.retrieveMediator(PagedContentMediator.NAME)).setViewComponent(pagedContent.getData());

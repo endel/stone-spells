@@ -4,6 +4,7 @@ import javax.microedition.lcdui.Command;
 import javax.microedition.lcdui.CommandListener;
 import javax.microedition.lcdui.Displayable;
 
+import com.stonespells.core.Logger;
 import com.stonespells.facade.GameFacade;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
@@ -28,7 +29,7 @@ public class CommandTranslator implements CommandListener {
 		
 		facade.sendNotification(RenderMediator.FLUSH, null, null);
 		
-		System.out.println( "Tranlating command: " + c.getLabel() );
+		Logger.instance.println( "Tranlating command: " + c.getLabel() );
 		facade.sendNotification( c.getLabel(), d, null);
 	}
 

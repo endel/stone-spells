@@ -15,6 +15,7 @@ import com.stonespells.core.IWithMenuMediator;
 import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
+import com.stonespells.views.gameboard.SpellViewerMediator;
 
 public class OptionsMenuMediator extends Mediator implements IMediator {
 	
@@ -77,15 +78,17 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 	
 	public String[] listNotificationInterests( )
 	{
-		return new String[] { RenderMediator.REGISTER_CANVAS, GameBoardMediator.SLOT_SELECTED, ENABLE, DISABLE };
+		return new String[] { RenderMediator.REGISTER_CANVAS, GameBoardMediator.SLOT_SELECTED, SpellViewerMediator.CLOSE, ENABLE, DISABLE };
 	}
 	
 	public void handleNotification( INotification note )
 	{
+		GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
+		
 		if ( note.getName().equals(ENABLE) ) {
 			this.hasMenu = true;
 			
-		} else if ( note.getName().equals(DISABLE) ) {
+		} else if ( note.getName().equals(DISABLE)) {
 			this.hasMenu = false;
 			
 		} else if (note.getName().equals(GameBoardMediator.SLOT_SELECTED)) {

@@ -5,6 +5,7 @@ import org.puremvc.java.interfaces.INotification;
 
 import com.stonespells.core.App;
 import com.stonespells.core.IWithMenuMediator;
+import com.stonespells.core.Logger;
 import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.WithMenuMediator;
 import com.stonespells.models.gameboard.PlayContextProxy;
@@ -122,7 +123,7 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 					spellHolder.swapSelect();
 				} else {
 					// TODO: play error sound
-					System.out.println("Insuficient concentration points for '" + spell.getName() + "'");
+					Logger.instance.println("Insuficient concentration points for '" + spell.getName() + "'");
 				}
 			}
 			

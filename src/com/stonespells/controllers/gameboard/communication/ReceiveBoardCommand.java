@@ -7,6 +7,7 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.controllers.gameboard.ShowSpellDefinitionsCommand;
+import com.stonespells.core.Logger;
 import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
@@ -18,7 +19,7 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 		ICommand {
 	
 	public void execute(INotification note) {
-		System.out.println("Waiting to receive opponent board...");
+		Logger.instance.println("Waiting to receive opponent board...");
 		ConnectionProxy connProxy = (ConnectionProxy) facade.retrieveProxy(ConnectionProxy.PROXY_NAME);
 		PlayContextProxy playContext = (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
 		
@@ -50,13 +51,13 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 				spellList.readFromStream(dis);
 				
 			} else if (actionType == ConnectionProxy.END_GAME) {
-				System.out.println("Fim de jogo...");
+				Logger.instance.println("Fim de jogo...");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Received successfully!");
+		Logger.instance.println("Received successfully!");
 		
 		sendNotification(GameBoardMediator.TURN_BEGIN, null, null);
 		

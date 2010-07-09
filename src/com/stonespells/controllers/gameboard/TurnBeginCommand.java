@@ -4,7 +4,7 @@ import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
-import com.stonespells.core.ResourceLibrary;
+import com.stonespells.core.Logger;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
@@ -16,7 +16,7 @@ import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 public class TurnBeginCommand extends SimpleCommand implements ICommand {
 	
 	public void execute(INotification note) {
-		System.out.println("Turn begin!");
+		Logger.instance.println("Turn begin!");
 		
 		// Register the Canvas to draw
 		sendNotification(RenderMediator.REGISTER_CANVAS, facade.retrieveMediator(GameBoardMediator.NAME), null);

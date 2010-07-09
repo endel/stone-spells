@@ -7,10 +7,9 @@ import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.GameCanvas;
 import javax.microedition.lcdui.game.Sprite;
 
-import com.stonespells.facade.GameFacade;
-
 import org.puremvc.java.interfaces.IMediator;
 
+import com.stonespells.facade.GameFacade;
 import com.stonespells.views.RenderMediator;
 
 public class GameView extends GameCanvas implements IGameView {
@@ -37,7 +36,7 @@ public class GameView extends GameCanvas implements IGameView {
 			try {
 				background = Image.createImage("/background.png");
 			} catch(IOException e) {
-				System.out.println(e);
+				Logger.instance.println(e);
 			}
 		}
 		try {

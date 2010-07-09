@@ -3,6 +3,7 @@ package com.stonespells.core;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
+
 public class Font {
     // additional space between characters
     public int charS = 0;
@@ -86,7 +87,7 @@ public class Font {
         
         // our fail-safe
         if (useDefault){
-        	System.out.println("font in fail-safe mode");
+        	Logger.instance.println("font in fail-safe mode");
             g.drawString(sTxt, x, y, Graphics.TOP | Graphics.LEFT);
             return;
         }

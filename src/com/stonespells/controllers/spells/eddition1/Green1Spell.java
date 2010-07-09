@@ -33,7 +33,6 @@ public class Green1Spell extends SpellCommand implements ISpellCommand {
 
 	public void onEnergize() {
 		// TODO Auto-generated method stub
-
 	}
 
 	public void onSwapPosition() {

@@ -12,7 +12,6 @@ import org.puremvc.java.patterns.proxy.Proxy;
 
 import com.stonespells.controllers.spells.eddition1.Blue1Spell;
 import com.stonespells.controllers.spells.eddition1.Green1Spell;
-import com.stonespells.controllers.spells.eddition1.Green2Spell;
 import com.stonespells.controllers.spells.eddition1.Red1Spell;
 import com.stonespells.controllers.spells.eddition1.Red2Spell;
 import com.stonespells.controllers.spells.eddition1.Red3Spell;
@@ -20,6 +19,7 @@ import com.stonespells.controllers.spells.eddition1.White1Spell;
 import com.stonespells.controllers.spells.eddition1.White2Spell;
 import com.stonespells.controllers.spells.eddition1.Yellow1Spell;
 import com.stonespells.controllers.spells.eddition1.Yellow4Spell;
+import com.stonespells.core.Logger;
 import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 
@@ -125,7 +125,7 @@ public class SpellListIOProxy extends Proxy implements IProxy {
 			RecordStore rs = RecordStore.openRecordStore(recordStoreName, false);
 			byteArray = rs.getRecord( rs.getNextRecordID() );
 		} catch (Exception e) {
-			System.out.println("Erro ao ler RecordStore: " + recordStoreName);
+			Logger.instance.println("Erro ao ler RecordStore: " + recordStoreName);
 			e.printStackTrace();
 		}
 		

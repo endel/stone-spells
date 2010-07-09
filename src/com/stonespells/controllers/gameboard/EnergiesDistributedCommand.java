@@ -4,6 +4,7 @@ import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
+import com.stonespells.core.Logger;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
@@ -11,7 +12,7 @@ import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 public class EnergiesDistributedCommand extends SimpleCommand implements ICommand {
 	
 	public void execute (INotification note) {
-		System.out.println("EnergiesDistributedCommand");
+		Logger.instance.println("EnergiesDistributedCommand");
 		
 		// Set game state
 		GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);

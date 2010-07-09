@@ -4,6 +4,7 @@ import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
+import com.stonespells.core.Logger;
 import com.stonespells.models.PagedContentProxy;
 import com.stonespells.models.connection.ServerProxy;
 import com.stonespells.views.PagedContentMediator;
@@ -21,7 +22,7 @@ public class PreConnectionCreateCommand extends SimpleCommand implements IComman
 		try {
 			server.create();
 		} catch (Exception e) {
-			System.out.println("Erro ao criar o server.");
+			Logger.instance.println("Erro ao criar o server.");
 			e.printStackTrace();
 		}
 		

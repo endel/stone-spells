@@ -8,6 +8,7 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.mediator.Mediator;
 
 import com.stonespells.core.ResourceLibrary;
+import com.stonespells.facade.GameFacade;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.views.RenderMediator;
@@ -37,9 +38,10 @@ public class GameStateIndicatorMediator extends Mediator implements IMediator {
 		
 		// this notification is sent by RenderMediator
 		if (note.getName().equals(RenderMediator.FLUSH)) {
+			boolean isInGameBoard = ((RenderMediator) facade.retrieveMediator(RenderMediator.NAME)).getMediator().getMediatorName().equals( GameBoardMediator.NAME );
 			
 			// Render game state indicator only if needed
-			if (!this.isEnabled())
+			if (!this.isEnabled() || !isInGameBoard )
 				return;
 			
 			int gameState = this.getGameBoard().getGameState();

@@ -5,6 +5,7 @@ import org.puremvc.java.patterns.facade.Facade;
 import com.stonespells.controllers.CommandTranslator;
 import com.stonespells.controllers.StartupCommand;
 import com.stonespells.core.App;
+import com.stonespells.core.Logger;
 
 public class GameFacade extends Facade implements IFacade {
 	
@@ -31,7 +32,7 @@ public class GameFacade extends Facade implements IFacade {
 	}
 	
 	public void startup(App app) {
-		System.out.println("startup!");
+		Logger.instance.println("startup!");
 		this.app = app;
 		this.commandTranslator = new CommandTranslator();
 		sendNotification(STARTUP, app, null);

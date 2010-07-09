@@ -17,8 +17,10 @@ public class CloseSpellDefinitionsCommand extends SimpleCommand implements IComm
 		sendNotification(RenderMediator.REGISTER_CANVAS, gameBoard, null);
 		
 		// TODO: refractor...
+		// se estiver visualizando as spells do oponente, muda o estado do 
+		// jogo para GAMESTATE_ENERGIZE
 		if (gameBoard.getGameState() == GameBoardMediator.GAMESTATE_VIEWING_OPONENT_SPELLS) {
-			sendNotification(OptionsMenuMediator.DISABLE, null, null);
+			// TODO: enviar notificação 
 			gameBoard.setGameState( GameBoardMediator.GAMESTATE_ENERGIZE );
 		}
 		
