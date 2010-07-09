@@ -1,9 +1,7 @@
 package com.stonespells.models.gameboard;
 
 /**
- * Player Value Object
- * @author Endel
- *
+ * Contêiner com os dados relativos a um dos jogadores.
  */
 public class PlayerVO {
 	

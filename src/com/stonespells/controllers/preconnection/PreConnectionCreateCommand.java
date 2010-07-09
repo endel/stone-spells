@@ -10,12 +10,17 @@ import com.stonespells.views.PagedContentMediator;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
+/**
+ * Classe responsável pelo comando de criação de conexão
+ *
+ */
 public class PreConnectionCreateCommand extends SimpleCommand implements ICommand {
 	
+	/**
+	 * Método que cria o servidor de conexão
+	 */
 	public void execute(INotification note) {
-		
-		// Create server connection
-		
+				
 		ServerProxy server = new ServerProxy();
 		facade.registerProxy(server);
 		try {

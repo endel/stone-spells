@@ -14,6 +14,10 @@ import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.PagedContentMediator;
 import com.stonespells.views.RenderMediator;
 
+/**
+ * Classe que possui e efetua a pintura de elementos de visualização da descrição
+ * dos feitiços.
+ */
 public class SpellViewerUI extends WindowView {
 	
 	public Sprite imgList[];
@@ -21,10 +25,19 @@ public class SpellViewerUI extends WindowView {
 	public int currentItem;
 	private SpellListVO spellList;
 	
+	/**
+	 * Construtor da classe que recebe um mediador que fará a comunicação entre
+	 * esta classe que é responsávle pela pintura da descrição dos feitiços, 
+	 * e os dados referentes às descrições.
+	 * @param mediator
+	 */
 	public SpellViewerUI(IMediator mediator) {
 		super(false, mediator);
 	}
-	
+	/**
+	 * Método que efetua o tratamento de teclas para navegação entre as páginas
+	 * contendo as descrições dos feitiços.
+	 */
 	protected void keyPressed(int keyCode) {
 		
 		int slotSelected = keyCode - 49;
@@ -49,6 +62,9 @@ public class SpellViewerUI extends WindowView {
 		flush();
 	}
 
+	/**
+	 * Método que efetua a pintura propriamente dita do conteúdo paginado à tela. 
+	 */
 	public void render() {
 		super.render();
 		Graphics g = this.getGraphics();
@@ -84,6 +100,10 @@ public class SpellViewerUI extends WindowView {
 		
 	}
 	
+	/**
+	 * Método que configura as variáveis da classe de acordo com os argumentos
+	 * recebidos.
+	 */
 	public void configureSpells(SpellListVO spellList, Sprite imgList[], int positions[]) {
 		this.spellList = spellList;
 		this.imgList = imgList;
@@ -91,6 +111,10 @@ public class SpellViewerUI extends WindowView {
 		this.currentItem = 0;
 	}
 
+	/**
+	 * Método que determina o feitiço atual na navegação, e efetua a pintura na tela.
+	 * @param spell
+	 */
 	public void setCurrentSpell(SpellProxy spell) {
 		for (int i=0;i<positions.length;i++) {
 			if (this.positions[i] == spell.getPosition()) {

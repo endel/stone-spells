@@ -13,8 +13,17 @@ import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
+/**
+ * Classe que indica o começo de um turno.
+ *
+ */
 public class TurnBeginCommand extends SimpleCommand implements ICommand {
 	
+	/**
+	 * Método que inicia um turno. O canvas a ser utilizado é registrado.
+	 * As opções desabilitadas. A energização de pedras é habilitada.
+	 * O jogador ativo é habilitado a jogar.
+	 */
 	public void execute(INotification note) {
 		System.out.println("Turn begin!");
 		

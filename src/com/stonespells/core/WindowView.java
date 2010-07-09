@@ -9,7 +9,9 @@ import org.puremvc.java.interfaces.IMediator;
 
 import com.stonespells.views.RenderMediator;
 
-
+/**
+ * Classe que trata da pintura da janela na tela *
+ */
 public class WindowView extends GameView implements IGameView {
 	
 	private static Image windowBackground;
@@ -22,6 +24,9 @@ public class WindowView extends GameView implements IGameView {
 		super(supressKeyEvents, mediator);
 	}
 	
+	/**
+	 * Inicializa a pintura da janela, criando duas imagens a serem pintadas.
+	 */
 	public void init() {
 		super.init();
 		// load static images in the first time
@@ -35,10 +40,17 @@ public class WindowView extends GameView implements IGameView {
 		}
 	}
 	
+	/**
+	 * Obtém altura da caixa a ser pintada.
+	 * @return
+	 */
 	public int getBoxWidth() {
 		return windowBackground.getWidth();
 	}
-	
+	/**
+	 * Obtém largura da caixa a ser pintada.
+	 * @return
+	 */
 	public int getBoxHeight() {
 		return windowBackground.getHeight();
 	}
@@ -51,14 +63,17 @@ public class WindowView extends GameView implements IGameView {
 		return this.getTotalHeight()/2 - this.getBoxHeight()/2 + 28;
 	}
 	
+	/**
+	 * Especifica o título para a janela a ser exibida.
+	 */
 	public void setTitle(String t) {
 		this.hasHeader = true;
 		this.title = t;
 	}
 	
 	/**
-	 * Paint window on the screen.
-	 * You must call super.paint(g, x, y) if override this function.
+	 * Pinta janela na tela.
+	 * Você deve chamar super.paint(g, x, y) se sobrescrever este método.
 	 * @param g
 	 * @param x
 	 * @param y

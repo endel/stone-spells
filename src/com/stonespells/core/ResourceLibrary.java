@@ -11,6 +11,9 @@ import javax.microedition.media.Player;
 
 import com.stonespells.facade.GameFacade;
 
+/**
+ * Classe que trata do carregamente de imagens e do parseamento de bytes/dados.
+ */
 public class ResourceLibrary {
 	public static Image STONE_TITLE;
 	public static Image ENERGY_ICON;
@@ -55,6 +58,10 @@ public class ResourceLibrary {
 		}
 	}
 	
+	/**
+	 * Converte propriedades da imagem para um array de bytes.
+
+	 */
 	public static byte[] toByteArray(Image img) throws Exception {
 		int[] argb = new int[img.getWidth() * img.getHeight()];
 		img.getRGB(argb, 0, img.getWidth(), 0, 0, img.getWidth(), img.getHeight());
@@ -71,6 +78,11 @@ public class ResourceLibrary {
 		return baos.toByteArray();
 	}
 	
+	/**
+	 * Carrega uma imagem a partir de uma stream de dados.
+	 * @param dis
+	 * @return
+	 */
 	public static Image fromStream(DataInputStream dis) {
 		Image img = null;
 		try {
@@ -90,6 +102,11 @@ public class ResourceLibrary {
 		return img;
 	}
 	
+	/**
+	 * Carrega uma imagem a partir de um array de bytes.
+	 * @param bytes
+	 * @return
+	 */
 	public static Image fromByteArray(byte[] bytes) {
 		ByteArrayInputStream is = new ByteArrayInputStream(bytes);
 		DataInputStream dis = new DataInputStream(is);

@@ -12,8 +12,16 @@ import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 
+/**
+ * Classe que troca informações do jogo entre os jogadores.
+ */
 public class SendBoardCommand extends SimpleCommand implements ICommand {
 	
+	/**
+	 * Método que instancia ConnectionProxy e escreve em uma DatAOutputStream
+	 * os argumentos relativos ao estado atual do jogador. Após isto, dados do
+	 * oponente são recebidos e parseados.
+	 */
 	public void execute(INotification note) {
 		System.out.println("Sending board...");
 		ConnectionProxy connProxy = (ConnectionProxy) facade.retrieveProxy(ConnectionProxy.PROXY_NAME);

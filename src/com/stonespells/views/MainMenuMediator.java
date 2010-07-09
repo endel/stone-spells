@@ -7,6 +7,10 @@ import org.puremvc.java.patterns.mediator.Mediator;
 import com.stonespells.core.IRenderable;
 import com.stonespells.views.RenderMediator;
 
+/**
+ * Classe que faz a mediação entre os dados e os componentes de visualização
+ * do menu principal.
+ */
 public class MainMenuMediator extends Mediator implements IMediator {
 	
 	public static final String NAME = "MainMenuMediator";
@@ -26,15 +30,28 @@ public class MainMenuMediator extends Mediator implements IMediator {
 	private static final int BUY_SELECTION = 3;
 	private static final int EXIT_SELECTION = 4;
 	
+	/**
+	 * Construtor que configura o componente de visualizção a ser tratado
+	 * pelo mediador.
+	 */
 	public MainMenuMediator() {
 		super(NAME, null);
 		this.setViewComponent( new MainMenuUI(this) );
 	}
 	
+	/**
+	 * Método que retorna uma string com uma lista de notificação relevantes a
+	 * este mediador.
+	 */
 	public String[] listNotificationInterests() {
 		return new String[] {};
 	}
 	
+	/**
+	 * Método que lida com uma notificação recebida.
+	 * É verificado se o componente de visualização deve ser renderizado,
+	 * ou se alguma das opções do menu foi selecionada.
+	 */
 	public void handleNotification( INotification note )
 	{
 		if (note.getName().equals(RenderMediator.FLUSH)) {

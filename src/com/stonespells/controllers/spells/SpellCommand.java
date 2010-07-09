@@ -10,7 +10,6 @@ import com.stonespells.models.gameboard.SpellProxy;
 /**
  * Descreve o comportamento base para todas as Spells. 
  * Toda Spell deve estender esta classe e implementar {@link ISpellCommand}
- * @author Endel
  *
  */
 public abstract class SpellCommand extends SimpleCommand implements ISpellCommand {
@@ -20,6 +19,10 @@ public abstract class SpellCommand extends SimpleCommand implements ISpellComman
 	 */
 	private Object spellData;
 
+	/**
+	 * Método que trata da execução de determinado comando do feitiço, de acordo
+	 * com suas especificações.
+	 */
 	public void execute(INotification note) {
 		// Get this spell data
 		this.spellData = note.getBody();
@@ -72,10 +75,16 @@ public abstract class SpellCommand extends SimpleCommand implements ISpellComman
 		return (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
 	}
 	
+	/**
+	 * Indica se um feitiço pode ser lançado.
+	 */
 	public boolean canCast() {
 		return true;
 	}
 	
+	/**
+	 * Indica se um feitiço pode ser energizado.
+	 */
 	public boolean canEnergize() {
 		return true;
 	}

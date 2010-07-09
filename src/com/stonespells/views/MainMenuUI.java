@@ -11,17 +11,28 @@ import com.stonespells.core.GameView;
 import com.stonespells.core.IGameView;
 import com.stonespells.core.ResourceLibrary;
 
+/**
+ * Classe que carrega e pinta as imagens da tela do menu principal.
+ */
 public class MainMenuUI extends GameView implements IGameView {
 	
 	private Image logo;
 	private int selectedIndex = 0;
 	private Sprite options[];
 	private Image selectionIcon;
-	
+
+	/**
+	 * Construtor que especifica o mediador a tratar a comunição
+	 * entre dados e imagens do menu principal.
+	 */
 	public MainMenuUI(IMediator mediator) {
 		super(false, mediator);
 	}
 
+	/**
+	 * Método que faz o carregamento das imagens do menu principal,
+	 * alocandoas dentro de um vetor de sprites.
+	 */
 	public void initializeView() throws Exception {
 		logo = Image.createImage("/main-menu/logo.png");
 		
@@ -35,14 +46,27 @@ public class MainMenuUI extends GameView implements IGameView {
 		selectionIcon = ResourceLibrary.ENERGY_ICON;
 	}
 	
+	/**
+	 * Método que obtém o número de elementos salvos no vetor de sprites.
+	 */
 	public int getNumberOfOptions() {
 		return options.length;
 	}
 	
+	/**
+	 * Método que retorna a posição do elemento escolhi do menu de opções.
+	 */
 	public int getSelectedItem() {
 		return this.selectedIndex;
 	}
 	
+	/**
+	 * Método que trata as teclas pressionadas na tela do menu de opções.
+	 * De acordo com o botão pressionado, testa-se a posição do elemento pressionado,
+	 * muda-se o elemento selecionado, ou envia a notificação ao mediator de que determinado
+	 * item foi selecionado.
+	 * Após cada ação o mediador dá a "descarga" ao contexto gráfico.
+	 */
 	protected void keyPressed(int keyCode) {
 		int gameAction = getGameAction(keyCode);
 		
@@ -63,6 +87,10 @@ public class MainMenuUI extends GameView implements IGameView {
 		
 	}
 
+	/**
+	 * Método que obtém o contexto gráfico e efetua o posicionamento
+	 * e a pintura dos elementos contidos no vetor de sprites options.
+	 */
 	public void render() {
 		Graphics g = getGraphics();
 		super.render();
@@ -79,6 +107,9 @@ public class MainMenuUI extends GameView implements IGameView {
 		flushGraphics();
 	}
 	
+	/**
+	 * Método para a detruição do menu de opções.
+	 */
 	public void destroy() {}
 }
 

@@ -10,6 +10,10 @@ import org.puremvc.java.patterns.mediator.Mediator;
 import com.stonespells.core.Font;
 import com.stonespells.models.PagedContentProxy;
 
+/**
+ *  Classe que faz a mediação entre os dados e a visualização do conteúdo a ser
+ *  paginado à tela.
+ */
 public class PagedContentMediator extends Mediator implements IMediator {
 	public static final String NAME = "PagedContentMediator";
 	
@@ -23,6 +27,10 @@ public class PagedContentMediator extends Mediator implements IMediator {
 	private static final int CHARS_PER_LINE = 24;
 	public Sprite paginationIcon;
 	
+	/**
+	 * Construtor que cria o mediador e carrega uma imagem para a navegação na
+	 * visualização do conteúdo paginado na tela.
+	 */
 	public PagedContentMediator() {
 		super(NAME, null);
 		
@@ -33,15 +41,32 @@ public class PagedContentMediator extends Mediator implements IMediator {
 		}
 	}
 	
+	/**
+	 * Método que especifica a posição do conteúdo a ser exibido na tela.
+	 * @param x Especifica a posição x do conteúdo.
+	 * @param y Especifica a posição y do conteúdo.
+	 */
 	public void setPosition(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 	
+	/**
+	 * Método que retorna uma string com uma lista de notificação relevantes a
+	 * este mediador.
+	 */
 	public String[] listNotificationInterests() {
 		return new String[] { NEXT_PAGE, PRIOR_PAGE };
 	}
 	
+	/**
+	 * Método da classe mediadora que lida com notificações recebidas.
+	 * Se a notificação determinar que o conteúdo de uma página seja pintado na tela,
+	 * o conteúdo é pintado conforme o número de caracteres por linha determinado e é verificado
+	 * o índice da página e a forma em que o botão de navegação deve apresentar-se, conforme
+	 * o índice da página.
+	 * A notificação também pode determinar que se avance ou retroceda a página mostrada na tela.
+	 */
 	public void handleNotification( INotification note )
 	{
 		PagedContentProxy pagedContent = (PagedContentProxy) facade.retrieveProxy(PagedContentProxy.NAME);

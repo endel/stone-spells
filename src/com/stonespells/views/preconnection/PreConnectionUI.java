@@ -10,11 +10,21 @@ import com.stonespells.core.IGameView;
 import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.WindowView;
 
+/**
+ * Classe que possui e trata os componentes de visualização referentes
+ * às opções pré-conexão do jogador.
+ */
 public class PreConnectionUI extends WindowView implements IGameView {
 	
 	private Sprite title;
 	public Image CREATE_GAME;
 	
+	/**
+	 * Instancia a classe, especifica o mediador que fará a comunicação entre a
+	 * visualização e os dados e carrega as imagens a serem exibidas. E seta
+	 * a posição do sprite title.
+	 * @param mediator O mediador a fazer a conexão entre visualização e dados.
+	 */
 	public PreConnectionUI(IMediator mediator) {
 		super(false, mediator);
 		
@@ -28,6 +38,9 @@ public class PreConnectionUI extends WindowView implements IGameView {
 		title.setPosition(4, 5);
 	}
 	
+	/**
+	 * Método que efetua o tratamento de teclas neste estado do jogo.
+	 */
 	protected void keyPressed(int keyCode) {
 		// int gameAction = getGameAction(keyCode);
 		
@@ -40,6 +53,9 @@ public class PreConnectionUI extends WindowView implements IGameView {
 		flush();
 	}
 
+	/**
+	 * Método que faz a renderização do sprite title na posição especificada.
+	 */
 	public void render() {
 		super.render();
 		

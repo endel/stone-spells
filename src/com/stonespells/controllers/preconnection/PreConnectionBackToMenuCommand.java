@@ -10,26 +10,27 @@ import com.stonespells.views.MainMenuMediator;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
-
+/**
+ * Classe que trata do retorno do fluxo do jogo ao menu.
+ */
 public class PreConnectionBackToMenuCommand extends SimpleCommand implements ICommand {
-	
+	/**
+	 * Método que remove todoas as referências pré-conexão, todos os
+	 * proxies de conexão, e retorna o fluxo do jogo ao menu.
+	 */
 	public void execute(INotification note) {
 		
-		// Remove all PreConnection references
 		facade.removeMediator( PreConnectionMediator.NAME );
 		facade.removeCommand( PreConnectionMediator.BACK );
 		facade.removeCommand( PreConnectionMediator.CREATE );
 		facade.removeCommand( PreConnectionMediator.LIST );
 		((OptionsMenuMediator) facade.retrieveMediator(OptionsMenuMediator.NAME)).removeInitiatedReference( PreConnectionMediator.NAME );
 		
-		// Remove connection proxies
 		facade.removeProxy( ServerProxy.NAME );
 		facade.removeProxy( ClientProxy.NAME );
 		
-		// Back to menu
 		sendNotification(RenderMediator.REGISTER_CANVAS, facade.retrieveMediator(MainMenuMediator.NAME), null);
-		sendNotification(RenderMediator.FLUSH, null, null);
-		
+		sendNotification(RenderMediator.FLUSH, null, null);		
 	}
 
 }

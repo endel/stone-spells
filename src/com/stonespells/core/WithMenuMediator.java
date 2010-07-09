@@ -7,7 +7,6 @@ import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
 
 /**
  * Um Mediator que necessite de comandos de menu deve estender esta classe.
- * @author Endel
  */
 public abstract class WithMenuMediator extends Mediator implements IMediator, IWithMenuMediator {
 

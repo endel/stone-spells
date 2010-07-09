@@ -5,6 +5,9 @@ import org.puremvc.java.interfaces.ICommand;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 
+/**
+ * Classe que trata carcterísticas dos feitiços.
+ */
 public interface ISpellCommand extends ICommand {
 
 	/**

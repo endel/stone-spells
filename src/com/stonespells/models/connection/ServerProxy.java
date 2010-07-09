@@ -10,6 +10,10 @@ import org.puremvc.java.interfaces.IProxy;
 
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
+/**
+ * Classe que trata da parte do servidor bluetooth para a conexão de um 
+ * cliente.
+ */
 public class ServerProxy extends ConnectionProxy implements IProxy, Runnable {
 	
 	public static final String NAME = "ServerProxy";
@@ -22,11 +26,18 @@ public class ServerProxy extends ConnectionProxy implements IProxy, Runnable {
 	public static int MSG_LIST_USERS = 100;
 	public static int MSG_INIT = 101;
 	
+	/**
+	 * Construtor que atribui um nome ao servidor.
+	 */
 	public ServerProxy() {
 		super(NAME, new ServerVO());
 		this.connURL = "btspp://localhost:" + SERVICE_UUID.toString() + ";name=" + serviceName+";authenticate=false;encrypt=false";
 	}
 	
+	/**
+	 * Método que possibilita a descoberta do servidor para o cliente a conectar-se.
+	 * @throws Exception
+	 */
 	public void create() throws Exception {
 		localDevice = null;
 		localDevice = LocalDevice.getLocalDevice();
@@ -36,6 +47,11 @@ public class ServerProxy extends ConnectionProxy implements IProxy, Runnable {
 		thread.start();
 	}
 
+	/**
+	 * Método que abre o objeto para a conexão e automaticamente aceita
+	 * o cliente que requisita a conexão, notificando o cliente de que a conexão
+	 * foi efetuada.
+	 */
 	public void run() {
 		try {
 			connectionNotifier = (StreamConnectionNotifier) Connector.open( this.connURL );

@@ -4,7 +4,6 @@ import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
 
 /**
  * Um Mediator que necessite de comandos de menu deve implementar esta interface.
- * @author Endel
  */
 public interface IWithMenuMediator {
 	

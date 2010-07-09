@@ -13,6 +13,9 @@ import org.puremvc.java.interfaces.IMediator;
 
 import com.stonespells.views.RenderMediator;
 
+/**
+ * Trata de aspectos da visualização do jogo.
+ */
 public class GameView extends GameCanvas implements IGameView {
 	
 	private boolean initiated = false;
@@ -20,6 +23,11 @@ public class GameView extends GameCanvas implements IGameView {
 	protected static Image background = null;
 	protected IMediator mediator;
 	
+	/**
+	 * Construtor da classe
+	 * @param supressKeyEvents Indica que input de teclas não serão tratados aqui.
+	 * @param mediator O mediador a ser utilizado.
+	 */
 	public GameView(boolean supressKeyEvents, IMediator mediator) {
 		super(supressKeyEvents);
 		this.mediator = mediator;
@@ -32,6 +40,9 @@ public class GameView extends GameCanvas implements IGameView {
 		return initiated;		
 	}
 	
+	/**
+	 * Cria imagem de fundo e inicializ aa visualização do jogo.
+	 */
 	public void init() {
 		if (background == null) {
 			try {
@@ -53,7 +64,7 @@ public class GameView extends GameCanvas implements IGameView {
 	}
 	
 	/**
-	 * Get total width of the view
+	 * Obtém tamanho total da largura da visualização
 	 * @return int
 	 */
 	public int getTotalWidth() {
@@ -61,29 +72,42 @@ public class GameView extends GameCanvas implements IGameView {
 	}
 	
 	/**
-	 * Get total height of the view
+	 * Obtém tamanho total da altura da visualização
 	 * @return int
 	 */
 	public int getTotalHeight() {
 		return background.getHeight();
 	}
 	
+	/**
+	 * Obtém o contexto gráfico.
+	 */
 	public Graphics getGraphics() {
 		return super.getGraphics();
 	}
 	
 	/**
-	 * Delegate FLUSH to RenderMediator
+	 * Delega flush ao RenderMediator.
 	 */
 	protected void flush() {
 		GameFacade.getInstance().sendNotification(RenderMediator.FLUSH, this.mediator, null);
 		flushGraphics();
 	}
 	
+	/**
+	 * Envia notificação do sprite a ser renderizado.
+	 * @param toRender Sprite a ser renderizado.
+	 */
 	protected void renderPartial(Sprite toRender) {
 		GameFacade.getInstance().sendNotification(RenderMediator.RENDER_PARTIAL, toRender, null);
 	}
 	
+	/**
+	 * Envia notificação para GameFacade.
+	 * @param notificationName
+	 * @param body
+	 * @param type
+	 */
 	protected void sendNotification(String notificationName, Object body, String type) {
 		GameFacade.getInstance().sendNotification(notificationName, body, type);
 	}
@@ -93,7 +117,7 @@ public class GameView extends GameCanvas implements IGameView {
 	}
 	
 	/**
-	 * Render background into Canvas
+	 * Renderiza background no Canvas
 	 */
 	public void render() {
 		Graphics g = getGraphics();

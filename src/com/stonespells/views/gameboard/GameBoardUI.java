@@ -9,6 +9,10 @@ import org.puremvc.java.interfaces.IMediator;
 import com.stonespells.core.IGameView;
 import com.stonespells.core.WindowView;
 
+/**
+ * Classe que trata da pintura em tela de elementos relativos somente
+ * à interface do jogo.
+ */
 public class GameBoardUI extends WindowView implements IGameView {
 
 	private int lifePositionX[] = new int[2];
@@ -17,6 +21,15 @@ public class GameBoardUI extends WindowView implements IGameView {
 	private SpellHolderUI spellHolders[];
 	private int qtySlots;
 	
+	
+	/**
+	 * Construtor da classe que especifica um mediator para a comunicação entre dados
+	 * e elementos de visualização e o número de slots portadores de feitiços.
+	 * Também efetua o carregamento da imagem do coração que representa a vida do jogador,
+	 * e da imagem que indica a quem pertence a quantia de vida.
+	 * @param mediator O mediador especificado.
+	 * @param qtySlots O número de slots de feitiços
+	 */
 	public GameBoardUI(IMediator mediator, int qtySlots) {
 		super(false, mediator);
 		this.qtySlots = qtySlots;
@@ -40,10 +53,19 @@ public class GameBoardUI extends WindowView implements IGameView {
 		
 	}
 	
+	/**
+	 * Obtém o slot que se encontra na posição especificada.
+	 * @param i Posição do slot desejado.
+	 * @return O slot em questão.
+	 */
 	public SpellHolderUI getHolderAt(int i) {
 		return this.spellHolders[i];
 	}
 	
+	/**
+	 * Método que indica o botão pressionado e o trata de acordo com sua conexão
+	 * a determinado slot.
+	 */
 	protected void keyPressed(int keyCode) {
 		// int gameAction = getGameAction(keyCode);
 		
@@ -56,6 +78,9 @@ public class GameBoardUI extends WindowView implements IGameView {
 		flush();
 	}
 
+	/**
+	 * Método que adiciona os elementos da interface do jogo ao contexto gráfico.
+	 */
 	public void render() {
 		super.render();
 		
@@ -74,10 +99,16 @@ public class GameBoardUI extends WindowView implements IGameView {
 		}
 	}
 	
+	/**
+	 * Método que obtém a posição x do indicador de vida de determinado jogador.
+	 */
 	public int getLifePositionX(int player) {
 		return this.lifePositionX[player];
 	}
 	
+	/**
+	 * Método que obtém a posição y do indicador de vida dos jogadores.
+	 */
 	public int getLifePositionY() {
 		return 12;
 	}
