@@ -20,59 +20,53 @@ import com.stonespells.views.optionsmenu.OptionMenuItemMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 /**
- * Classe que registra mediadores, proxies e comandos.
+ * Command para o burst de registros inicial da aplicação. São registrados os
+ * Proxies, Mediators e Commands básicos para o funcionamento do jogo.
  */
 public class StartupCommand extends SimpleCommand implements ICommand {
 
-	/**
-	 * Neste método são inicializados os diversos elementos que serão utilizados
-	 * ao longo da execução do programa pelo framework PureMVC, para mediar a
-	 * comunicação entre as camadas do programa e a manipulação de seus dados através
-	 * de comandos.
-	 */
 	public void execute(INotification notification) {
 		// Initial mediators startup
-		facade.registerMediator( new MainMenuMediator() );
-		facade.registerMediator( new RenderMediator() );
-		
+		facade.registerMediator(new MainMenuMediator());
+		facade.registerMediator(new RenderMediator());
+
 		// Options menu startup
-		facade.registerMediator( new OptionsMenuMediator() );
-		facade.registerMediator( new OptionMenuItemMediator() );
-		facade.registerProxy( new OptionsMenuItemProxy() );
-		
+		facade.registerMediator(new OptionsMenuMediator());
+		facade.registerMediator(new OptionMenuItemMediator());
+		facade.registerProxy(new OptionsMenuItemProxy());
+
 		// Paged content startup
-		facade.registerProxy( new PagedContentProxy() );
-		facade.registerMediator( new PagedContentMediator() );
-		
+		facade.registerProxy(new PagedContentProxy());
+		facade.registerMediator(new PagedContentMediator());
+
 		// Spell and game basic info
-		facade.registerProxy( new PlayerProxy() );
-		facade.registerProxy( new SpellProxy() );
-		facade.registerProxy( new SpellListProxy() );
-		facade.registerProxy( new SpellListIOProxy() );
-		facade.registerProxy( new PlayContextProxy() );
-		facade.registerMediator( new GameBoardMediator() );
-		
-		/*try {
-			Logger.instance.println("\n");
-			for (int i=17;i<=23;i++) {
-				byte[] byteArray = ImageLibrary.toByteArray(Image.createImage("/stones/" + String.valueOf(i) + ".png"));
-				Logger.instance.println(byteArray);
-				
-				for (int j=0;j<byteArray.length;j++) {
-					Logger.instance.println(byteArray[j]);
-				}
-				Logger.instance.println("\n");
-			}
-			
-		} catch (Exception e) { e.printStackTrace(); }*/
-		
-		
-		
+		facade.registerProxy(new PlayerProxy());
+		facade.registerProxy(new SpellProxy());
+		facade.registerProxy(new SpellListProxy());
+		facade.registerProxy(new SpellListIOProxy());
+		facade.registerProxy(new PlayContextProxy());
+		facade.registerMediator(new GameBoardMediator());
+
+		/*
+		 * Gerador temporário para o byte array das imagens das spells
+		 * 
+		 * try { Logger.instance.println("\n"); for (int i=17;i<=23;i++) {
+		 * byte[] byteArray =
+		 * ImageLibrary.toByteArray(Image.createImage("/stones/" +
+		 * String.valueOf(i) + ".png")); Logger.instance.println(byteArray);
+		 * 
+		 * for (int j=0;j<byteArray.length;j++) {
+		 * Logger.instance.println(byteArray[j]); }
+		 * Logger.instance.println("\n"); }
+		 * 
+		 * } catch (Exception e) { e.printStackTrace(); }
+		 */
+
 		// Main menu commands
-		facade.registerCommand( MainMenuMediator.PLAY_SELECTED , PreparePreConnectionCommand.class);
-		facade.registerCommand( MainMenuMediator.INSTRUCTIONS_SELECTED, InstructionsShowCommand.class);
-		facade.registerCommand( MainMenuMediator.EXIT_SELECTED , ExitCommand.class);
-		
+		facade.registerCommand(MainMenuMediator.PLAY_SELECTED, PreparePreConnectionCommand.class);
+		facade.registerCommand(MainMenuMediator.INSTRUCTIONS_SELECTED, InstructionsShowCommand.class);
+		facade.registerCommand(MainMenuMediator.EXIT_SELECTED, ExitCommand.class);
+
 		sendNotification(RenderMediator.REGISTER_CANVAS, facade.retrieveMediator(MainMenuMediator.NAME), null);
 		sendNotification(RenderMediator.FLUSH, null, null);
 	}

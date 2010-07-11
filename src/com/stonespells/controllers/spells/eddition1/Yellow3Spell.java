@@ -19,11 +19,7 @@ public class Yellow3Spell extends SpellCommand implements ISpellCommand {
 
 	public void onCast() {
 		PlayerProxy player = this.getPlayContext().getPlayer();
-		
-		// TODO: adicionar condições para cast
-		if (player.getLife() < 5) {
-			player.addLife(20);
-		}
+		player.addLife(20);
 	}
 
 	public void onCreate() {
@@ -33,6 +29,11 @@ public class Yellow3Spell extends SpellCommand implements ISpellCommand {
 		getSpell().setColor(SpellProxy.COLOR_GOLD);
 		getSpell().setCost(7);
 
+	}
+
+	public boolean canCast() {
+		PlayerProxy player = this.getPlayContext().getPlayer();
+		return (player.getLife() < 5);
 	}
 
 	public void onEnergize() {

@@ -4,8 +4,8 @@ import javax.microedition.lcdui.Command;
 import javax.microedition.lcdui.CommandListener;
 import javax.microedition.lcdui.Displayable;
 
+import com.stonespells.core.GameFacade;
 import com.stonespells.core.Logger;
-import com.stonespells.facade.GameFacade;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 

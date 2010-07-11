@@ -13,33 +13,30 @@ import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
-/**Classe que sobrescreve o método execute de SimpleCommand e
- * trata de acionar o feitiço utilizado pelo jogador.
+/**
+ * Command que troca o estado do {@link GameBoardMediator} para
+ * GAMESTATE_WAITING_OPONENT. É responsável por disparar o evento onCast() das
+ * spells selecionadas.
  */
 public class CastSpellsCommand extends SimpleCommand implements ICommand {
-	
-	/**
-	 * Método que inicializa um mediador para o jogo, seta seu estado para estado
-	 * de espera, desabilita o menu e executa os efeitos dos feitiços acionados.
-	 * Após isto, ele renderiza os gráficos atualizados.
-	 */
+
 	public void execute(INotification note) {
 		Logger.instance.println("Vou dar cast!");
-		
+
 		GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
 		gameBoard.setGameState(GameBoardMediator.GAMESTATE_WAITING_OPONENT);
 
 		// Disable options and enable game state indicator
 		sendNotification(OptionsMenuMediator.DISABLE, null, null);
-		
+
 		// Do all spell effects
 		PlayerProxy player = ((PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME)).getPlayer();
 		SpellListProxy spellList = player.getSpellList();
 		spellList.castAllSelected();
 		spellList.dispatchAllEvents(SpellProxy.ON_TURN_END);
-		
+
 		// Flush gameboard graphics...
 		sendNotification(RenderMediator.FLUSH, gameBoard, null);
 	}
-	
+
 }

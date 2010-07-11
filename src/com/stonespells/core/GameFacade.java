@@ -1,11 +1,9 @@
-package com.stonespells.facade;
+package com.stonespells.core;
 import org.puremvc.java.interfaces.IFacade;
 import org.puremvc.java.patterns.facade.Facade;
 
 import com.stonespells.controllers.CommandTranslator;
 import com.stonespells.controllers.StartupCommand;
-import com.stonespells.core.App;
-import com.stonespells.core.Logger;
 
 /**
  * Classe onde é criada a Facade do jogo, por onde é feita a comunicação entre os

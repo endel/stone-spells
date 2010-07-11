@@ -132,13 +132,17 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 	 */
 	public void handleNotification( INotification note )
 	{
-		GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
 		
 		if ( note.getName().equals(ENABLE) ) {
 			this.hasMenu = true;
 			
 		} else if ( note.getName().equals(DISABLE)) {
 			this.hasMenu = false;
+		} else if ( note.getName().equals(SpellViewerMediator.CLOSE) ) {
+			GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
+			if (gameBoard.getGameState() == GameBoardMediator.GAMESTATE_ENERGIZE) {
+				this.hasMenu = false;
+			}
 			
 		} else if (note.getName().equals(GameBoardMediator.SLOT_SELECTED)) {
 			int gameState = ((GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME)).getGameState();
@@ -146,13 +150,17 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 		}
 		
 		mediator = ((RenderMediator) facade.retrieveMediator(RenderMediator.NAME)).getMediator();
-		if (!(mediator instanceof IWithMenuMediator) || !this.hasMenu) {
+		if (!(mediator instanceof IWithMenuMediator)) {
 			return;
 		}
 		
 		// render partial items when rendering entire mediator
 		// this notification is sent by RenderMediator
 		if ( note.getName().equals(RenderMediator.FLUSH) ) {
+			
+			if (!this.hasMenu) {
+				return;
+			}
 			
 			OptionsMenuUI viewComponent = (OptionsMenuUI) this.viewComponent;
 			

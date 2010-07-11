@@ -3,7 +3,6 @@ package com.stonespells.core;
 import javax.microedition.midlet.MIDlet;
 import javax.microedition.midlet.MIDletStateChangeException;
  
-import com.stonespells.facade.GameFacade;
 
 /**
  * Classe que trata da inicialização da midlet

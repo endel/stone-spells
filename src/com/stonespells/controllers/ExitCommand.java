@@ -4,7 +4,7 @@ import org.puremvc.java.interfaces.ICommand;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
-import com.stonespells.facade.GameFacade;
+import com.stonespells.core.GameFacade;
 
 /**
  * Classe que executa a notificação de que a aplicação foi destruida.

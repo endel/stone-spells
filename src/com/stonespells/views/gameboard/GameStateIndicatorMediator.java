@@ -7,8 +7,8 @@ import org.puremvc.java.interfaces.IMediator;
 import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.mediator.Mediator;
 
+import com.stonespells.core.GameFacade;
 import com.stonespells.core.ResourceLibrary;
-import com.stonespells.facade.GameFacade;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.views.RenderMediator;

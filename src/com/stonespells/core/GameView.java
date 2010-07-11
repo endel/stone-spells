@@ -9,7 +9,6 @@ import javax.microedition.lcdui.game.Sprite;
 
 import org.puremvc.java.interfaces.IMediator;
 
-import com.stonespells.facade.GameFacade;
 import com.stonespells.views.RenderMediator;
 
 /**

@@ -2,6 +2,7 @@ MIDlet-Version: 1.0.0
 MIDlet-Vendor: Endel e Klein
 MIDlet-Jar-URL: StoneSpells.jar
 MicroEdition-Configuration: CLDC-1.0
+MIDlet-2: LogView,,com.stonespells.core.LogView
 MicroEdition-Profile: MIDP-2.0
-MIDlet-1: App,,com.stonespells.core.App
+MIDlet-1: Stone Spells,,com.stonespells.core.App
 MIDlet-Name: Stone Spells v0.1

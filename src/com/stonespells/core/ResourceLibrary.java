@@ -9,7 +9,6 @@ import javax.microedition.lcdui.Image;
 import javax.microedition.media.Manager;
 import javax.microedition.media.Player;
 
-import com.stonespells.facade.GameFacade;
 
 /**
  * Classe que trata do carregamente de imagens e do parseamento de bytes/dados.

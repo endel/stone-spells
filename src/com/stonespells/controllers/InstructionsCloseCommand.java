@@ -10,17 +10,10 @@ import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
 /**
- * Classe que fecha os mediadores de comando da instância de facade.
+ * Command para fechar a janela de instruções e retornar para o menu principal.
  */
 public class InstructionsCloseCommand extends SimpleCommand implements ICommand {
-
-	/**
-	 * Método que sobrescreve execute de SimpleCommand.
-	 * O mediador, o comando previamente mapeado à instrução e 
-	 * os dados especificados do vetor hasCommand de OptionsMenuMediator
-	 * são removidos da memória.
-	 * O canvas é atualizado e renderizado novamente.
-	 */
+	
 	public void execute(INotification note) {
 		
 		facade.removeMediator( InstructionsMediator.NAME );

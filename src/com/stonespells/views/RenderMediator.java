@@ -12,8 +12,8 @@ import org.puremvc.java.patterns.observer.Notification;
 
 import com.stonespells.core.App;
 import com.stonespells.core.Font;
+import com.stonespells.core.GameFacade;
 import com.stonespells.core.GameView;
-import com.stonespells.facade.GameFacade;
 import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
@@ -112,7 +112,6 @@ public class RenderMediator extends Mediator implements IMediator {
 			this.currentMediatorName = mediator.getMediatorName();
 			this.current = (GameView) mediator.getViewComponent();
 			Display.getDisplay((App)this.viewComponent).setCurrent( this.current );
-			System.out.println("Registrei um canvas...");
 		
 		} else if (note.getName().equals(FLUSH)) {
 			

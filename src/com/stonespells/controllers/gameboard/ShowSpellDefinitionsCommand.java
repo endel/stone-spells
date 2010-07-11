@@ -35,7 +35,7 @@ public class ShowSpellDefinitionsCommand extends SimpleCommand implements IComma
 			spellList = ((PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME)).getOpponent().getSpellList();
 			SpellProxy spell = null;
 			
-			 /*
+			/*
 			 * coloca todas as spells que estão sendo lançadas contra o jogador
 			 * em um vetor temporário, e logo em seguida transforma o vetor em uma
 			 * SpellListProxy 
@@ -48,6 +48,9 @@ public class ShowSpellDefinitionsCommand extends SimpleCommand implements IComma
 				}
 			}
 			
+			/*
+			 * cria uma SpellListProxy de acordo com o vetor criado anteriormente
+			 */
 			spellList.create(spells.size());
 			for (int i=0;i<spells.size();i++) {
 				spell.create();
