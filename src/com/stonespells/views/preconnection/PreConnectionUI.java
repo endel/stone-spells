@@ -45,8 +45,7 @@ public class PreConnectionUI extends WindowView implements IGameView {
 		// int gameAction = getGameAction(keyCode);
 		
 		int key = keyCode - 49;
-		// check valid position of slot
-		if (key >= 0 && key < 9) {
+		if ((key >= 0 && key < 9) || keyCode < 0) {
 			sendNotification(PreConnectionMediator.LIST, mediator, null);
 		}
 		

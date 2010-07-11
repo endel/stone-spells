@@ -6,7 +6,6 @@ import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.core.Logger;
 import com.stonespells.models.gameboard.PlayContextProxy;
-import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;

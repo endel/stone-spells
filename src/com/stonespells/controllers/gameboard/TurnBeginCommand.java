@@ -41,7 +41,7 @@ public class TurnBeginCommand extends SimpleCommand implements ICommand {
 		if (isPlayerActive) {
 			gameBoard.setGameState(GameBoardMediator.GAMESTATE_ENERGIZE);
 			
-			player.addConcentration(8);
+			player.addConcentration(2);
 			player.getSpellList().dispatchAllEvents(SpellProxy.ON_TURN_BEGIN);
 			
 		} else {			
