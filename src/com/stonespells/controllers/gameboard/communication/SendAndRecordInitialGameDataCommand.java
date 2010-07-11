@@ -14,9 +14,18 @@ import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
 
+/**
+ * Classe que trata da troca inicial de dados entre os jogadores.
+ */
 public class SendAndRecordInitialGameDataCommand extends SimpleCommand implements
 		ICommand {
 	
+	/**
+	 * Método que instancia um connection proxy e testa se o jogador esta ativo, para
+	 * depois obter uma lsita de feitiços dele. Depois, os dados do jogador são enviados
+	 * em uma DataOutputStream, e os dados do oopnente são recebidos em uma DataInputStream.
+	 * Após isto, os dados do adversário são devidamente alocados. 
+	 */
 	public void execute(INotification note) {
 		ConnectionProxy connProxy = (ConnectionProxy) facade.retrieveProxy(ConnectionProxy.PROXY_NAME);
 		boolean playerActive = (connProxy.getProxyName().equals(ClientProxy.NAME));

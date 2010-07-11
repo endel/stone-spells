@@ -12,9 +12,6 @@ import com.stonespells.core.Serializable;
 
 /**
  * Proxy para manipulação das listas de feitiços.
- * 
- * @author Endel
- * 
  */
 public class SpellListProxy extends Proxy implements IProxy, Serializable {
 

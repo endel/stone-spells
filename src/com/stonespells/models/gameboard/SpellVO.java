@@ -5,9 +5,7 @@ import javax.microedition.lcdui.Image;
 import org.puremvc.java.interfaces.ICommand;
 
 /**
- * Spell Value Object
- * @author Endel
- *
+ * Classe contêiner com os dados relativos a um feitiço.
  */
 public class SpellVO {
 	

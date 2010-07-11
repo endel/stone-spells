@@ -17,6 +17,10 @@ import com.stonespells.facade.GameFacade;
 import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
+/**
+ * Classe que faz a mediação entre dados e componentes a serem renderizados
+ * em tela.
+ */
 public class RenderMediator extends Mediator implements IMediator {
 	
 	public static final String NAME = "RenderMediator";
@@ -31,12 +35,15 @@ public class RenderMediator extends Mediator implements IMediator {
 	private GameView current;
 	private String currentMediatorName;
 	
+	/**
+	 * Construtor que obtém a instância do aplicativo corrente.
+	 */
 	public RenderMediator() {
 		super(NAME, ((GameFacade) GameFacade.getInstance()).getApp());
 	}
 	
 	/**
-	 * Desenha uma String último Canvas registrado.
+	 * Desenha uma String no último Canvas registrado.
 	 *  
 	 * @param text
 	 * @param x
@@ -90,6 +97,12 @@ public class RenderMediator extends Mediator implements IMediator {
 		return Display.getDisplay((App)this.viewComponent).getCurrent();
 	}
 	
+	/**
+	 * Método que trata as notificações recebidas pela classe.
+	 * De acordo com a notificação, o método registra um canvas do aplicativo corrente
+	 * para onde as pinturas são feitas,renderiza os gráficos ou o menu, ou renderiza
+	 * elementos isolados no contexto gráfico.
+	 */
 	public void handleNotification( INotification note )
 	{
 		if (note.getName().equals(REGISTER_CANVAS)) {
@@ -99,6 +112,7 @@ public class RenderMediator extends Mediator implements IMediator {
 			this.currentMediatorName = mediator.getMediatorName();
 			this.current = (GameView) mediator.getViewComponent();
 			Display.getDisplay((App)this.viewComponent).setCurrent( this.current );
+			System.out.println("Registrei um canvas...");
 		
 		} else if (note.getName().equals(FLUSH)) {
 			

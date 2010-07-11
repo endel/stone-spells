@@ -18,6 +18,9 @@ import org.puremvc.java.interfaces.IProxy;
 import com.stonespells.core.Logger;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
+/**
+ *	Classe que trata os dados e efetua a conexão bluetooth do cliente.
+ */
 public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryListener {
 	
 	public static String NAME = "ClientProxy";
@@ -28,10 +31,17 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 	private Vector vector;
 	private ServiceRecord service;
 	
+	/**
+	 * Construtor que instancia o conjunto de dados do cliente.
+	 */
 	public ClientProxy() {
 		super(NAME, new ClientVO());
 	}
 	
+	/**
+	 * Método que busca um agente para buscar um dispositivo em que o
+	 * cliente possa conectar-se.
+	 */
 	public void connect() throws Exception {
 		localDevice = LocalDevice.getLocalDevice();
 		
@@ -40,7 +50,10 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 		discoveryAgent = localDevice.getDiscoveryAgent();
 		discoveryAgent.startInquiry(DiscoveryAgent.GIAC, this);
 	}
-
+	
+	/**
+	 * Método que adiciona o elemento encontrado para conexão em um Vector.
+	 */
 	public void deviceDiscovered(RemoteDevice remoteDevice, DeviceClass dc) {
 		vector.addElement( remoteDevice );
 		try {
@@ -52,6 +65,9 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 		}
 	}
 
+	/**
+	 * Método que faz a busca no Vector de elementos encontrados para conexão.
+	 */
 	public void inquiryCompleted(int arg0) {
 		UUID ids[] = { ServerProxy.SERVICE_UUID };
 
@@ -66,6 +82,10 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 		}		
 	}
 
+	 /**
+	  * Método que efetua a conexão do cliente no servidor encontrado.
+	  * Se nenhum servidor houver sido encontrado, o método retorna.
+	  */
 	public void serviceSearchCompleted(int arg0, int arg1) {
 		// TODO: 	Deixar que o cliente selecione o servidor 
 		// 			que deseja conectar ao invés de conectar 
@@ -89,6 +109,9 @@ public class ClientProxy extends ConnectionProxy implements IProxy, DiscoveryLis
 		sendNotification(PreConnectionMediator.CONNECTION_ACCEPTED, null, null);
 	}
 
+	/**
+	 * Método que trata o servidor descoberto, adicionando ele a um alista de servidores.
+	 */
 	public void servicesDiscovered(int arg0, ServiceRecord[] serviceList) {
 		Logger.instance.println("servicesDiscovered => " + arg0 + "   " + serviceList.length);
 		this.service = serviceList[0];

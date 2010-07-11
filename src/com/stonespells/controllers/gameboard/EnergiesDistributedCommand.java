@@ -8,9 +8,16 @@ import com.stonespells.core.Logger;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
-
+/**
+ * Classe que sobrescreve o método execute de SimpleCommand para indicar que
+ * é hora de energizar os feitiços.
+ */
 public class EnergiesDistributedCommand extends SimpleCommand implements ICommand {
 	
+	/**
+	 * Método que configura o estado da instância de GameBoardMediator para
+	 * GAMESTATE_SELECT_SPELLS e atualiza o contexto gráfico.
+	 */
 	public void execute (INotification note) {
 		Logger.instance.println("EnergiesDistributedCommand");
 		

@@ -19,9 +19,6 @@ import com.stonespells.core.Serializable;
 
 /**
  * Proxy para manipulação dos dados e eventos das spells.
- * 
- * @author Endel
- * 
  */
 public class SpellProxy extends Proxy implements IProxy, Serializable {
 

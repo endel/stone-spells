@@ -11,11 +11,15 @@ import com.stonespells.views.PagedContentMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
+/**
+ * Classe que trata do comando de criação de conexão do cliente.
+ */
 public class PreConnectionListCommand extends SimpleCommand implements ICommand {
 	
+	/**
+	 * Cria a conexão do cliente.
+	 */
 	public void execute(INotification note) {
-		
-		// Create client connection
 		
 		ClientProxy client = new ClientProxy();
 		facade.registerProxy(client);

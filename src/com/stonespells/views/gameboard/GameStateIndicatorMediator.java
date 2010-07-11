@@ -14,6 +14,10 @@ import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuUI;
 
+/**
+ * Classe que faz a mediação entre os dados do estado do jogo e os elementos
+ * a serem renderizados de acordo com o estado do jogo.
+ */
 public class GameStateIndicatorMediator extends Mediator implements IMediator {
 	public static final String NAME = "ConcentrateIndicatorMediator";
 	
@@ -21,19 +25,34 @@ public class GameStateIndicatorMediator extends Mediator implements IMediator {
 	public static final String ENABLE = "ConcentrateIndicatorEnable";
 	public static final String DISABLE = "ConcentrateIndicatorDisable";
 	
+	/**
+	 * Construtor da classe.
+	 */
 	public GameStateIndicatorMediator() {
 		super(NAME, null);
 	}
 	
+	/**
+	 * Método que retorna um array de strings que representam as notificações
+	 * relevantes a esta classe.
+	 */
 	public String[] listNotificationInterests() {
 		return new String[] { ENABLE, DISABLE };
 	}
 	
+	/**
+	 * Método que retorna uma booleana que representa o estado do jogo.
+	 */
 	public boolean isEnabled() {
 		int gameState = this.getGameBoard().getGameState();
 		return (gameState == GameBoardMediator.GAMESTATE_WAITING_OPONENT || gameState == GameBoardMediator.GAMESTATE_ENERGIZE);
 	}
-	
+	/**
+	 * Método que lida com notificações recebidas.
+	 * Renderiza o background, e, se o estado do jogador for o de energizar seus feitiços,
+	 * renderiza o indicador de concentração. Se o estado for de espera, exibe na tela
+	 * a imagem que indica que o jogador deve esperar. 
+	 */
 	public void handleNotification( INotification note ) {
 		
 		// this notification is sent by RenderMediator
@@ -90,9 +109,11 @@ public class GameStateIndicatorMediator extends Mediator implements IMediator {
 		}
 	}
 	
+	/**
+	 * Método que obtém um mediador para o tratamento do jogo.
+	 */
 	private GameBoardMediator getGameBoard() {
 		return (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
 		
-	}
-	
+	}	
 }

@@ -14,8 +14,16 @@ import com.stonespells.views.gameboard.GameStateIndicatorMediator;
 import com.stonespells.views.gameboard.SpellHolderMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
+/**
+ * Classe que ajusta o estado dos comandos para inicializar o jogo.
+ */
 public class PrepareGameCommand extends SimpleCommand implements ICommand {
 
+	/**
+	 * Método que registra mediadores de facade, remove comandos relativos
+	 * a conexão, ajusta a lista de feitiços do jogador, registra comandos do jogo
+	 * e indica o início do turno do jogador.
+	 */
 	public void execute(INotification note) {
 		Logger.instance.println("Prepare game!");
 

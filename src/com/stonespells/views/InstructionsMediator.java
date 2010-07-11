@@ -12,6 +12,10 @@ import com.stonespells.models.PagedContentProxy;
 import com.stonespells.models.optionsmenu.OptionsMenuItemProxy;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
+/**
+ * Classe que faz a mediação entre as propriedades da tela de instruções
+ * e a visualização dela.
+ */
 public class InstructionsMediator extends WithMenuMediator implements IMediator, IWithMenuMediator {
 	
 	public static final String NAME = "InstructionsMediator";
@@ -19,11 +23,19 @@ public class InstructionsMediator extends WithMenuMediator implements IMediator,
 	// Notifications
 	public static final String CLOSE = "InstructionsClose";
 	
+	/**
+	 * Construtor que configura o componente de visualizção a ser tratado
+	 * pelo mediador.
+	 */
 	public InstructionsMediator() {
 		super(NAME, null);
 		this.setViewComponent(new InstructionsUI(this));
 	}
 	
+	/**
+	 * Método que trata as ações a serem executadas no registro deste mediador.
+	 * É atribuido um título a janela, e o conteúdo a ser escrito na tela é especificado.
+	 */
 	public void onRegister() {
 		((WindowView) this.viewComponent).setTitle("Regras gerais");
 		
@@ -33,10 +45,19 @@ public class InstructionsMediator extends WithMenuMediator implements IMediator,
 		((PagedContentMediator) facade.retrieveMediator(PagedContentMediator.NAME)).setViewComponent(pagedContent.getData());
 	}
 	
+	/**
+	 * Método que retorna uma string com uma lista de notificação relevantes a
+	 * este mediador.
+	 */
 	public String[] listNotificationInterests() {
 		return new String[] {};
 	}
 	
+	/**
+	 * Método que lida com uma notificação recebida.
+	 * É verificado se o componente de visualização deve ser renderizado,
+	 * o conteúdo especificado na página é alocado, e posicionado na janela.
+	 */
 	public void handleNotification( INotification note )
 	{
 		if (note.getName().equals(RenderMediator.FLUSH)) {
@@ -50,6 +71,10 @@ public class InstructionsMediator extends WithMenuMediator implements IMediator,
 		}
 	}
 
+	/**
+	 * Método que retorna um proxy para o tratamente do item que
+	 * executa o fechamento da tela de instruções.
+	 */
 	public OptionsMenuItemProxy getMenuOption(int side) {
 		OptionsMenuItemProxy item = (OptionsMenuItemProxy) facade.retrieveProxy(OptionsMenuItemProxy.NAME);
 		item.create();

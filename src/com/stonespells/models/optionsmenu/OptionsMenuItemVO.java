@@ -3,10 +3,7 @@ package com.stonespells.models.optionsmenu;
 import javax.microedition.lcdui.game.Sprite;
 
 /**
- * Options Menu Item Value Object
- * 
- * @author Endel
- *
+ * Classe contêiner que possui os dados relativos a um item do menu.
  */
 public class OptionsMenuItemVO {
 	

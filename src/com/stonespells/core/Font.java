@@ -3,7 +3,9 @@ package com.stonespells.core;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
 
-
+/**
+ * Classe que trata o uso de fonte para escrita
+ */
 public class Font {
     // additional space between characters
     public int charS = 0;
@@ -23,11 +25,16 @@ public class Font {
     // the bitmap font image
     private Image bitmapFont;
     
-    /** Creates a new instance of Font */
+    /**
+     * Instancia a classe e passa o caminho para imagem com fontes. 
+      */
     public Font(String imagePath) {
     	this.load(imagePath);
     }
     
+    /**
+     * Carrega fontes.
+     */
     public boolean load(String imagePath){
         try{
             // load the bitmap font
@@ -42,11 +49,23 @@ public class Font {
         return (!useDefault);
     }
     
+    /**
+     * Descarrega fontes
+     */
     public void unload(){
         // make sure the object get's destroyed
         bitmapFont = null;
     }
     
+    /**
+     * Desenha um caractere.
+     * @param g O contexto gráfico.
+     * @param cIndex Índice do caractere na imagem.
+     * @param x Posição x do caractere.
+     * @param y Posição y do caractere.
+     * @param w largura do caractere.
+     * @param h Altura do caractere.
+     */
     public void drawChar(Graphics g, int cIndex, int x, int y, int w, int h){
          // non printable characters don't need to be drawn
         if (cIndex < 33){
@@ -73,6 +92,13 @@ public class Font {
         g.drawImage(bitmapFont, -((cx * w - x) -2 - (4*w)), y, Graphics.TOP | Graphics.LEFT);
     }
     
+    /**
+     * Desenha uma string.
+     * @param g O contexto gráfico.
+     * @param sTxt A string a ser desenhada na tela.
+     * @param x Posição x.
+     * @param y Posição y.
+     */
     public void drawString(Graphics g, String sTxt, int x, int y){
         // get the strings length
         int len = sTxt.length();

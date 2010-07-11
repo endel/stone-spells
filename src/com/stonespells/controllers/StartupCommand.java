@@ -19,8 +19,17 @@ import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionMenuItemMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
+/**
+ * Classe que registra mediadores, proxies e comandos.
+ */
 public class StartupCommand extends SimpleCommand implements ICommand {
 
+	/**
+	 * Neste método são inicializados os diversos elementos que serão utilizados
+	 * ao longo da execução do programa pelo framework PureMVC, para mediar a
+	 * comunicação entre as camadas do programa e a manipulação de seus dados através
+	 * de comandos.
+	 */
 	public void execute(INotification notification) {
 		// Initial mediators startup
 		facade.registerMediator( new MainMenuMediator() );

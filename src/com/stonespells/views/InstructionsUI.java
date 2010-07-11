@@ -9,10 +9,17 @@ import com.stonespells.core.IGameView;
 import com.stonespells.core.ResourceLibrary;
 import com.stonespells.core.WindowView;
 
+/**
+ * Classe que faz o carregamente do botão de instruções e sua pintura na tela.
+ */
 public class InstructionsUI extends WindowView implements IGameView {
 
 	public Image title;
 	
+	/**
+	 * Construtor que especifica o mediador a tratar do uso do botão de instruções
+	 * e carrega a imagem dele.
+	 */
 	public InstructionsUI(IMediator mediator) {
 		super(false, mediator);
 		try {
@@ -26,6 +33,10 @@ public class InstructionsUI extends WindowView implements IGameView {
 		
 	}
 	
+	/**
+	 * Método que trata uma tecla pressionada pelo jogador, enviando uma mensagem
+	 * ao mediador especificado no construtor da classe.
+	 */
 	protected void keyPressed(int keyCode) {
 		int gameAction = getGameAction(keyCode);
 		
@@ -37,6 +48,10 @@ public class InstructionsUI extends WindowView implements IGameView {
 		flush();
 	}
 
+	/**
+	 * Método que renderiza o item que possibilita a visualização da tela 
+	 * de instruções .
+	 */
 	public void render() {
 		super.render();
 		Graphics g = this.getGraphics();

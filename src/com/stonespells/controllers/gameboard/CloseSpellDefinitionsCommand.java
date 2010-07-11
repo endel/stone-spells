@@ -9,20 +9,20 @@ import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.gameboard.SpellViewerMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
+/**
+ * Classe que sobrescreve o método execute de SimpleCommand a fim de 
+ * apagar da tela as descrições dos feitiços.
+ * 
+ */
 public class CloseSpellDefinitionsCommand extends SimpleCommand implements ICommand {
-	
+	/**
+	 * Método que remove o mediador entre a visualização de feitiços e seus dados,
+	 * apagando suas descrições e atualizando o contexto gráfico.
+	 */
 	public void execute( INotification note ) {
 		
 		GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
 		sendNotification(RenderMediator.REGISTER_CANVAS, gameBoard, null);
-		
-		// TODO: refractor...
-		// se estiver visualizando as spells do oponente, muda o estado do 
-		// jogo para GAMESTATE_ENERGIZE
-		if (gameBoard.getGameState() == GameBoardMediator.GAMESTATE_VIEWING_OPONENT_SPELLS) {
-			// TODO: enviar notificação 
-			gameBoard.setGameState( GameBoardMediator.GAMESTATE_ENERGIZE );
-		}
 		
 		// Remove Spell Viewer definitions
 		facade.removeMediator( SpellViewerMediator.NAME );

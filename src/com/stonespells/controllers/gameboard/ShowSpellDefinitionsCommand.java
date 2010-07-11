@@ -16,10 +16,18 @@ import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.SpellViewerMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
+/**
+ * Classe exibe ao jogador uma lsita de feitiços.
+ */
 public class ShowSpellDefinitionsCommand extends SimpleCommand implements ICommand {
 	
 	public static final String CAST_LIST = "cast_list";
-	
+	/**
+	 * Método onde uma lista de spells é alocada. 
+	 * Todas as spells que estão sendo lançadas contra o jogador
+	 * são colocadas em um vetor temporário, e logo em seguida 
+	 * o vetor é transformado em uma SpellListProxy 
+	 */
 	public void execute (INotification note) {
 		SpellListProxy spellList = (SpellListProxy) facade.retrieveProxy(SpellListProxy.NAME);
 		
@@ -27,7 +35,7 @@ public class ShowSpellDefinitionsCommand extends SimpleCommand implements IComma
 			spellList = ((PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME)).getOpponent().getSpellList();
 			SpellProxy spell = null;
 			
-			/*
+			 /*
 			 * coloca todas as spells que estão sendo lançadas contra o jogador
 			 * em um vetor temporário, e logo em seguida transforma o vetor em uma
 			 * SpellListProxy 

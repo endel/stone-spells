@@ -5,8 +5,6 @@ import org.puremvc.java.patterns.proxy.Proxy;
 
 /**
  * Proxy para manipulação dos dados de jogadores.
- * @author Endel
- *
  */
 public class PlayerProxy extends Proxy implements IProxy {
 	
@@ -22,7 +20,7 @@ public class PlayerProxy extends Proxy implements IProxy {
 	}
 	
 	/**
-	 * Cria um novo objeto {@link PlayerVO} à ser manipulado.
+	 * Cria um novo objeto {@link PlayerVO} a ser manipulado.
 	 */
 	public void create() {
 		PlayerVO player = new PlayerVO();

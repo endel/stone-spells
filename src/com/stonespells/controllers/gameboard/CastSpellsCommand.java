@@ -13,8 +13,16 @@ import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
+/**Classe que sobrescreve o método execute de SimpleCommand e
+ * trata de acionar o feitiço utilizado pelo jogador.
+ */
 public class CastSpellsCommand extends SimpleCommand implements ICommand {
 	
+	/**
+	 * Método que inicializa um mediador para o jogo, seta seu estado para estado
+	 * de espera, desabilita o menu e executa os efeitos dos feitiços acionados.
+	 * Após isto, ele renderiza os gráficos atualizados.
+	 */
 	public void execute(INotification note) {
 		Logger.instance.println("Vou dar cast!");
 		

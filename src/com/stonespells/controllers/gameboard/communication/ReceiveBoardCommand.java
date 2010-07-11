@@ -12,12 +12,19 @@ import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
+import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
-import com.stonespells.views.optionsmenu.OptionsMenuMediator;
-
+/**
+ * Classe que trata o recebimento de mensagens do jogo.
+ */
 public class ReceiveBoardCommand extends SimpleCommand implements
 		ICommand {
 	
+	/**
+	 * Método que cria um proxy de conexão e um proxy com o contexto do jogo.
+	 * Os dados do jogador e do adversário são então tratados, ou o jogo
+	 * é finalizado se necessário.
+	 */
 	public void execute(INotification note) {
 		Logger.instance.println("Waiting to receive opponent board...");
 		ConnectionProxy connProxy = (ConnectionProxy) facade.retrieveProxy(ConnectionProxy.PROXY_NAME);
@@ -59,14 +66,13 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 		
 		Logger.instance.println("Received successfully!");
 		
+		// Verifica se precisa mostrar a lista de
+		
 		sendNotification(GameBoardMediator.TURN_BEGIN, null, null);
 		
-		// Show oponent spells if he casted something
+		System.out.println("Oponent cast spells? " + playContext.getOpponent().getSpellList().hasCastSpell() );
 		if ( playContext.getOpponent().getSpellList().hasCastSpell() ) {
-			GameBoardMediator gameBoard = (GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME);
-			gameBoard.setGameState(GameBoardMediator.GAMESTATE_VIEWING_OPONENT_SPELLS);
-			
-			sendNotification(OptionsMenuMediator.ENABLE, null, null);
+
 			sendNotification(GameBoardMediator.OPTION_VIEW, null, ShowSpellDefinitionsCommand.CAST_LIST);
 		}
 	}

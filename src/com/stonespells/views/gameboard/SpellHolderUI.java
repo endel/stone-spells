@@ -5,6 +5,11 @@ import javax.microedition.lcdui.game.Sprite;
 
 import com.stonespells.views.RenderableItemUI;
 
+/**
+ * Classe contêiner que faz o carregamento e armazena as imagens do slot
+ * de feitiços: o fundo de um slot selecionado, o slot, e o indicador de
+ * um slot energizado.
+ */
 public class SpellHolderUI extends RenderableItemUI {
 	
 	public static Sprite holderSprite;

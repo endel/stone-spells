@@ -9,8 +9,19 @@ import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.gameboard.GameBoardMediator;
 
+/**
+ * Classe que trata da energização propriamente dita dos feitiços.
+ *
+ */
 public class EnergizeSpellCommand extends SimpleCommand implements ICommand {
 	
+	/**
+	 * Método que testa a possibilidade da energização de um feitiço e, se possível
+	 * converte um ponto de concentração do jogador e um ponto de concentração de um
+	 * feitiço.
+	 * Se o jogador não possuir mais pontos de concentração para distribuir, o jogo sai deste
+	 * estado.
+	 */
 	public void execute(INotification note) {
 		SpellProxy spell = (SpellProxy) note.getBody();
 		

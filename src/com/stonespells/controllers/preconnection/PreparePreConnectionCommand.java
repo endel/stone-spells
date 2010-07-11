@@ -11,8 +11,16 @@ import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 import com.stonespells.views.preconnection.PreConnectionMediator;
 
+/**
+ * Classe que trata o registro de comandos anterior à conexão
+ *
+ */
 public class PreparePreConnectionCommand extends SimpleCommand implements ICommand {
 
+	/**
+	 * A classse PreConnectionMediator é instanciada, o jogador tem sua lista de feitiços
+	 * lida, PlayerProxy é instanciada e os comandos pré-conexão são registrados.
+	 */
 	public void execute(INotification notification) {
 		
 		PreConnectionMediator preConnection = new PreConnectionMediator();

@@ -17,6 +17,9 @@ import com.stonespells.views.RenderMediator;
 import com.stonespells.views.optionsmenu.OptionMenuItemMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;
 
+/**Classe que faz a mediação entre o jogo e componentes de visualização,
+ * de acordo com as notificações especificadas. 
+ */
 public class GameBoardMediator extends WithMenuMediator implements IMediator, IWithMenuMediator {
 	
 	public static final String NAME = "GameBoardMediator";
@@ -39,30 +42,50 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 	public static final int GAMESTATE_ENERGIZE = 0;
 	public static final int GAMESTATE_SELECT_SPELLS = 1;
 	public static final int GAMESTATE_WAITING_OPONENT = 2;
-	public static final int GAMESTATE_VIEWING_OPONENT_SPELLS = 3;
 	
 	private static final int QTY_SLOTS = 9;
 	
 	private int gameState = GAMESTATE_ENERGIZE;
 	
+	/**
+	 * Contrutor da classe. Instancia view passando como parâmetro a própria classe
+	 * mediador e a quantidade de slots no jogo.
+	 */
 	public GameBoardMediator() {
 		super(NAME, null);
 		GameBoardUI view = new GameBoardUI(this, QTY_SLOTS);
 		this.setViewComponent(view);
 	}
 	
+	/**
+	 * Método que configura o estado do jogo.
+	 * @param state Estado do jogo.
+	 */
 	public void setGameState(int state) {
 		this.gameState = state;
 	}
 	
+	/**
+	 * Método que retorna o estado do jogo.
+	 * @return O estado do jogo.
+	 */
 	public int getGameState() {
 		return this.gameState;
 	}
 	
+	/**
+	 * Método que retorna um array de notificações relevantes ao mediador presente.
+	 */
 	public String[] listNotificationInterests() {
 		return new String[] { GameBoardMediator.SLOT_SELECTED };
 	}
 	
+	/**
+	 * Método que lida com determinada notificação. Obtém insformações do jogador e de
+	 * sua lsita de spells.Renderiza as informações do jogador ou o contêiner de spells,
+	 * ou faz o registro do canvas que possui as opções do jogador.
+	 * @param A notificação especificada.
+	 */
 	public void handleNotification( INotification note ) {
 		PlayContextProxy playContext = (PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME);
 		SpellListProxy hand = playContext.getPlayer().getSpellList();
@@ -125,6 +148,7 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 					// TODO: play error sound
 					Logger.instance.println("Insuficient concentration points for '" + spell.getName() + "'");
 				}
+				
 			}
 			
 		} else if (note.getName().equals(RenderMediator.REGISTER_CANVAS)) {
@@ -134,6 +158,11 @@ public class GameBoardMediator extends WithMenuMediator implements IMediator, IW
 		}
 	}
 
+	/**
+	 * Método que instancia um proxy para manipulação dos dados de um item do menu,
+	 * e trata as opções de acordo com o parâmetro passado
+	 * @side Especifica posição dos items deste menu.
+	 */
 	public OptionsMenuItemProxy getMenuOption(int side) {
 		OptionsMenuItemProxy item = (OptionsMenuItemProxy) facade.retrieveProxy(OptionsMenuItemProxy.NAME);
 		item.create();
