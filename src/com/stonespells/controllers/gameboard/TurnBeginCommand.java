@@ -7,7 +7,6 @@ import org.puremvc.java.patterns.command.SimpleCommand;
 import com.stonespells.core.Logger;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
-import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
@@ -42,12 +41,10 @@ public class TurnBeginCommand extends SimpleCommand implements ICommand {
 		if (isPlayerActive) {
 			gameBoard.setGameState(GameBoardMediator.GAMESTATE_ENERGIZE);
 			
-			player.addConcentration(2);
-			SpellListProxy spellList = player.getSpellList();
-			spellList.dispatchAllEvents(SpellProxy.ON_TURN_BEGIN);
+			player.addConcentration(8);
+			player.getSpellList().dispatchAllEvents(SpellProxy.ON_TURN_BEGIN);
 			
 		} else {			
-			
 			gameBoard.setGameState(GameBoardMediator.GAMESTATE_WAITING_OPONENT);
 		}
 		

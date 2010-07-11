@@ -12,7 +12,6 @@ import com.stonespells.models.connection.ConnectionProxy;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
-import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
 /**
  * Classe que trata o recebimento de mensagens do jogo.
@@ -66,11 +65,9 @@ public class ReceiveBoardCommand extends SimpleCommand implements
 		
 		Logger.instance.println("Received successfully!");
 		
-		// Verifica se precisa mostrar a lista de
-		
 		sendNotification(GameBoardMediator.TURN_BEGIN, null, null);
 		
-		System.out.println("Oponent cast spells? " + playContext.getOpponent().getSpellList().hasCastSpell() );
+		// Verifica se precisa mostrar a lista de spells lançadas contra o jogador
 		if ( playContext.getOpponent().getSpellList().hasCastSpell() ) {
 
 			sendNotification(GameBoardMediator.OPTION_VIEW, null, ShowSpellDefinitionsCommand.CAST_LIST);

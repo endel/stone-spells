@@ -17,8 +17,10 @@ public class White1Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCast() {
-		// TODO Auto-generated method stub
-
+		SpellProxy targetSpellAtPos = this.getPlayContext().getOpponent().getSpellList().getSpellAtPosition(this.getSpell().getPosition());
+		if (targetSpellAtPos != null && targetSpellAtPos.isCasting()) {
+			this.getPlayContext().getPlayer().addLife( 1 );
+		}
 	}
 
 	public void onCreate() {

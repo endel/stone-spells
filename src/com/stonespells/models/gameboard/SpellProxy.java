@@ -400,7 +400,6 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 		 * TODO: o listener deve estar presente no startup para poder disparar 
 		 * eventos das stones do adversário
 		 */
-		
 		if (listener != null) {
 			listener.execute(new Notification(eventType, this.getData(), null));
 		}
@@ -412,7 +411,6 @@ public class SpellProxy extends Proxy implements IProxy, Serializable {
 	public void cast() {
 		this.setSelected(false);
 		this.setCasting(true);
-		dispatchEvent(ON_CAST);
 		this.addConcentration(-this.getCost());
 	}
 

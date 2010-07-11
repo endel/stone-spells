@@ -7,7 +7,6 @@ import org.puremvc.java.patterns.command.SimpleCommand;
 import com.stonespells.core.Logger;
 import com.stonespells.models.gameboard.PlayContextProxy;
 import com.stonespells.models.gameboard.PlayerProxy;
-import com.stonespells.models.gameboard.SpellListProxy;
 import com.stonespells.models.gameboard.SpellProxy;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.GameBoardMediator;
@@ -28,13 +27,12 @@ public class CastSpellsCommand extends SimpleCommand implements ICommand {
 
 		// Disable options and enable game state indicator
 		sendNotification(OptionsMenuMediator.DISABLE, null, null);
-
+		
 		// Do all spell effects
-		PlayerProxy player = ((PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME)).getPlayer();
-		SpellListProxy spellList = player.getSpellList();
-		spellList.castAllSelected();
-		spellList.dispatchAllEvents(SpellProxy.ON_TURN_END);
-
+		PlayContextProxy playContext = ((PlayContextProxy) facade.retrieveProxy(PlayContextProxy.NAME));
+		playContext.getPlayer().getSpellList().castAllSelected();
+		playContext.getPlayer().getSpellList().dispatchAllEvents(SpellProxy.ON_TURN_END);
+		
 		// Flush gameboard graphics...
 		sendNotification(RenderMediator.FLUSH, gameBoard, null);
 	}

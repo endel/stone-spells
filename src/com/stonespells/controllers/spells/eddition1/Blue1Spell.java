@@ -17,7 +17,7 @@ public class Blue1Spell extends SpellCommand implements ISpellCommand {
 	}
 
 	public void onCast() {
-		getSpell().swapPosition(getSpell().getConcentration()-1);
+		// getSpell().swapPosition(getSpell().getConcentration()-1);
 	}
 
 	public void onCreate() {

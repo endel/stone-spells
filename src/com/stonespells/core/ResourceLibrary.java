@@ -6,7 +6,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 import javax.microedition.lcdui.Image;
-import javax.microedition.media.Manager;
 import javax.microedition.media.Player;
 
 
@@ -59,7 +58,10 @@ public class ResourceLibrary {
 	
 	/**
 	 * Converte propriedades da imagem para um array de bytes.
-
+	 * 
+	 * @param img
+	 * @return byte array
+	 * @throws Exception
 	 */
 	public static byte[] toByteArray(Image img) throws Exception {
 		int[] argb = new int[img.getWidth() * img.getHeight()];

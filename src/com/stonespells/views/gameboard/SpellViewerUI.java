@@ -24,6 +24,7 @@ public class SpellViewerUI extends WindowView {
 	public int positions[];
 	public int currentItem;
 	private SpellListVO spellList;
+	private int slotSelected = 0;
 	
 	/**
 	 * Construtor da classe que recebe um mediador que fará a comunicação entre
@@ -46,6 +47,7 @@ public class SpellViewerUI extends WindowView {
 		for (int i=0;i<positions.length;i++) {
 			if (positions[i] == slotSelected) {
 				this.currentItem = i;
+				this.slotSelected = slotSelected;
 				mediator.handleNotification( new Notification(SpellViewerMediator.SPELL_SELECTED, this.spellList.spells[i], null) );
 				break;
 			}
@@ -74,23 +76,26 @@ public class SpellViewerUI extends WindowView {
 		int imgWidth = imgList[0].getWidth() - 8;
 		int imgListCenterX = this.getTotalWidth() / 2 - (imgWidth * qty) / 2;
 		
-		int textWidth = Font.charW * (qty + 4);
-		int textCenterX = this.getTotalWidth() / 2 - textWidth / 2;
-		
 		int bottomBoxY = this.getTotalHeight() / 2 + this.getBoxHeight() / 2 - 28;
 
 		String numbers = "";
+		int charLen = qty;
 		for (int i=0;i < qty;i++) {
 			
-			boolean isSelected = (this.currentItem == this.spellList.spells[i].position);
+			boolean isSelected = (slotSelected == this.spellList.spells[i].position);
 			this.imgList[i].setPosition(imgListCenterX + (i * (imgWidth)), bottomBoxY + (isSelected ? -8 : 0) );
 			this.renderPartial( this.imgList[i] );
 			
 			numbers += String.valueOf(positions[i] + 1);
 			if (i < qty-1) {
+				charLen++;
 				numbers += "-";
 			}
 		}
+		
+		int textWidth = Font.charW * (charLen);
+		int textCenterX = (imgWidth/2 - textWidth/2) + (this.getTotalWidth() / 2);  // this.getTotalWidth() / 2 - textWidth / 2;
+		//textCenterX +=  / 2;
 		
 		int costX = (this.getTotalWidth()/2 + this.getBoxWidth()/2) - 30;
 		int costY = this.getTotalHeight()/2 - this.getBoxHeight()/2 + 8;
@@ -119,6 +124,7 @@ public class SpellViewerUI extends WindowView {
 		for (int i=0;i<positions.length;i++) {
 			if (this.positions[i] == spell.getPosition()) {
 				this.currentItem = i;
+				this.slotSelected = spell.getPosition();
 			}
 		}
 		

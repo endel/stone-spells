@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.util.Vector;
 
 import org.puremvc.java.interfaces.IProxy;
 import org.puremvc.java.patterns.proxy.Proxy;
@@ -64,6 +65,23 @@ public class SpellListProxy extends Proxy implements IProxy, Serializable {
 		spell.setData( spellData );
 		return spell;
 	}
+	
+	/**
+	 * Obtém uma spell em determinada posição do tabuleiro.
+	 * 
+	 * @param i
+	 * @return SpellProxy
+	 */
+	public SpellProxy getSpellAtPosition(int position) {
+		SpellProxy spell;
+		for (int i=0;i<this.getQty();i++) {
+			spell = this.getSpellAt(i);
+			if (spell.getPosition() == position) {
+				return spell;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Verifica se existe alguma spell selecionada para cast neste turno.
@@ -106,13 +124,23 @@ public class SpellListProxy extends Proxy implements IProxy, Serializable {
 	 * Dispara o onCast de todas as spells previamente selecionadas.
 	 */
 	public void castAllSelected() {
+		Vector toCast = new Vector();
 		for (int i = 0; i < this.getQty(); i++) {
 			SpellProxy spell = this.getSpellAt(i);
-
 			if (spell.isSelected()) {
-				spell.cast();
+				toCast.addElement(spell.getData());
 			}
 		}
+		
+		// Create list of spells to cast
+		this.create( toCast.size() );
+		for (int i=0;i<toCast.size();i++) {
+			SpellProxy spell = this.getSpellAt(i);
+			spell.setData(toCast.elementAt(i));
+			spell.cast();
+			this.addSpellAt(spell, i);
+		}
+		this.dispatchAllEvents(SpellProxy.ON_CAST);
 	}
 
 	/**
@@ -123,6 +151,7 @@ public class SpellListProxy extends Proxy implements IProxy, Serializable {
 	 * @param eventType
 	 */
 	public void dispatchAllEvents(String eventType) {
+		System.out.println("Dispatch all events! " + eventType + ", qty = " + this.getQty());
 		for (int i = 0; i < this.getQty(); i++) {
 			SpellProxy spell = this.getSpellAt(i);
 			spell.dispatchEvent(eventType);

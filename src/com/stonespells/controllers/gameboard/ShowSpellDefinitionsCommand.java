@@ -7,11 +7,8 @@ import org.puremvc.java.interfaces.INotification;
 import org.puremvc.java.patterns.command.SimpleCommand;
 
 import com.stonespells.models.gameboard.PlayContextProxy;
-import com.stonespells.models.gameboard.PlayerProxy;
 import com.stonespells.models.gameboard.SpellListProxy;
-import com.stonespells.models.gameboard.SpellListVO;
 import com.stonespells.models.gameboard.SpellProxy;
-import com.stonespells.models.gameboard.SpellVO;
 import com.stonespells.views.RenderMediator;
 import com.stonespells.views.gameboard.SpellViewerMediator;
 import com.stonespells.views.optionsmenu.OptionsMenuMediator;

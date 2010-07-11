@@ -143,7 +143,6 @@ public class OptionsMenuMediator extends Mediator implements IMediator {
 			if (gameBoard.getGameState() == GameBoardMediator.GAMESTATE_ENERGIZE) {
 				this.hasMenu = false;
 			}
-			
 		} else if (note.getName().equals(GameBoardMediator.SLOT_SELECTED)) {
 			int gameState = ((GameBoardMediator) facade.retrieveMediator(GameBoardMediator.NAME)).getGameState();
 			this.hasMenu = (gameState != GameBoardMediator.GAMESTATE_WAITING_OPONENT && gameState != GameBoardMediator.GAMESTATE_ENERGIZE);
